@@ -4,8 +4,9 @@
 
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/api/openaistream/[deploymentId].ts";
-import * as $3 from "./routes/index.tsx";
+import * as $2 from "./routes/api/sse/[deploymentId].ts";
+import * as $3 from "./routes/api/ws/[deploymentId].ts";
+import * as $4 from "./routes/index.tsx";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/TextStream.tsx";
 
@@ -13,8 +14,9 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
-    "./routes/api/openaistream/[deploymentId].ts": $2,
-    "./routes/index.tsx": $3,
+    "./routes/api/sse/[deploymentId].ts": $2,
+    "./routes/api/ws/[deploymentId].ts": $3,
+    "./routes/index.tsx": $4,
   },
   islands: {
     "./islands/Counter.tsx": $$0,

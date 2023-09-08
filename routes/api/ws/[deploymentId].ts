@@ -35,8 +35,23 @@ export const handler: Handlers = {
         controller.close();
       },
     });
+    // const reader = stream.getReader();
+    // let result = "";
+
+    // while (true) {
+    //   const { done, value } = await reader.read();
+    //   if (done) {
+    //     break;
+    //   }
+    //   for (const choice of value.choices) {
+    //     if (choice.delta?.content !== undefined) {
+    //       result += choice.delta?.content;
+    //     }
+    //   }
+    // }
 
     const body = stream.pipeThrough(new TextEncoderStream());
+    // const body = result; //chatCompletions.choices[0].message?.content;
 
     return new Response(body, {
       headers: {

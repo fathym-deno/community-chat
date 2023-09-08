@@ -1,10 +1,10 @@
 // deno-lint-ignore-file no-explicit-any
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
-import { handler as openAiSvc } from "./api/openaistream/[deploymentId].ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import TextStream from "../islands/TextStream.tsx";
 import { JSX } from "preact";
+import { handler as openAiSvc } from "./api/sse/[deploymentId].ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -26,9 +26,6 @@ export const handler: Handlers = {
     //     }
     //   }
     // }
-    // const Result = await TextStream({
-    //   stream: stream,
-    // });
 
     return ctx.render({});
   },

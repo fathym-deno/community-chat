@@ -1,6 +1,4 @@
 import { type Signal, useSignal } from "@preact/signals";
-import { Button } from "../components/Button.tsx";
-import { useEffect } from "preact/hooks";
 import { EventSource } from "https://deno.land/x/eventsource@v0.0.3/mod.ts";
 
 interface TextStreamProps {
@@ -9,24 +7,10 @@ interface TextStreamProps {
 export default function TextStream(props: TextStreamProps) {
   // let content = ""; //useSignal("");
 
-  // const reader = props.stream.getReader();
-
-  // while (true) {
-  //   const { done, value } = await reader.read();
-  //   if (done) {
-  //     break;
-  //   }
-  //   for (const choice of value.choices) {
-  //     if (choice.delta?.content !== undefined) {
-  //       content += choice.delta?.content;
-  //     }
-  //   }
-  // }
-
   const content = useSignal("");
 
   const es = new EventSource(
-    "http://localhost:8000/api/openaistream/gpt-35-turbo",
+    "http://localhost:8000/api/sse/gpt-35-turbo",
   );
 
   // deno-lint-ignore no-explicit-any
