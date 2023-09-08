@@ -24,36 +24,40 @@ export const handler = async (
       content: "You are a helpful assistant.",
     },
     { role: "user", content: "Hello, assistant!" },
+    { role: "user", content: "Please tell me a story!" },
   ]);
 
   const stream = new ReadableStream({
     async start(controller) {
       for await (const event of chatCompletions) {
-        controller.enqueue(event);
+        if (event.choices[0]?.delta?.content) {
+          controller.enqueue(event.choices[0]?.delta?.content);
+        }
       }
       controller.close();
     },
   });
-  const reader = stream.getReader();
-  let result = "";
+  // const reader = stream.getReader();
+  // let result = "";
 
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) {
-      break;
-    }
-    for (const choice of value.choices) {
-      if (choice.delta?.content !== undefined) {
-        result += choice.delta?.content;
-      }
-    }
-  }
+  // while (true) {
+  //   const { done, value } = await reader.read();
+  //   if (done) {
+  //     break;
+  //   }
+  //   for (const choice of value.choices) {
+  //     if (choice.delta?.content !== undefined) {
+  //       result += choice.delta?.content;
+  //     }
+  //   }
+  // }
 
-  const body = result; //chatCompletions.choices[0].message?.content;
+  const body = stream.pipeThrough(new TextEncoderStream());
+  // const body = result; //chatCompletions.choices[0].message?.content;
 
   return new Response(body, {
-    // headers: {
-    //   "Content-Type": "text/event-stream",
-    // },
+    headers: {
+      "Content-Type": "text/event-stream",
+    },
   });
 };
