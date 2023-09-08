@@ -1,16 +1,10 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
-// import OpenAI from "npm:openai";
 
 const endpoint = Deno.env.get("ENDPOINT") || "";
 const azureApiKey = Deno.env.get("AZURE_API_KEY") || "";
 
 const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
-
-// const client = new OpenAI({
-//   apiKey: azureApiKey, // defaults to process.env["OPENAI_API_KEY"]
-//   baseURL: endpoint,
-// });
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
