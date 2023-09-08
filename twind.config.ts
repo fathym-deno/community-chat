@@ -9,4 +9,5 @@ export default {
     presets: [presetAutoPrefix(), presetTailWind()],
   }),
   selfURL: import.meta.url,
-} as Options;
+  // deno-lint-ignore no-explicit-any
+} as any;

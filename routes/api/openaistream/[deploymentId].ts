@@ -1,20 +1,30 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { OpenAIClient, AzureKeyCredential } from "https://deno.land/x/openai/mod.ts";
+import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
+// import OpenAI from "npm:openai";
 
 const endpoint = Deno.env.get("ENDPOINT") || "";
 const azureApiKey = Deno.env.get("AZURE_API_KEY") || "";
 
 const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
 
-export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
+// const client = new OpenAI({
+//   apiKey: azureApiKey, // defaults to process.env["OPENAI_API_KEY"]
+//   baseURL: endpoint,
+// });
+
+export const handler = async (
+  _req: Request,
+  _ctx: HandlerContext,
+) => {
   const deploymentId = _ctx.params.deploymentId;
 
-  const messages = [
-    { role: "system", content: "You are a helpful assistant." },
+  const chatCompletions = await client.listChatCompletions(deploymentId, [
+    {
+      role: "system",
+      content: "You are a helpful assistant.",
+    },
     { role: "user", content: "Hello, assistant!" },
-  ];
-
-  const chatCompletions = client.listChatCompletions(deploymentId, messages, { maxTokens: 128 });
+  ]);
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -24,6 +34,26 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
       controller.close();
     },
   });
+  // const reader = stream.getReader();
+  // let result = "";
 
-  return new Response(stream);
+  // while (true) {
+  //   const { done, value } = await reader.read();
+  //   if (done) {
+  //     break;
+  //   }
+  //   for (const choice of value.choices) {
+  //     if (choice.delta?.content !== undefined) {
+  //       result += choice.delta?.content;
+  //     }
+  //   }
+  // }
+
+  const body = stream; // result; //chatCompletions.choices[0].message?.content;
+
+  return new Response(body, {
+    headers: {
+      "Content-Type": "text/event-stream",
+    },
+  });
 };
