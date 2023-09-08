@@ -34,26 +34,27 @@ export const handler = async (
       controller.close();
     },
   });
-  // const reader = stream.getReader();
-  // let result = "";
+  const reader = stream.getReader();
+  let result = "";
 
-  // while (true) {
-  //   const { done, value } = await reader.read();
-  //   if (done) {
-  //     break;
-  //   }
-  //   for (const choice of value.choices) {
-  //     if (choice.delta?.content !== undefined) {
-  //       result += choice.delta?.content;
-  //     }
-  //   }
-  // }
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      break;
+    }
+    for (const choice of value.choices) {
+      if (choice.delta?.content !== undefined) {
+        result += choice.delta?.content;
+        result += "1";
+      }
+    }
+  }
 
-  const body = stream; // result; //chatCompletions.choices[0].message?.content;
+  const body = result; //chatCompletions.choices[0].message?.content;
 
   return new Response(body, {
-    headers: {
-      "Content-Type": "text/event-stream",
-    },
+    // headers: {
+    //   "Content-Type": "text/event-stream",
+    // },
   });
 };
