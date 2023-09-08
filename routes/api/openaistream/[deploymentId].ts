@@ -45,7 +45,6 @@ export const handler = async (
     for (const choice of value.choices) {
       if (choice.delta?.content !== undefined) {
         result += choice.delta?.content;
-        result += "1";
       }
     }
   }
