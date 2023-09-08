@@ -5,7 +5,8 @@
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "update": "deno run -A -r https://fresh.deno.dev/update .",
+    "icons": "deno run -A ./scripts/icons.atomic.ts"
   },
   "lint": {
     "rules": {
@@ -35,7 +36,8 @@
     "$std/": "https://deno.land/std@0.193.0/",
     "twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7",
     "twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4",
-    "$fresh/plugins/twind.ts": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/twind.ts"
+    "$fresh/plugins/twind.ts": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/twind.ts",
+    "@fathym/atomic-icons": "https://deno.land/x/fathym_atomic_icons/mod.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
