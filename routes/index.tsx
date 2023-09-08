@@ -8,22 +8,34 @@ import { JSX } from "preact";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    const resp = await openAiSvc!(req, ctx);
+    // const resp = await openAiSvc.GET!(req, ctx);
 
-    const stream = resp.body! as ReadableStream<any>;
+    // const stream = resp.body! as ReadableStream<any>;
 
-    const Result = TextStream({
-      stream: stream,
-    });
+    // const reader = stream.getReader();
+    // let result = "";
 
-    return ctx.render(Result);
+    // while (true) {
+    //   const { done, value } = await reader.read();
+    //   if (done) {
+    //     break;
+    //   }
+    //   for (const choice of value.choices) {
+    //     if (choice.delta?.content !== undefined) {
+    //       result += choice.delta?.content;
+    //     }
+    //   }
+    // }
+    // const Result = await TextStream({
+    //   stream: stream,
+    // });
+
+    return ctx.render({});
   },
 };
 
 export default function Home(props: PageProps) {
   const count = useSignal(3);
-
-  const Result = props.data;
 
   return (
     <div class="px-4 py-8 mx-auto bg-[#86efac]">
@@ -40,7 +52,8 @@ export default function Home(props: PageProps) {
           Try updating this message in the
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
-        <Result />
+        <TextStream />
+        {/* <p>{content}</p> */}
         <Counter count={count} />
       </div>
     </div>
