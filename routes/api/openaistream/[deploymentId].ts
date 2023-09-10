@@ -36,12 +36,27 @@ export const handler: Handlers = {
       },
     });
 
-    const body = stream.pipeThrough(new TextEncoderStream());
+    // const body = stream.pipeThrough(new TextEncoderStream());
+
+    // TODO:  Temp until can get deno to be able to use EventSource
+
+    const reader = stream.getReader();
+    let result = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+      result += value;
+    }
+
+    const body = result;
 
     return new Response(body, {
-      headers: {
-        "Content-Type": "text/event-stream",
-      },
+      // headers: {
+      //   "Content-Type": "text/event-stream",
+      // },
     });
   },
 };

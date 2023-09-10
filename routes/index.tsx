@@ -6,8 +6,33 @@ import TextStream from "../islands/TextStream.tsx";
 import { JSX } from "preact";
 import { handler as openAiSvc } from "./api/sse/[deploymentId].ts";
 
+// deno-lint-ignore no-explicit-any
+async function* streamAsyncIterator(stream: any) {
+  // Get a lock on the stream
+  const reader = stream.getReader();
+
+  try {
+    while (true) {
+      // Read from the stream
+      const { done, value } = await reader.read();
+      // Exit if we're done
+      if (done) return;
+      // Else yield the chunk
+      yield value;
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
 export const handler: Handlers = {
   async GET(req, ctx) {
+    const resp = await openAiSvc.GET!(req, ctx);
+
+    let result = "";
+
+    for await (const chunk of streamAsyncIterator(resp.body)) {
+      result += chunk.toString();
+    }
     // const resp = await openAiSvc.GET!(req, ctx);
 
     // const stream = resp.body! as ReadableStream<any>;
@@ -27,7 +52,7 @@ export const handler: Handlers = {
     //   }
     // }
 
-    return ctx.render({});
+    return ctx.render(result);
   },
 };
 
@@ -49,8 +74,8 @@ export default function Home(props: PageProps) {
           Try updating this message in the
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
+        <p>{props.data}</p>
         <TextStream />
-        {/* <p>{content}</p> */}
         <Counter count={count} />
       </div>
     </div>

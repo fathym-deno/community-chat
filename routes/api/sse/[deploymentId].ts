@@ -19,7 +19,7 @@ export const handler: Handlers = {
       { role: "user", content: "Please tell me a story!" },
     ]);
 
-    const stream = new ReadableStream({
+    const stream = new ReadableStream<string>({
       async start(controller) {
         for await (const event of chatCompletions) {
           if (event.choices[0]?.delta?.content) {
