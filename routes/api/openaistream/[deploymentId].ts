@@ -49,9 +49,6 @@ export const handler: Handlers = {
 
         for await (const event of chatCompletions) {
           if (event.choices[0]?.delta?.content) {
-            // completeText += event.choices[0]?.delta?.content;
-
-            // controller.enqueue(`data: ${completeText}\n\n`);
             controller.enqueue(`data: ${event.choices[0]?.delta?.content}\n\n`);
           }
         }
