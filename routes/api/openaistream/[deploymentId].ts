@@ -23,7 +23,8 @@ export const handler: Handlers = {
     const chatCompletions = await client.listChatCompletions(deploymentId, [
       {
         role: "system",
-        content: "You are a helpful assistant.",
+        content:
+          "You are a helpful assistant. Respond in Markdown so your responses are pretty.",
       },
       { role: "user", content: "Hello, assistant!" },
       {

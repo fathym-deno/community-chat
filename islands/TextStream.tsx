@@ -40,10 +40,10 @@ export default function TextStream(props: TextStreamProps) {
   // }
 
   return (
-    <div class="flex gap-8 py-6">
-      {content}
-
-      {/* <button onClick={() => stream()}>Stream</button> */}
+    <div
+      class="flex gap-8 py-6"
+      dangerouslySetInnerHTML={{ __html: content.value }}
+    >
     </div>
   );
 }
