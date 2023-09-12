@@ -55,7 +55,11 @@ export const handler: Handlers = {
             controller.enqueue(`data: ${event.choices[0]?.delta?.content}\n\n`);
           }
         }
+
         controller.close();
+      },
+      cancel() {
+        // bc.close();
       },
     });
 
