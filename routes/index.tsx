@@ -74,7 +74,7 @@ export default function Home(props: PageProps) {
           Try updating this message in the
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
-        <p>{props.data}</p>
+        {/* <p>{props.data}</p> */}
         <TextStream />
         <Counter count={count} />
       </div>

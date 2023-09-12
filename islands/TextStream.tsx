@@ -1,5 +1,5 @@
 import { type Signal, useSignal } from "@preact/signals";
-import { EventSource } from "https://deno.land/x/eventsource@v0.0.3/mod.ts";
+import { useEffect } from "preact/hooks";
 
 interface TextStreamProps {
 }
@@ -9,16 +9,20 @@ export default function TextStream(props: TextStreamProps) {
 
   const content = useSignal("");
 
-  const es = new EventSource(
-    "http://localhost:8000/api/sse/gpt-35-turbo",
-  );
+  useEffect(() => {
+    const es = new EventSource(
+      "/api/openaistream/gpt-35-turbo",
+    );
 
-  // deno-lint-ignore no-explicit-any
-  es.onmessage = (ev: MessageEvent<string>) => {
-    // content.value += ev.choice.delta?.content;
-    console.log(ev);
-    content.value = JSON.stringify(ev);
-  };
+    es.onmessage = (ev: MessageEvent<string>) => {
+      // content.value += ev.choice.delta?.content;
+      console.log(ev.data);
+      content.value += ev.data;
+    };
+
+    return () => es.close();
+  }, []);
+
   return (
     <div class="flex gap-8 py-6">
       {content}

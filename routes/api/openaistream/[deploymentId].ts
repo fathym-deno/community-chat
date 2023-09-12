@@ -16,6 +16,11 @@ export const handler: Handlers = {
   async GET(_req, ctx) {
     const deploymentId = ctx.params.deploymentId;
 
+    const azureSearchEndpoint = "https://thinky-ai-prd.search.windows.net";
+    const azureSearchAdminKey =
+      "mlDyZna3Q5nBuJoKa5KHRaAlzWvkj8M8TGeZgUXzLDAzSeCqxhTk";
+    const azureSearchIndexName = "harbor-aug27";
+
     const chatCompletions = await client.listChatCompletions(deploymentId, [
       {
         role: "system",
@@ -23,40 +28,44 @@ export const handler: Handlers = {
       },
       { role: "user", content: "Hello, assistant!" },
       { role: "user", content: "Please tell me a story!" },
-    ]);
+    ], {
+      // azureExtensionOptions: {
+      //   extensions: [
+      //     {
+      //       type: "AzureCognitiveSearch",
+      //       parameters: {
+      //         endpoint: azureSearchEndpoint,
+      //         key: azureSearchAdminKey,
+      //         indexName: azureSearchIndexName,
+      //       },
+      //     },
+      //   ],
+      // },
+    });
 
     const stream = new ReadableStream({
       async start(controller) {
+        // let completeText = "";
+
         for await (const event of chatCompletions) {
           if (event.choices[0]?.delta?.content) {
-            controller.enqueue(event.choices[0]?.delta?.content);
+            // completeText += event.choices[0]?.delta?.content;
+
+            // controller.enqueue(`data: ${completeText}\n\n`);
+            controller.enqueue(`data: ${event.choices[0]?.delta?.content}\n\n`);
           }
         }
         controller.close();
       },
     });
 
-    // const body = stream.pipeThrough(new TextEncoderStream());
-
-    // TODO:  Temp until can get deno to be able to use EventSource
-
-    const reader = stream.getReader();
-    let result = "";
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) {
-        break;
-      }
-      result += value;
-    }
-
-    const body = result;
+    const body = stream.pipeThrough(new TextEncoderStream());
 
     return new Response(body, {
-      // headers: {
-      //   "Content-Type": "text/event-stream",
-      // },
+      headers: {
+        "content-type": "text/event-stream",
+        "cache-control": "no-cache",
+      },
     });
   },
 };
