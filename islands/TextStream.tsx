@@ -7,25 +7,30 @@ interface TextStreamProps {
 export default function TextStream(props: TextStreamProps) {
   const content = useSignal("");
 
-  const executed = false;
+  let executed = false;
 
   // function stream() {
   useEffect(() => {
     const es = new EventSource(
       "/api/openaistream/gpt-35-turbo",
     );
+    console.log("pre: " + es.readyState);
     es.onopen = () => {
-      console.log("start");
+      console.log("start: " + es.readyState);
     };
-    if (!executed) {
-      es.onmessage = (ev: MessageEvent<string>) => {
-        // content.value += ev.choice.delta?.content;
-        // console.log(ev.data);
+    es.onmessage = (ev: MessageEvent<string>) => {
+      // content.value += ev.choice.delta?.content;
+      // console.log(ev.data);
+      if (ev.data === "[DONE]") {
+        es.close();
+      } else {
         content.value += ev.data;
-      };
-    }
+      }
+      // console.log(ev);
+      // console.log("msg: " + es.readyState);
+    };
     return () => {
-      console.log("end");
+      console.log("end: " + es.readyState);
       es.close();
     };
   }, []);

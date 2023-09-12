@@ -48,6 +48,8 @@ export const handler: Handlers = {
           }
         }
 
+        controller.enqueue(`data: [DONE]\n\n`);
+
         controller.close();
       },
       cancel() {
