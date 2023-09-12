@@ -18,6 +18,9 @@ export default function TextStream(props: TextStreamProps) {
     es.onopen = () => {
       console.log("start: " + es.readyState);
     };
+    es.onerror = (err) => {
+      console.log(err);
+    };
     es.onmessage = (ev: MessageEvent<string>) => {
       // content.value += ev.choice.delta?.content;
       // console.log(ev.data);

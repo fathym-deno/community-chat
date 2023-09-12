@@ -16,26 +16,34 @@ export const handler: Handlers = {
   async GET(_req, ctx) {
     const deploymentId = ctx.params.deploymentId;
 
+    const azureSearchEndpoint = Deno.env.get("AZURE_SEARCH_ENDPOINT");
+    const azureSearchAdminKey = Deno.env.get("AZURE_SEARCH_ADMIN_KEY");
+    const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
+
     const chatCompletions = await client.listChatCompletions(deploymentId, [
       {
         role: "system",
         content: "You are a helpful assistant.",
       },
       { role: "user", content: "Hello, assistant!" },
-      { role: "user", content: "Please tell me a story!" },
+      {
+        role: "user",
+        content:
+          "Given the results in Sheri's report for her DISC scores and Motivator scores, give Sheri some career suggestions!",
+      },
     ], {
-      // azureExtensionOptions: {
-      //   extensions: [
-      //     {
-      //       type: "AzureCognitiveSearch",
-      //       parameters: {
-      //         endpoint: azureSearchEndpoint,
-      //         key: azureSearchAdminKey,
-      //         indexName: azureSearchIndexName,
-      //       },
-      //     },
-      //   ],
-      // },
+      azureExtensionOptions: {
+        extensions: [
+          {
+            type: "AzureCognitiveSearch",
+            parameters: {
+              endpoint: azureSearchEndpoint,
+              key: azureSearchAdminKey,
+              indexName: azureSearchIndexName,
+            },
+          },
+        ],
+      },
     });
 
     const stream = new ReadableStream({
