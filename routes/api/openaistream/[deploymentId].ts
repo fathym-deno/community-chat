@@ -16,11 +16,6 @@ export const handler: Handlers = {
   async GET(_req, ctx) {
     const deploymentId = ctx.params.deploymentId;
 
-    const azureSearchEndpoint = "https://thinky-ai-prd.search.windows.net";
-    const azureSearchAdminKey =
-      "mlDyZna3Q5nBuJoKa5KHRaAlzWvkj8M8TGeZgUXzLDAzSeCqxhTk";
-    const azureSearchIndexName = "harbor-aug27";
-
     const chatCompletions = await client.listChatCompletions(deploymentId, [
       {
         role: "system",
