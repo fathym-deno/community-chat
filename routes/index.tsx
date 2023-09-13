@@ -59,7 +59,7 @@ export const handler: Handlers = {
 export default function Home(props: PageProps) {
 
   return (
-    <div class="mx-auto">
+    <div class="mx-auto dark:bg-gray-900">
       <div class="mx-auto flex flex-col">
         <Navbar />
         <BotChat>
