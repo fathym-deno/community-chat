@@ -1,5 +1,6 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
+import { loadAzureExtensionOptions } from "../../../src/openai/utils.ts";
 // import OpenAI from "npm:openai";
 
 const endpoint = Deno.env.get("ENDPOINT") || "";
@@ -16,8 +17,6 @@ export const handler: Handlers = {
   async GET(_req, ctx) {
     const deploymentId = ctx.params.deploymentId;
 
-    const azureSearchEndpoint = Deno.env.get("AZURE_SEARCH_ENDPOINT");
-    const azureSearchAdminKey = Deno.env.get("AZURE_SEARCH_ADMIN_KEY");
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
     const chatCompletions = await client.listChatCompletions(deploymentId, [
@@ -33,18 +32,7 @@ export const handler: Handlers = {
           "Given the results in Sheri's report for her DISC scores and Motivator scores, give Sheri some career suggestions!",
       },
     ], {
-      azureExtensionOptions: {
-        extensions: [
-          {
-            type: "AzureCognitiveSearch",
-            parameters: {
-              endpoint: azureSearchEndpoint,
-              key: azureSearchAdminKey,
-              indexName: azureSearchIndexName,
-            },
-          },
-        ],
-      },
+      azureExtensionOptions: loadAzureExtensionOptions(azureSearchIndexName!),
     });
 
     const stream = new ReadableStream({

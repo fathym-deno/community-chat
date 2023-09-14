@@ -9,11 +9,12 @@
       "runtimeExecutable": "C:\\ProgramData\\chocolatey\\lib\\deno\\deno.EXE",
       "runtimeArgs": [
         "test",
+        "--unstable",
         "--config",
         "./deno.json",
         "--inspect-wait",
         "--allow-all",
-        "./main.ts"
+        "./dev.ts"
       ],
       "attachSimplePort": 9229
     }

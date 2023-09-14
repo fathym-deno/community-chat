@@ -2,6 +2,7 @@ import {
   AzureExtensionsOptions,
   ChatCompletions,
 } from "npm:@azure/openai@next";
+import { addConversationMessage } from "../../state-flow/database.ts";
 
 export function loadAzureExtensionOptions(
   indexName: string,
@@ -24,21 +25,31 @@ export function loadAzureExtensionOptions(
 }
 
 export function loadReadableChatStream(
+  convoId: string,
   chatCompletions: AsyncIterable<ChatCompletions>,
 ) {
   const stream = new ReadableStream({
     async start(controller) {
-      // let completeText = "";
+      let completeText = "";
+
+      // controller.enqueue(`event: message\n\n`);
 
       for await (const event of chatCompletions) {
         if (event.choices[0]?.delta?.content) {
           controller.enqueue(`data: ${event.choices[0]?.delta?.content}\n\n`);
+
+          completeText += event.choices[0]?.delta?.content;
         }
       }
 
       controller.enqueue(`data: [DONE]\n\n`);
 
       controller.close();
+
+      await addConversationMessage(convoId, {
+        From: "assistant",
+        Content: completeText,
+      });
     },
     cancel() {
       // bc.close();
