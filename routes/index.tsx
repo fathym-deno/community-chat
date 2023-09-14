@@ -4,7 +4,6 @@ import Counter from "../islands/Counter.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import TextStream from "../islands/TextStream.tsx";
 import { JSX } from "preact";
-import { handler as openAiSvc } from "./api/sse/[deploymentId].ts";
 
 // deno-lint-ignore no-explicit-any
 async function* streamAsyncIterator(stream: any) {
@@ -26,31 +25,7 @@ async function* streamAsyncIterator(stream: any) {
 }
 export const handler: Handlers = {
   async GET(req, ctx) {
-    const resp = await openAiSvc.GET!(req, ctx);
-
     let result = "";
-
-    for await (const chunk of streamAsyncIterator(resp.body)) {
-      result += chunk.toString();
-    }
-    // const resp = await openAiSvc.GET!(req, ctx);
-
-    // const stream = resp.body! as ReadableStream<any>;
-
-    // const reader = stream.getReader();
-    // let result = "";
-
-    // while (true) {
-    //   const { done, value } = await reader.read();
-    //   if (done) {
-    //     break;
-    //   }
-    //   for (const choice of value.choices) {
-    //     if (choice.delta?.content !== undefined) {
-    //       result += choice.delta?.content;
-    //     }
-    //   }
-    // }
 
     return ctx.render(result);
   },
@@ -69,13 +44,16 @@ export default function Home(props: PageProps) {
           height="128"
           alt="the Fresh logo: a sliced lemon dripping with juice"
         />
+
         <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
+
         <p class="my-4">
           Try updating this message in the
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
-        {/* <p>{props.data}</p> */}
+
         <TextStream />
+
         <Counter count={count} />
       </div>
     </div>
