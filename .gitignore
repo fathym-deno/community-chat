@@ -6,3 +6,4 @@ lcov/
 target/
 build/
 fresh.config.ts
+fresh.gen.ts

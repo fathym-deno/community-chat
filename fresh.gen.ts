@@ -9,8 +9,12 @@ import * as $3 from "./routes/api/openaistream/[deploymentId].ts";
 import * as $4 from "./routes/api/sse/[deploymentId].ts";
 import * as $5 from "./routes/api/ws/[deploymentId].ts";
 import * as $6 from "./routes/index.tsx";
-import * as $$0 from "./islands/Counter.tsx";
-import * as $$1 from "./islands/TextStream.tsx";
+import * as $$0 from "./islands/Breadcrumb.tsx";
+import * as $$1 from "./islands/Counter.tsx";
+import * as $$2 from "./islands/DropDownButton.jsx";
+import * as $$3 from "./islands/NavBar.tsx";
+import * as $$4 from "./islands/NavBarHarbor.tsx";
+import * as $$5 from "./islands/TextStream.tsx";
 
 const manifest = {
   routes: {
@@ -27,7 +31,8 @@ const manifest = {
     "./islands/Counter.tsx": $$1,
     "./islands/DropDownButton.jsx": $$2,
     "./islands/NavBar.tsx": $$3,
-    "./islands/TextStream.tsx": $$4,
+    "./islands/NavBarHarbor.tsx": $$4,
+    "./islands/TextStream.tsx": $$5,
   },
   baseUrl: import.meta.url,
 };

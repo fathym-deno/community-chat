@@ -4,7 +4,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import TextStream from "../islands/TextStream.tsx";
 import { handler as openAiSvc } from "./api/sse/[deploymentId].ts";
 import { BotChat } from "../components/BotChat.tsx";
-import Navbar from "../islands/NavBar.tsx";
+import NavbarHarbor from "../islands/NavBarHarbor.tsx";
 
 // deno-lint-ignore no-explicit-any
 async function* streamAsyncIterator(stream: any) {
@@ -61,10 +61,10 @@ export default function Home(props: PageProps) {
   return (
     <div class="mx-auto dark:bg-gray-900">
       <div class="mx-auto flex flex-col">
-        <Navbar />
-        <BotChat>
-          <TextStream />
-        </BotChat>
+        
+        {/*<BotChat>
+           <TextStream /> 
+        </BotChat>*/}
       </div>
     </div>
   );
