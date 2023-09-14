@@ -19,8 +19,11 @@ const manifest = {
     "./routes/index.tsx": $4,
   },
   islands: {
-    "./islands/Counter.tsx": $$0,
-    "./islands/TextStream.tsx": $$1,
+    "./islands/Breadcrumb.tsx": $$0,
+    "./islands/Counter.tsx": $$1,
+    "./islands/DropDownButton.jsx": $$2,
+    "./islands/NavBar.tsx": $$3,
+    "./islands/TextStream.tsx": $$4,
   },
   baseUrl: import.meta.url,
 };
