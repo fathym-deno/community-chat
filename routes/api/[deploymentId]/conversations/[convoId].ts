@@ -1,11 +1,16 @@
 import { Handlers } from "$fresh/server.ts";
 import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
-import { loadIndigoPersonality } from "../../../state-flow/personalities.ts";
-import { listConversationMessages } from "../../../state-flow/database.ts";
+import { loadIndigoPersonality } from "../../../../state-flow/personalities.ts";
+import {
+  addConversationMessage,
+  ConversationMessage,
+  listConversationMessages,
+  resetConversationMessages,
+} from "../../../../state-flow/database.ts";
 import {
   loadAzureExtensionOptions,
   loadReadableChatStream,
-} from "../../../src/openai/utils.ts";
+} from "../../../../src/openai/utils.ts";
 
 const endpoint = Deno.env.get("ENDPOINT") || "";
 const azureApiKey = Deno.env.get("AZURE_API_KEY") || "";
@@ -22,9 +27,9 @@ export const handler: Handlers = {
 
     const messages = (await listConversationMessages(convoId)) || [];
 
-    const declarations = personality.Declarations!.join(" ");
+    const declarations = personality.Declarations?.join(" ") || "";
 
-    const instructions = personality.Instructions!.join(" ");
+    const instructions = personality.Instructions?.join(" ") || "";
 
     const chatMessages = messages.map((msg) => {
       return {
@@ -33,9 +38,9 @@ export const handler: Handlers = {
       };
     });
 
-    chatMessages.push();
-
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
+
+    console.log(chatMessages);
 
     const chatCompletions = await client.listChatCompletions(deploymentId, [
       {
@@ -47,12 +52,35 @@ export const handler: Handlers = {
       azureExtensionOptions: loadAzureExtensionOptions(azureSearchIndexName!),
     });
 
-    const body = loadReadableChatStream(chatCompletions);
+    const body = loadReadableChatStream(convoId, chatCompletions);
 
     return new Response(body, {
       headers: {
         "content-type": "text/event-stream",
         "cache-control": "no-cache",
+      },
+    });
+  },
+  async POST(req, ctx) {
+    const convoId = ctx.params.convoId;
+
+    const convoMsg: ConversationMessage = {
+      Content: await req.text(),
+      From: "user",
+    };
+
+    await addConversationMessage(convoId, convoMsg);
+
+    return await handler.GET!(req, ctx);
+  },
+  async DELETE(req, ctx) {
+    const convoId = ctx.params.convoId;
+
+    await resetConversationMessages(convoId);
+
+    return new Response(null, {
+      headers: {
+        "content-type": "text/html",
       },
     });
   },

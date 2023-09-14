@@ -8,7 +8,9 @@ export function loadIndigoPersonality(): Personality {
   return {
     Declarations: [
       "You are a helpful assistant.",
-      "Respond in Markdown so your responses are pretty.",
+    ],
+    Instructions: [
+      "Please return your response as Markdown so it looks nicer.",
     ],
   };
 }
