@@ -1,0 +1,81 @@
+// import {
+//   Database,
+//   DatabaseRecordsFactoryFull,
+//   DenoKVDataProvider,
+//   IDataProvider,
+// } from "@fathym/state-flow";
+
+// type User = {
+//   DisplayName: string;
+
+//   Email: string;
+// };
+
+// class TestDB extends Database {
+//   public Users = this.loadRecordsFactory<
+//     DatabaseRecordsFactoryFull<User>,
+//     User
+//   >("Users");
+
+//   constructor(protected dataProviderFactory: <T>() => IDataProvider<T>) {
+//     super(dataProviderFactory);
+//   }
+// }
+
+export type KeyTypePart = Uint8Array | string | number | bigint | boolean;
+
+export type KeyType = KeyTypePart[];
+
+const kv = await Deno.openKv();
+
+// const prvdrFactory = <T>() => new DenoKVDataProvider<T>(kv);
+
+// const DB = new TestDB(prvdrFactory);
+
+// export default DB;
+
+export type Conversation = {
+  Title?: string;
+};
+
+export type ConversationMessage = {
+  Content: string;
+
+  From: string;
+
+  To?: string;
+};
+
+export async function addConversationMessage(
+  convoId: string,
+  message: ConversationMessage,
+) {
+  const msgId = crypto.randomUUID().toString();
+
+  await kv.set(["Conversations", convoId, "Messages", msgId], message);
+}
+
+export async function listConversationMessages(
+  convoId: string,
+): Promise<{ key: KeyType; value: ConversationMessage }[]> {
+  const convoMsgs = await kv.list({
+    prefix: ["Conversations", convoId, "Messages"],
+  });
+
+  const messages: { key: KeyType; value: ConversationMessage }[] = [];
+
+  for await (const message of convoMsgs) {
+    const { key, value } = message;
+
+    messages.push({
+      key: key as KeyType,
+      value: value as ConversationMessage,
+    });
+  }
+
+  return messages;
+}
+
+export async function setConversation(id: string, convo: Conversation) {
+  await kv.set(["Conversations", id], convo);
+}
