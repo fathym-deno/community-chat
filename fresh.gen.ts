@@ -7,8 +7,11 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/api/[deploymentId]/conversations/[convoId].ts";
 import * as $3 from "./routes/api/embeddings/files.ts";
 import * as $4 from "./routes/index.tsx";
-import * as $$0 from "./islands/Counter.tsx";
-import * as $$1 from "./islands/TextStream.tsx";
+import * as $$0 from "./islands/Breadcrumb.tsx";
+import * as $$1 from "./islands/Counter.tsx";
+import * as $$2 from "./islands/DropDownButton.jsx";
+import * as $$3 from "./islands/NavBar.tsx";
+import * as $$4 from "./islands/TextStream.tsx";
 
 const manifest = {
   routes: {
