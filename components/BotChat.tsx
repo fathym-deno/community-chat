@@ -3,7 +3,7 @@ import { LovebotIcon } from "../build/iconset/icons/LovebotIcon.tsx";
 import { UserIcon } from "../build/iconset/icons/UserIcon.tsx";
 import { AcademicIcon } from "../build/iconset/icons/AcademicIcon.tsx";
 
-interface BotChat {
+interface BotChatProps {
   children: JSX.Element;
 }
 
@@ -49,7 +49,7 @@ const botData = {
   "usericon": <LovebotIcon class="w-6 h-6" />,
 };
 
-export function BotChat(props: BotChat) {
+export function BotChat(props: BotChatProps) {
   return (
     <>
       {/* Mock Chat Start */}
@@ -73,24 +73,24 @@ export function BotChat(props: BotChat) {
             </div>
           )
           : (item.role == "Career Coach")
-          ? (
-            <div key={index}>
-              <div class="flex w-full mt-2 space-x-3">
-                <div class="flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-green-600 bg-opacity-10 border border-green-500 border-opacity-40 text-green-600">
-                  <div class="flex self-center">{item.usericon}</div>
-                </div>
-                <div>
-                  <div class="bg-green-600 bg-opacity-10 border border-green-500 border-opacity-40 p-3 rounded-r-lg rounded-bl-lg">
-                    <p class="text-sm">{item.content}</p>
+            ? (
+              <div key={index}>
+                <div class="flex w-full mt-2 space-x-3">
+                  <div class="flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-green-600 bg-opacity-10 border border-green-500 border-opacity-40 text-green-600">
+                    <div class="flex self-center">{item.usericon}</div>
                   </div>
-                  <span class="text-xs text-gray-500 leading-none">
-                    {item.time}
-                  </span>
+                  <div>
+                    <div class="bg-green-600 bg-opacity-10 border border-green-500 border-opacity-40 p-3 rounded-r-lg rounded-bl-lg">
+                      <p class="text-sm">{item.content}</p>
+                    </div>
+                    <span class="text-xs text-gray-500 leading-none">
+                      {item.time}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-          : (null)
+            )
+            : (null)
       ))}
 
       {/* Actual Bot Chat */}
