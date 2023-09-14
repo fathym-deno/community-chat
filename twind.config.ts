@@ -8,15 +8,15 @@ import presetTailwindForms from "twind-preset-tailwind-forms";
 
 export default {
   ...defineConfig({
-    presets: [presetAutoPrefix(), presetTailWind(),presetTailwindForms()],
+    presets: [presetAutoPrefix(), presetTailWind(), presetTailwindForms()],
     theme: {
       extend: {
         colors: {
           primary: colors.blue,
           secondary: colors.indigo,
-          
-          transparent: 'transparent',
-          current: 'currentColor',
+
+          transparent: "transparent",
+          current: "currentColor",
         },
         fontFamily: {
           //sans: ["Inter", ...defaultTheme.fontFamily.sans],
@@ -27,10 +27,5 @@ export default {
   selfURL: import.meta.url,
   // deno-lint-ignore no-explicit-any
 } as any;
-
-
-
-
-
 
 // plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],

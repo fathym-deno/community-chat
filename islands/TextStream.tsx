@@ -31,7 +31,8 @@ export default function TextStream(props: TextStreamProps) {
   }, []);
 
   return (
-    <div class="text-sm dark:text-white"
+    <div
+      class="text-sm dark:text-white"
       dangerouslySetInnerHTML={{ __html: content.value }}
     >
     </div>
