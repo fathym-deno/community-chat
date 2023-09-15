@@ -11,7 +11,9 @@ import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/Counter.tsx";
 import * as $$2 from "./islands/DropDownButton.jsx";
 import * as $$3 from "./islands/NavBar.tsx";
-import * as $$4 from "./islands/TextStream.tsx";
+import * as $$4 from "./islands/NavBarHarbor.tsx";
+import * as $$5 from "./islands/PieChart.tsx";
+import * as $$6 from "./islands/TextStream.tsx";
 
 const manifest = {
   routes: {
@@ -26,7 +28,9 @@ const manifest = {
     "./islands/Counter.tsx": $$1,
     "./islands/DropDownButton.jsx": $$2,
     "./islands/NavBar.tsx": $$3,
-    "./islands/TextStream.tsx": $$4,
+    "./islands/NavBarHarbor.tsx": $$4,
+    "./islands/PieChart.tsx": $$5,
+    "./islands/TextStream.tsx": $$6,
   },
   baseUrl: import.meta.url,
 };

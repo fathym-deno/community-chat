@@ -3,10 +3,10 @@ import { useSignal } from "@preact/signals";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import TextStream from "../islands/TextStream.tsx";
 import { BotChat } from "../components/BotChat.tsx";
-import Navbar from "../islands/NavBar.tsx";
-import { LovebotIcon } from "../build/iconset/icons/LovebotIcon.tsx";
-import { UserIcon } from "../build/iconset/icons/UserIcon.tsx";
-import { AcademicIcon } from "../build/iconset/icons/AcademicIcon.tsx";
+import NavbarHarbor from "../islands/NavBarHarbor.tsx";
+import { Chart } from "$fresh_charts/mod.ts";
+import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
+import PieChart from "../islands/PieChart.tsx";
 import { ConversationMessage } from "../state-flow/database.ts";
 
 export const handler: Handlers = {
@@ -50,11 +50,60 @@ export default function Home(props: PageProps) {
   return (
     <div class="mx-auto dark:bg-gray-900">
       <div class="mx-auto flex flex-col">
-        <Navbar />
+        <NavbarHarbor />
         <BotChat messages={messages}>
           <TextStream />
         </BotChat>
       </div>
-    </div>
+      <div class="p-4 mx-auto max-w-screen-md">
+        <Chart
+          type="line"
+          options={{
+            devicePixelRatio: 1,
+            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+          }}
+          data={{
+            labels: ["1", "2", "3"],
+            datasets: [{
+              label: "Sessions",
+              data: [123, 234, 234],
+              borderColor: ChartColors.Red,
+              backgroundColor: transparentize(ChartColors.Red, 0.5),
+              borderWidth: 1,
+            }, {
+              label: "Users",
+              data: [346, 233, 123],
+              borderColor: ChartColors.Blue,
+              backgroundColor: transparentize(ChartColors.Blue, 0.5),
+              borderWidth: 1,
+            }],
+          }}
+        />
+        <Chart
+          type="bar"
+          options={{
+            devicePixelRatio: 1,
+            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+          }}
+          data={{
+            labels: ["1", "2", "3"],
+            datasets: [{
+              label: "Sessions",
+              data: [123, 234, 234],
+              borderColor: ChartColors.Red,
+              backgroundColor: transparentize(ChartColors.Red, 0.5),
+              borderWidth: 1,
+            }, {
+              label: "Users",
+              data: [346, 233, 123],
+              borderColor: ChartColors.Blue,
+              backgroundColor: transparentize(ChartColors.Blue, 0.5),
+              borderWidth: 1,
+            }],
+          }}
+        />
+        <PieChart />
+      </div>
+    </div >
   );
 }

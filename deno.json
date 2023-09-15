@@ -41,7 +41,9 @@
     "$fresh/plugins/twind.ts": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/twind.ts",
     "@fathym/atomic": "https://deno.land/x/fathym_atomic@v0.0.63-integration/mod.ts",
     "@fathym/atomic-icons": "https://deno.land/x/fathym_atomic_icons@v0.0.3-integration25/mod.ts",
-    "$fathym/atomic-icons": "./build/iconset/icons/_exports.ts"
+    "$fathym/atomic-icons": "./build/iconset/icons/_exports.ts",
+    "$fresh_charts/mod.ts": "https://deno.land/x/fresh_charts@0.3.1/mod.ts",
+    "$fresh_charts/utils.ts": "https://deno.land/x/fresh_charts/utils.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
