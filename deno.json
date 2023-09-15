@@ -39,6 +39,7 @@
     "twind-preset-tailwind/": "https://esm.sh/@twind/preset-tailwind@1.1.4/",
     "twind-preset-tailwind-forms": "https://esm.sh/@twind/preset-tailwind-forms@1.1.2",
     "$fresh/plugins/twind.ts": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/twind.ts",
+    "@fathym/atomic": "https://deno.land/x/fathym_atomic@v0.0.63-integration/mod.ts",
     "@fathym/atomic-icons": "https://deno.land/x/fathym_atomic_icons@v0.0.3-integration25/mod.ts",
     "$fathym/atomic-icons": "./build/iconset/icons/_exports.ts"
   },

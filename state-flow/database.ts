@@ -43,6 +43,8 @@ export type ConversationMessage = {
 
   From: string;
 
+  Timestamp?: Date;
+
   To?: string;
 };
 
