@@ -42,7 +42,7 @@ export default function NavbarHarbor() {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="flex-shrink-0 text-[#67C7C5]">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="55" preserveAspectRatio="xMidYMid meet"
                 viewBox="0 0 208.1 84.6" style="enable-background:new 0 0 208.1 84.6;">
               <g>
                 <path fill="#6E2A37" d="M21.8,42.3V28H10.3v14.3H3.6V8.2h6.7v13.9h11.6V8.2h6.7v34.2H21.8z"/>

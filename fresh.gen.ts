@@ -11,7 +11,8 @@ import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/Counter.tsx";
 import * as $$2 from "./islands/DropDownButton.jsx";
 import * as $$3 from "./islands/NavBar.tsx";
-import * as $$4 from "./islands/TextStream.tsx";
+import * as $$4 from "./islands/NavBarHarbor.tsx";
+import * as $$5 from "./islands/TextStream.tsx";
 
 const manifest = {
   routes: {
