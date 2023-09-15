@@ -64,6 +64,8 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const convoId = ctx.params.convoId;
 
+    await resetConversationMessages(convoId);
+
     const convoMsg: ConversationMessage = {
       Content: await req.text(),
       From: "user",

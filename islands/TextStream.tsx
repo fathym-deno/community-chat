@@ -12,7 +12,8 @@ export default function TextStream(props: TextStreamProps) {
     const es = new SSE(
       "/api/gpt-35-turbo/conversations/test-123",
       {
-        payload: "Can you please focus in on the Architect career?",
+        payload:
+          "Given the results in Sheri's report for her DISC scores and Motivator scores, give Sheri some career suggestions!?",
       },
     );
 
@@ -29,21 +30,9 @@ export default function TextStream(props: TextStreamProps) {
     };
   }, []);
 
-  // const es = new EventSource(
-  //   "/api/openaistream/gpt-35-turbo",
-  //   // { payload: "Hello, world!" },
-  // );
-
-  // es.onmessage = (ev: MessageEvent<string>) => {
-  //   if (ev.data === "[DONE]") {
-  //     es.close();
-  //   } else {
-  //     content.value += ev.data;
-  //   }
-  // };
-
   return (
-    <div class="text-sm dark:text-white"
+    <div
+      class="text-sm dark:text-white"
       dangerouslySetInnerHTML={{ __html: content.value }}
     >
     </div>
