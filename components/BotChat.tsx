@@ -82,7 +82,7 @@ export function BotChat(props: BotChatProps) {
 
       {/* Mock Chat Input */}
       <div class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40">
-        <form onSubmit={() => props.onSendMessage()}>
+        <form onSubmit={() => props.onSendMessage!()}>
           <div className="relative z-0 flex">
             <input
               type="text"
