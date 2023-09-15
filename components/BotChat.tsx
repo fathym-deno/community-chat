@@ -9,7 +9,7 @@ import { classSet } from "@fathym/atomic";
 interface BotChatProps {
   children: JSX.Element;
 
-  onSendMessage: () => void;//(message: ConversationMessage) => void;
+  onSendMessage?: () => void;//(message: ConversationMessage) => void;
 
   messages: ConversationMessage[];
 }
