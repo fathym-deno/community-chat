@@ -46,6 +46,8 @@ export type ConversationMessage = {
   Timestamp?: Date;
 
   To?: string;
+
+  VersionStamp: string;
 };
 
 export async function addConversationMessage(
@@ -61,29 +63,34 @@ export async function addConversationMessage(
 
 export async function listConversationMessages(
   convoId: string,
-): Promise<{ key: KeyType; value: ConversationMessage }[]> {
+): Promise<
+  { key: KeyType; value: ConversationMessage; versionstamp: string }[]
+> {
   const convoMsgs = await kv.list({
     prefix: ["Conversations", convoId, "Messages"],
   });
 
-  const messages: { key: KeyType; value: ConversationMessage }[] = [];
+  const messages: {
+    key: KeyType;
+    value: ConversationMessage;
+    versionstamp: string;
+  }[] = [];
 
   for await (const message of convoMsgs) {
-    const { key, value } = message;
+    const { key, value, versionstamp } = message;
 
     messages.push({
       key: key as KeyType,
       value: value as ConversationMessage,
+      versionstamp: versionstamp,
     });
   }
 
+  // return messages;
   return messages.sort((a, b) => {
-    const aMillis = a.value.Timestamp?.getMilliseconds() || 0;
-    const bMillis = b.value.Timestamp?.getMilliseconds() || 0;
-
-    if (a < b) {
+    if (a.value.Timestamp! < b.value.Timestamp!) {
       return -1;
-    } else if (a > b) {
+    } else if (a.value.Timestamp! > b.value.Timestamp!) {
       return 1;
     } else {
       return 0;

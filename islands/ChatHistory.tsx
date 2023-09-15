@@ -42,7 +42,7 @@ export function ChatHistory(props: ChatHistoryProps) {
         if (ev.data === "[DONE]") {
           es.close();
 
-          props.messageStreamed();
+          // props.messageStreamed();
         } else {
           botMessage.value = {
             Content: (botMessage.value?.Content || '') + ev.data,
