@@ -64,7 +64,7 @@ export function BotChat(props: BotChatProps) {
       ))}
 
       {/* Actual Bot Chat */}
-      <div>
+      {props.children && <div>
         <div class="flex w-full mt-2 space-x-3">
           <div class="flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-red-600 bg-opacity-10 border border-red-500 border-opacity-40 text-red-600">
             <div class="flex self-center">{botData.usericon}</div>
@@ -78,7 +78,7 @@ export function BotChat(props: BotChatProps) {
             </span>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Mock Chat Input */}
       <div class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40">

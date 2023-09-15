@@ -1,4 +1,5 @@
 import { AppProps } from "$fresh/server.ts";
+import NavbarHarbor from "../islands/NavBarHarbor.tsx";
 
 export default function App({ Component }: AppProps) {
   return (
@@ -10,7 +11,13 @@ export default function App({ Component }: AppProps) {
         <title>community-chat</title>
       </head>
       <body class="mx-auto dark:text-white dark:bg-gray-900">
-        <Component />
+        <div class="mx-auto dark:bg-gray-900">
+          <NavbarHarbor />
+
+          <div class="mx-auto flex flex-col">
+            <Component />
+          </div>
+        </div >
       </body>
     </html>
   );

@@ -54,6 +54,8 @@ export async function addConversationMessage(
 ) {
   const msgId = crypto.randomUUID().toString();
 
+  message.Timestamp = new Date();
+
   await kv.set(["Conversations", convoId, "Messages", msgId], message);
 }
 
@@ -75,7 +77,18 @@ export async function listConversationMessages(
     });
   }
 
-  return messages;
+  return messages.sort((a, b) => {
+    const aMillis = a.value.Timestamp?.getMilliseconds() || 0;
+    const bMillis = b.value.Timestamp?.getMilliseconds() || 0;
+
+    if (aMillis < bMillis) {
+      return -1;
+    } else if (aMillis > bMillis) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 }
 
 export async function resetConversationMessages(

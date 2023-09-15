@@ -40,17 +40,16 @@ export default function Home(props: PageProps) {
       Content: "Can you help me find a career?",
       Timestamp: undefined,
     },
-    {
-      From: "coach",
-      Content: "Please, lets limit it to careers that require 6-month training coarses.",
-      Timestamp: undefined,
-    },
+    // {
+    //   From: "coach",
+    //   Content: "Please, lets limit it to careers that require 6-month training coarses.",
+    //   Timestamp: undefined,
+    // },
   ];
 
   return (
-    <div class="mx-auto dark:bg-gray-900">
+    <>
       <div class="mx-auto flex flex-col">
-        <NavbarHarbor />
         <BotChat messages={messages}>
           <TextStream />
         </BotChat>
@@ -104,6 +103,6 @@ export default function Home(props: PageProps) {
         />
         <PieChart />
       </div>
-    </div >
+    </>
   );
 }

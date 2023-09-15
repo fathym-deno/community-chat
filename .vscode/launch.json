@@ -8,7 +8,7 @@
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "C:\\ProgramData\\chocolatey\\lib\\deno\\deno.EXE",
       "runtimeArgs": [
-        "test",
+        "run",
         "--unstable",
         "--config",
         "./deno.json",

@@ -19,11 +19,34 @@ const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
+    const convoId = ctx.params.convoId;
+
+    const messages = (await listConversationMessages(convoId)) || [];
+
+    const body = JSON.stringify(messages);
+
+    console.log(body);
+
+    return new Response(body, {
+      headers: {
+        "content-type": "application/json",
+        "cache-control": "no-cache",
+      },
+    });
+  },
+  async POST(req, ctx) {
     const deploymentId = ctx.params.deploymentId;
 
     const convoId = ctx.params.convoId;
 
     const personality = loadIndigoPersonality();
+
+    const convoMsg: ConversationMessage = {
+      Content: await req.text(),
+      From: "user",
+    };
+
+    await addConversationMessage(convoId, convoMsg);
 
     const messages = (await listConversationMessages(convoId)) || [];
 
@@ -61,21 +84,7 @@ export const handler: Handlers = {
       },
     });
   },
-  async POST(req, ctx) {
-    const convoId = ctx.params.convoId;
-
-    await resetConversationMessages(convoId);
-
-    const convoMsg: ConversationMessage = {
-      Content: await req.text(),
-      From: "user",
-    };
-
-    await addConversationMessage(convoId, convoMsg);
-
-    return await handler.GET!(req, ctx);
-  },
-  async DELETE(req, ctx) {
+  async DELETE(_req, ctx) {
     const convoId = ctx.params.convoId;
 
     await resetConversationMessages(convoId);
