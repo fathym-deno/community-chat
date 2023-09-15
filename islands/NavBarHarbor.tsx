@@ -37,7 +37,7 @@ export default function NavbarHarbor() {
 
   return (
     <div className="min-h-full">
-      <nav className="bg-slate-800">
+      <nav className="bg-slate-100">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
