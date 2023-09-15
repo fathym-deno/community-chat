@@ -81,9 +81,9 @@ export async function listConversationMessages(
     const aMillis = a.value.Timestamp?.getMilliseconds() || 0;
     const bMillis = b.value.Timestamp?.getMilliseconds() || 0;
 
-    if (aMillis < bMillis) {
+    if (a < b) {
       return -1;
-    } else if (aMillis > bMillis) {
+    } else if (a > b) {
       return 1;
     } else {
       return 0;

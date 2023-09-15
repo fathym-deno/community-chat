@@ -16,6 +16,8 @@ interface ChatHistoryProps {
 
   messages: ConversationMessage[];
 
+  messageStreamed: () => void;
+
   userMessage: string;
 }
 
@@ -39,6 +41,8 @@ export function ChatHistory(props: ChatHistoryProps) {
       es.onmessage = (ev: MessageEvent<string>) => {
         if (ev.data === "[DONE]") {
           es.close();
+
+          props.messageStreamed();
         } else {
           botMessage.value = {
             Content: (botMessage.value?.Content || '') + ev.data,
