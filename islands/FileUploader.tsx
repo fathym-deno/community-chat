@@ -30,14 +30,14 @@ export function Uploads(props: UploadsProps) {
     e.preventDefault();
     e.stopPropagation();
     setDragging(false);
-    if(e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+    if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
       props.onFileUpload(e.dataTransfer.files[0]);
       e.dataTransfer.clearData();
     }
   }
 
   const handleFileUpload = (e: JSX.TargetedEvent<HTMLInputElement, Event>) => {
-    if(e.currentTarget.files) {
+    if (e.currentTarget.files) {
       props.onFileUpload(e.currentTarget.files[0]);
     }
   }
@@ -54,7 +54,7 @@ export function Uploads(props: UploadsProps) {
       <input type="file" class="hidden" onChange={handleFileUpload} />
       <button
         class="px-4 py-2 bg-blue-500 text-white rounded-lg"
-        onClick={() => document.querySelector('input[type="file"]')?.click()}
+      // onClick={() => document.querySelector('input[type="file"]')?.click()}
       >
         Select File
       </button>
