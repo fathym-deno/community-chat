@@ -16,7 +16,7 @@ export const handler: Handlers = {
   },
 };
 
-export default function Home(props: PageProps) {
+export default async function Home(props: PageProps) {
   const messages: ConversationMessage[] = [
     {
       From: "system",
@@ -53,7 +53,7 @@ export default function Home(props: PageProps) {
         </BotChat>
       </div>
       <div class="p-4 mx-auto max-w-screen-md">
-      <Chart
+        <Chart
           type="line"
           options={{
             scales: { y: { beginAtZero: true } },
