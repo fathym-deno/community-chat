@@ -112,7 +112,7 @@ export default function NavbarHarbor() {
 
               </div>
               <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
+                <div className="ml-10 flex items-baseline space-x-4 text-black">
                 <a href="#">
                     <ButtonDynamic twcolor="transparent" textcolor="white" fontweight="normal" selected shadow="sm" twsize="sm">
                       Dashboard
