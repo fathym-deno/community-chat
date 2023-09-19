@@ -51,7 +51,6 @@ export default function Chat(props: PageProps) {
         alert('hey');
       }} />
 
-      {/* Mock Chat Input */}
       <form method="post" class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40">
         <div className="relative z-0 flex">
           <input

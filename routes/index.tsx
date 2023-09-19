@@ -18,40 +18,7 @@ export const handler: Handlers = {
   },
 };
 
-const chartlabels = ['PLM', 'ERP', 'MES', 'SCADA', 'PLC', 'DCS', 'Other software', 'Robotics', 'Machine Vision', 'Sensors', 'Relays & Switches', 'Motors & Drives', 'Other']
-const chartdata = [21, 14, 4, 13, 5, 9, 3, 5, 5, 6, 3, 11, 1]
-const bordercolor = [
-  'rgba(255, 99, 132, 1)',  
-  'rgba(54, 162, 235, 1)',  
-  'rgba(255, 206, 86, 1)',  
-  'rgba(75, 192, 192, 1)',  
-  'rgba(153, 102, 255, 1)',  
-  'rgba(255, 159, 64, 1)',  
-  'rgba(255, 99, 132, 1)',  
-  'rgba(54, 162, 235, 1)',  
-  'rgba(255, 206, 86, 1)',  
-  'rgba(75, 192, 192, 1)',  
-  'rgba(153, 102, 255, 1)',  
-  'rgba(255, 159, 64, 1)',  
-  'rgba(75, 192, 192, 1)'
-]
-const backgroundcolor = [
-  'rgba(255, 99, 132, 0.2)',  
-  'rgba(54, 162, 235, 0.2)',  
-  'rgba(255, 206, 86, 0.2)',  
-  'rgba(75, 192, 192, 0.2)',  
-  'rgba(153, 102, 255, 0.2)',  
-  'rgba(255, 159, 64, 0.2)',  
-  'rgba(255, 99, 132, 0.2)',  
-  'rgba(54, 162, 235, 0.2)',  
-  'rgba(255, 206, 86, 0.2)',  
-  'rgba(75, 192, 192, 0.2)',  
-  'rgba(153, 102, 255, 0.2)',  
-  'rgba(255, 159, 64, 0.2)',  
-  'rgba(75, 192, 192, 0.2)'
-]
-
-export default function Home(props: PageProps) {
+export default async function Home(props: PageProps) {
   const messages: ConversationMessage[] = [
     {
       From: "system",
@@ -87,8 +54,8 @@ export default function Home(props: PageProps) {
           <TextStream />
         </BotChat>
       </div>
-      <div class="p-4 mx-auto max-w-screen-md"> */}
-      <ChartIsland
+      <div class="p-4 mx-auto max-w-screen-md">
+        <Chart
           type="line"
           options={{
             scales: { y: { beginAtZero: true } },
