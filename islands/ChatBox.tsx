@@ -1,5 +1,6 @@
 import { ConversationMessage } from "../state-flow/database.ts";
 import { render } from "$gfm";
+import moment from "npm:moment";
 
 interface ChatBoxProps {
   message: ConversationMessage;
@@ -20,7 +21,7 @@ export function
               <p class="text-sm" dangerouslySetInnerHTML={{ __html: messageMdx }}></p>
             </div>
             <span class="text-xs text-gray-500 leading-none">
-              {props.message.Timestamp}
+              {moment(props.message.Timestamp).from()}
             </span>
           </div>
           <div class="flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40 text-blue-600 overflow-clip">
@@ -43,7 +44,7 @@ export function
                 <p class="text-sm" dangerouslySetInnerHTML={{ __html: messageMdx }}></p>
               </div>
               <span class="text-xs text-gray-500 leading-none">
-                {props.message.Timestamp}
+                {moment(props.message.Timestamp).from()}
               </span>
             </div>
           </div>
