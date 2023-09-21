@@ -3,7 +3,6 @@ import { useSignal } from "@preact/signals";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import TextStream from "../islands/TextStream.tsx";
 import { BotChat } from "../components/BotChat.tsx";
-import NavbarHarbor from "../islands/NavBarHarbor.tsx";
 import { Chart } from "$fresh_charts/mod.ts";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
 import PieChart from "../islands/PieChart.tsx";
@@ -47,10 +46,9 @@ export const handler: Handlers = {
 export default function Chat(props: PageProps) {
   return (
     <div>
-      <ChatHistory convoId={props.data.convoId} messages={props.data.messages} userMessage={props.data.newUserMessage} messageStreamed={() => {
-        alert('hey');
-      }} />
+      <ChatHistory convoId={props.data.convoId} messages={props.data.messages} userMessage={props.data.newUserMessage} />
 
+      {/* Mock Chat Input */}
       <form method="post" class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40">
         <div className="relative z-0 flex">
           <input
