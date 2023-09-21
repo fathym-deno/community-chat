@@ -22,26 +22,22 @@ export default async function Home(props: PageProps) {
       From: "system",
       Content:
         "You are an AI assistant that helps people match their skills and personality with potential careers.",
-      Timestamp: undefined,
-      VersionStamp: ""
+      Timestamp: undefined
     },
     {
       From: "user",
       Content: "Hello Indigo Career Bot",
-      Timestamp: undefined,
-      VersionStamp: ""
+      Timestamp: undefined
     },
     {
       From: "assistant",
       Content: "Hello! Can I help find you a career today?",
-      Timestamp: undefined,
-      VersionStamp: ""
+      Timestamp: undefined
     },
     {
       From: "user",
       Content: "Can you help me find a career?",
-      Timestamp: undefined,
-      VersionStamp: ""
+      Timestamp: undefined
     },
   ];
 

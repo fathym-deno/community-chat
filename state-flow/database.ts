@@ -46,8 +46,6 @@ export type ConversationMessage = {
   Timestamp?: Date;
 
   To?: string;
-
-  VersionStamp: string;
 };
 
 export async function addConversationMessage(
