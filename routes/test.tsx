@@ -3,7 +3,6 @@ import { useSignal } from "@preact/signals";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import TextStream from "../islands/TextStream.tsx";
 import { BotChat } from "../components/BotChat.tsx";
-import NavbarHarbor from "../islands/NavBarHarbor.tsx";
 import { Chart } from "$fresh_charts/mod.ts";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
 import PieChart from "../islands/PieChart.tsx";
