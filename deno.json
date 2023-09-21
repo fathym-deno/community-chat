@@ -46,7 +46,8 @@
     "$fresh_charts/utils.ts": "https://deno.land/x/fresh_charts@0.3.1/utils.ts",
     "$fresh_charts/": "https://deno.land/x/fresh_charts@0.3.1/",
     "@fresh_kv_oauth": "https://deno.land/x/deno_fresh_kv_oauth@v0.0.1-integration7/mod.ts",
-    "@kv_oauth": "https://deno.land/x/deno_kv_oauth@v0.2.7/mod.ts"
+    "@kv_oauth": "https://deno.land/x/deno_kv_oauth@v0.2.7/mod.ts",
+    "$gfm": "https://deno.land/x/gfm@0.2.5/mod.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

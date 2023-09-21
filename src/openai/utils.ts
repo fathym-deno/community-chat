@@ -18,6 +18,7 @@ export function loadAzureExtensionOptions(
           endpoint: azureSearchEndpoint,
           key: azureSearchAdminKey,
           indexName: indexName,
+          inScope: false,
         },
       },
     ],

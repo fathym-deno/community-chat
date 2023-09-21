@@ -16,7 +16,7 @@ interface ChatHistoryProps {
 
   messages: ConversationMessage[];
 
-  messageStreamed: () => void;
+  // messageStreamed: () => void;
 
   userMessage: string;
 }

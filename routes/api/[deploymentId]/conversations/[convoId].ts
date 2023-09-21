@@ -25,8 +25,6 @@ export const handler: Handlers = {
 
     const body = JSON.stringify(messages);
 
-    console.log(body);
-
     return new Response(body, {
       headers: {
         "content-type": "application/json",
@@ -62,8 +60,6 @@ export const handler: Handlers = {
     });
 
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
-
-    console.log(chatMessages);
 
     const chatCompletions = await client.listChatCompletions(deploymentId, [
       {
