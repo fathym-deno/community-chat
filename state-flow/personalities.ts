@@ -10,7 +10,7 @@ export function loadIndigoPersonality(): Personality {
       "You are a helpful assistant.",
     ],
     Instructions: [
-      "Please return your response as Markdown so it looks nicer.",
+      "Please return your response as Markdown (MDX) so it looks nicer.",
     ],
   };
 }
