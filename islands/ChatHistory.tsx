@@ -21,6 +21,12 @@ interface ChatHistoryProps {
   userMessage: string;
 }
 
+function scrollBottom() {
+  setTimeout(() => {
+    document.querySelector('html'), scrollTo(0, document.querySelector('html')!.scrollHeight);
+  }, 0);
+}
+
 export function ChatHistory(props: ChatHistoryProps) {
   const userMessage = useSignal<ConversationMessage | undefined>(props.userMessage ? {
     From: "user",
@@ -30,6 +36,8 @@ export function ChatHistory(props: ChatHistoryProps) {
   const botMessage = useSignal<ConversationMessage | undefined>(undefined);
 
   useEffect(() => {
+    // scrollBottom();
+
     if (userMessage.value) {
       const es = new SSE(
         `/api/gpt-35-turbo/conversations/${props.convoId}`,
@@ -49,7 +57,9 @@ export function ChatHistory(props: ChatHistoryProps) {
             Content: (botMessage.value?.Content || '') + ev.data,
             From: "assistant"
           };
-        };
+        }
+
+        // scrollBottom();
 
         return () => {
           es.close();
