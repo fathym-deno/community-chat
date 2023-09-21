@@ -1,6 +1,8 @@
 import { ConversationMessage } from "../state-flow/database.ts";
 import { render } from "$gfm";
 import moment from "npm:moment";
+import { UserIcon } from "../build/iconset/icons/UserIcon.tsx";
+import { LovebotIcon } from "../build/iconset/icons/LovebotIcon.tsx";
 
 interface ChatBoxProps {
   message: ConversationMessage;
@@ -26,7 +28,7 @@ export function
           </div>
           <div class="flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40 text-blue-600 overflow-clip">
             <div class="flex self-center">
-              {/* <UserIcon class="w-6 h-6" /> */}
+              <UserIcon class="w-6 h-6" />
             </div>
           </div>
         </div >
@@ -36,7 +38,7 @@ export function
           <div class="flex w-full mt-2 space-x-3">
             <div class="flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-green-600 bg-opacity-10 border border-green-500 border-opacity-40 text-green-600">
               <div class="flex self-center">
-                {/* <LovebotIcon class="w-6 h-6" /> */}
+                <LovebotIcon class="w-6 h-6" />
               </div>
             </div>
             <div>
