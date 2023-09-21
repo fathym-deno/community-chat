@@ -44,9 +44,17 @@ export const handler: Handlers = {
 };
 
 export default function Chat(props: PageProps) {
+  function onMessageStreamed() {
+    location.href = import.meta.url;
+  }
+
   return (
     <div>
-      <ChatHistory convoId={props.data.convoId} messages={props.data.messages} userMessage={props.data.newUserMessage} />
+      <ChatHistory
+        convoId={props.data.convoId}
+        messages={props.data.messages}
+        userMessage={props.data.newUserMessage}
+        messageStreamed={onMessageStreamed} />
 
       {/* Mock Chat Input */}
       <form method="post" class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40">

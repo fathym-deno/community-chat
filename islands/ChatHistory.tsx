@@ -16,7 +16,7 @@ interface ChatHistoryProps {
 
   messages: ConversationMessage[];
 
-  // messageStreamed: () => void;
+  messageStreamed: () => void;
 
   userMessage: string;
 }
@@ -43,6 +43,7 @@ export function ChatHistory(props: ChatHistoryProps) {
           es.close();
 
           // props.messageStreamed();
+          location.href = location.href;
         } else {
           botMessage.value = {
             Content: (botMessage.value?.Content || '') + ev.data,
