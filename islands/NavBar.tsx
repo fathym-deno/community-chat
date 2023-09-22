@@ -77,6 +77,7 @@ export default function Navbar() {
                       selected
                       shadow="sm"
                       twsize="sm"
+                      href="/dashboard"
                     >
                       Dashboard
                     </ButtonDynamic>
@@ -262,7 +263,7 @@ export default function Navbar() {
           <div className="md:hidden" id="mobile-menu">
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               <a
-                href="#"
+                href="/dashboard"
                 className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                 aria-current="page"
               >

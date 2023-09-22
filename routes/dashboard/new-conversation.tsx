@@ -15,7 +15,12 @@ export const handler: Handlers = {
       Title: ''
     });
 
-    return ctx.render({ redirect: `/dashboard/${convoId}` });
+    const headers = new Headers();
+    headers.set("location", `/dashboard/${convoId}`);
+    return new Response(null, {
+      status: 303, // See Other
+      headers,
+    });
   },
 };
 
