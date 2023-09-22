@@ -1,4 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Cookies } from "std/http/cookie.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -11,6 +12,12 @@ export const handler: Handlers = {
     if (password === Deno.env.get("PASSWORD")) {
       const headers = new Headers();
       headers.set("location", "/dashboard");
+
+      // Create a new cookie
+      const cookie = { name: "user", value: "loggedIn" };
+      const cookies = new Cookies(req, new Response(null));
+      cookies.set(cookie);
+
       return new Response(null, {
         status: 303, // See Other
         headers,
