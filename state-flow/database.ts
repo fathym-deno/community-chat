@@ -122,6 +122,12 @@ export async function deleteConversation(convoId: string) {
   await kv.delete(["Conversations", convoId]);
 }
 
+export async function getConversation(id: string) {
+  const result = await kv.get<Conversation>(["Conversations", id]);
+
+  return result.value;
+}
+
 export async function listConversations() {
   const convos = await kv.list({
     prefix: ["Conversations"],
@@ -132,7 +138,9 @@ export async function listConversations() {
   for await (const convo of convos) {
     const { key, value } = convo;
 
-    conversations[key[key.length - 1].toString()] = value as Conversation;
+    if (key.length == 2) {
+      conversations[key[key.length - 1].toString()] = value as Conversation;
+    }
   }
 
   return conversations;

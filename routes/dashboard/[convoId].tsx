@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-explicit-any
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ConversationMessage } from "../../state-flow/database.ts";
-import { handler as openAiSvc } from "../api/[deploymentId]/conversations/[convoId].ts";
+import { handler as openAiSvc } from "../api/conversations/[deploymentId]/[convoId].ts";
 import { ChatHistory } from "../../islands/ChatHistory.tsx";
 import { SendIcon } from "../../build/iconset/icons/SendIcon.tsx";
 
@@ -37,7 +37,7 @@ export const handler: Handlers = {
 
 export default function Chat(props: PageProps) {
   function onMessageStreamed() {
-    location.href = import.meta.url;
+    location.href = location.href;
   }
 
   return (

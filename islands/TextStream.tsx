@@ -10,7 +10,7 @@ export default function TextStream(props: TextStreamProps) {
 
   useEffect(() => {
     const es = new SSE(
-      "/api/gpt-35-turbo/conversations/test-123",
+      "/api/conversations/gpt-35-turbo/test-123",
       {
         payload:
           "Given the results in Sheri's report for her DISC scores and Motivator scores, give Sheri some career suggestions!?",

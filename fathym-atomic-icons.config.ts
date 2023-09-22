@@ -10,6 +10,8 @@ export const curIconSetConfig: IconSetConfig = {
     "check-circle":
       "https://api.iconify.design/material-symbols:check-circle.svg",
     exclaim: "https://api.iconify.design/bi:exclamation-circle.svg",
+    delete:
+      "https://api.iconify.design/material-symbols:delete-forever-outline-rounded.svg",
     reset: "https://api.iconify.design/bx:reset.svg",
     send: "https://api.iconify.design/mdi:send.svg",
   },

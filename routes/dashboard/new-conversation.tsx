@@ -1,6 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { createConversation } from "../../state-flow/database.ts";
+import { useSignal } from "https://esm.sh/v128/@preact/signals@1.1.3/X-ZS8q/dist/signals.js";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -19,9 +20,11 @@ export const handler: Handlers = {
 };
 
 export default function NewConversation(props: PageProps) {
+  const [redirect, setRedirect] = useState(props.data.redirect);
+
   useEffect(() => {
-    if (props.data.redirect) {
-      location.href = props.data.redirect;
+    if (redirect) {
+      location.href = redirect.value;
     }
   });
 

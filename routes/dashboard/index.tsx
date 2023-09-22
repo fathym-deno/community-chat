@@ -1,6 +1,9 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { listConversations, deleteConversation } from "../../state-flow/database.ts";
-import { useEffect, useState } from 'react';
+import { ResetIcon } from "../../build/iconset/icons/ResetIcon.tsx";
+import { DeleteIcon } from "$fathym/atomic-icons";
+import { ConvoItem } from "../../islands/ConvoItem.tsx";
+import { listConversations } from "../../state-flow/database.ts";
+import { useEffect, useState } from 'preact/hooks';
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -14,20 +17,6 @@ export const handler: Handlers = {
 
 export default function Conversations(props: PageProps) {
   const convoLookups = Object.keys(props.data.conversations);
-  const [reload, setReload] = useState(false);
-
-  const handleDelete = async (convoLookup) => {
-    if (window.confirm('Are you sure you want to delete this conversation?')) {
-      await deleteConversation(convoLookup);
-      setReload(true);
-    }
-  }
-
-  useEffect(() => {
-    if (reload) {
-      location.href = location.href;
-    }
-  }, [reload]);
 
   return (
     <div className="container mx-auto px-4">
@@ -35,10 +24,7 @@ export default function Conversations(props: PageProps) {
       <ul>
         {convoLookups.map((convoLookup) => (
           <li key={convoLookup} className="mb-2">
-            <a href={`/dashboard/${convoLookup}`} className="text-blue-500 hover:underline">
-              {convoLookup}
-            </a>
-            <button onClick={() => handleDelete(convoLookup)}>Delete</button>
+            <ConvoItem convoId={convoLookup} deleteIcon={<DeleteIcon class="text-red-500 w-8 h-8" />} />
           </li>
         ))}
       </ul>

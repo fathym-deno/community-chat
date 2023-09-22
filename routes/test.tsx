@@ -7,7 +7,7 @@ import { Chart } from "$fresh_charts/mod.ts";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
 import PieChart from "../islands/PieChart.tsx";
 import { ConversationMessage } from "../state-flow/database.ts";
-import { handler as openAiSvc } from "./api/[deploymentId]/conversations/[convoId].ts";
+import { handler as openAiSvc } from "./api/conversations/[deploymentId]/[convoId].ts";
 import { useEffect } from "preact/hooks";
 import { SSE } from "npm:sse.js";
 
@@ -41,7 +41,7 @@ export default function Test(props: PageProps) {
 
   useEffect(() => {
     const es = new SSE(
-      "/api/gpt-35-turbo/conversations/test-123",
+      "/api/conversations/gpt-35-turbo/test-123",
       {
         payload: props.data.content,
       },
