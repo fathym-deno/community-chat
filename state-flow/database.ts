@@ -118,6 +118,10 @@ export async function createConversation(id: string, convo: Conversation) {
   await kv.set(["Conversations", id], convo);
 }
 
+export async function deleteConversation(convoId: string) {
+  await kv.delete(["Conversations", convoId]);
+}
+
 export async function listConversations() {
   const convos = await kv.list({
     prefix: ["Conversations"],

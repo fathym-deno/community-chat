@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { listConversations } from "../../state-flow/database.ts";
+import { listConversations, deleteConversation } from "../../state-flow/database.ts";
+import { useEffect, useState } from 'react';
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -12,9 +13,21 @@ export const handler: Handlers = {
 };
 
 export default function Conversations(props: PageProps) {
-  // const convos = props.data.conversations;
-
   const convoLookups = Object.keys(props.data.conversations);
+  const [reload, setReload] = useState(false);
+
+  const handleDelete = async (convoLookup) => {
+    if (window.confirm('Are you sure you want to delete this conversation?')) {
+      await deleteConversation(convoLookup);
+      setReload(true);
+    }
+  }
+
+  useEffect(() => {
+    if (reload) {
+      location.href = location.href;
+    }
+  }, [reload]);
 
   return (
     <div className="container mx-auto px-4">
@@ -25,6 +38,7 @@ export default function Conversations(props: PageProps) {
             <a href={`/dashboard/${convoLookup}`} className="text-blue-500 hover:underline">
               {convoLookup}
             </a>
+            <button onClick={() => handleDelete(convoLookup)}>Delete</button>
           </li>
         ))}
       </ul>
