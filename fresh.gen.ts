@@ -11,8 +11,9 @@ import * as $5 from "./routes/api/embeddings/files.ts";
 import * as $6 from "./routes/dashboard/[convoId].tsx";
 import * as $7 from "./routes/dashboard/index.tsx";
 import * as $8 from "./routes/dashboard/new-conversation.tsx";
-import * as $9 from "./routes/index.tsx";
-import * as $10 from "./routes/test.tsx";
+import * as $9 from "./routes/dashboard/reports.tsx";
+import * as $10 from "./routes/index.tsx";
+import * as $11 from "./routes/test.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatBox.tsx";
@@ -37,8 +38,9 @@ const manifest = {
     "./routes/dashboard/[convoId].tsx": $6,
     "./routes/dashboard/index.tsx": $7,
     "./routes/dashboard/new-conversation.tsx": $8,
-    "./routes/index.tsx": $9,
-    "./routes/test.tsx": $10,
+    "./routes/dashboard/reports.tsx": $9,
+    "./routes/index.tsx": $10,
+    "./routes/test.tsx": $11,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
