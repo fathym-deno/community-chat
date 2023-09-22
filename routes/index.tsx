@@ -1,4 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 export const handler: Handlers = {

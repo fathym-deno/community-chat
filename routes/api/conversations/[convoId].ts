@@ -4,6 +4,7 @@ import {
   createConversation,
   deleteConversation,
   getConversation,
+  resetConversationMessages,
 } from "../../../state-flow/database.ts";
 
 export const handler: Handlers = {
@@ -39,6 +40,8 @@ export const handler: Handlers = {
     const convoId = ctx.params.convoId;
 
     await deleteConversation(convoId);
+
+    await resetConversationMessages(convoId);
 
     return new Response(JSON.stringify({ Status: "Success" }), {
       headers: {
