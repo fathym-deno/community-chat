@@ -117,3 +117,24 @@ export async function resetConversationMessages(
 export async function setConversation(id: string, convo: Conversation) {
   await kv.set(["Conversations", id], convo);
 }
+
+export async function createConversation(convo: Conversation) {
+  const convoId = crypto.randomUUID().toString();
+  await kv.set(["Conversations", convoId], convo);
+  return convoId;
+}
+
+export async function listConversations() {
+  const convos = await kv.list({
+    prefix: ["Conversations"],
+  });
+
+  const conversations: Conversation[] = [];
+
+  for await (const convo of convos) {
+    const { value } = convo;
+    conversations.push(value as Conversation);
+  }
+
+  return conversations;
+}
