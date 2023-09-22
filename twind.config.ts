@@ -8,6 +8,8 @@ import presetTailwindForms from "twind-preset-tailwind-forms";
 
 export default {
   ...defineConfig({
+    rules: [
+    ],
     presets: [presetAutoPrefix(), presetTailWind(), presetTailwindForms()],
     theme: {
       extend: {

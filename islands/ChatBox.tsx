@@ -43,7 +43,7 @@ export function
             </div>
             <div>
               <div class="bg-green-600 bg-opacity-10 border border-green-500 border-opacity-40 max-w-screen-md md:max-w-screen-lg overflow-auto p-3 rounded-r-lg rounded-bl-lg">
-                <p class="text-sm" dangerouslySetInnerHTML={{ __html: messageMdx }}></p>
+                <p class="text-sm [&_pre]:bg-gray-200 dark:[&_pre]:bg-gray-900 [&_pre]:text-grey-800 dark:[&_pre]:text-white [&_pre]:m-2 [&_pre]:p-2 [&_pre]:rounded-md [&_pre]:overflow-auto" dangerouslySetInnerHTML={{ __html: messageMdx }}></p>
               </div>
               <span class="text-xs text-gray-500 leading-none">
                 {moment(props.message.Timestamp).from()}

@@ -114,7 +114,7 @@ const config = {
 const actions = [
   {
     name: 'Randomize',
-    handler(chart: { data: { datasets: number[]; }; update: () => void; }) {
+    handler(chart: { data }) {
       chart.data.datasets.forEach((dataset) => {
         dataset.data = bubbles({count: DATA_COUNT, rmin: 1, rmax: 1, min: -100, max: 100});
       });
@@ -207,7 +207,7 @@ export function LayoutIsland(props: LayoutProps) {
         <ChartIsland
           type="line"
           options={{
-            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+            scales: { yaxis: [{ ticks: { beginAtZero: true } }] },
           }}
           data={{
             labels: ["1", "2", "3"],
@@ -230,7 +230,7 @@ export function LayoutIsland(props: LayoutProps) {
         <ChartIsland
           type="bar"
           options={{
-            scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
+            scales: { y: [{ ticks: { beginAtZero: true } }] },
           }}
           data={{
             labels: ["1", "2", "3"],
@@ -253,18 +253,24 @@ export function LayoutIsland(props: LayoutProps) {
         <ChartIsland
           type="scatter"
           data={{
-            labels: ["1", "2", "3"],
+            labels: ["1", "2", "3", "4", "5"],
             datasets: [{
-              label: "Sessions",
-              data: [123, 234, 234],
+              label: "Scatter A",
+              data: [123, 234, 200, 168, 93],
               borderColor: ChartColors.Red,
               backgroundColor: transparentize(ChartColors.Red, 0.5),
               borderWidth: 1,
             }, {
-              label: "Users",
-              data: [346, 233, 123],
+              label: "Scatter B",
+              data: [346, 233, 123, 68, 300],
               borderColor: ChartColors.Blue,
               backgroundColor: transparentize(ChartColors.Blue, 0.5),
+              borderWidth: 1,
+            }, {
+              label: "Scatter C",
+              data: [216, 293, 170, 110, 243],
+              borderColor: ChartColors.Yellow,
+              backgroundColor: transparentize(ChartColors.Yellow, 0.5),
               borderWidth: 1,
             }],
           }}

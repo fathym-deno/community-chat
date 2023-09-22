@@ -9,10 +9,11 @@ import * as $3 from "./routes/api/conversations/[deploymentId]/[convoId].ts";
 import * as $4 from "./routes/api/conversations/index.ts";
 import * as $5 from "./routes/api/embeddings/files.ts";
 import * as $6 from "./routes/dashboard/[convoId].tsx";
-import * as $7 from "./routes/dashboard/index.tsx";
-import * as $8 from "./routes/dashboard/new-conversation.tsx";
-import * as $9 from "./routes/dashboard/reports.tsx";
-import * as $10 from "./routes/index.tsx";
+import * as $7 from "./routes/dashboard/_middleware.ts";
+import * as $8 from "./routes/dashboard/index.tsx";
+import * as $9 from "./routes/dashboard/new-conversation.tsx";
+import * as $10 from "./routes/dashboard/reports.tsx";
+import * as $11 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatBox.tsx";
@@ -34,10 +35,11 @@ const manifest = {
     "./routes/api/conversations/index.ts": $4,
     "./routes/api/embeddings/files.ts": $5,
     "./routes/dashboard/[convoId].tsx": $6,
-    "./routes/dashboard/index.tsx": $7,
-    "./routes/dashboard/new-conversation.tsx": $8,
-    "./routes/dashboard/reports.tsx": $9,
-    "./routes/index.tsx": $10,
+    "./routes/dashboard/_middleware.ts": $7,
+    "./routes/dashboard/index.tsx": $8,
+    "./routes/dashboard/new-conversation.tsx": $9,
+    "./routes/dashboard/reports.tsx": $10,
+    "./routes/index.tsx": $11,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
