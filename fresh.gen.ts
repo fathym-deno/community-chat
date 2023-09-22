@@ -7,8 +7,10 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/api/[deploymentId]/conversations/[convoId].ts";
 import * as $3 from "./routes/api/embeddings/files.ts";
 import * as $4 from "./routes/dashboard/[convoId].tsx";
-import * as $5 from "./routes/index.tsx";
-import * as $6 from "./routes/test.tsx";
+import * as $5 from "./routes/dashboard/conversations.tsx";
+import * as $6 from "./routes/dashboard/new-conversation.tsx";
+import * as $7 from "./routes/index.tsx";
+import * as $8 from "./routes/test.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatBox.tsx";
@@ -28,8 +30,10 @@ const manifest = {
     "./routes/api/[deploymentId]/conversations/[convoId].ts": $2,
     "./routes/api/embeddings/files.ts": $3,
     "./routes/dashboard/[convoId].tsx": $4,
-    "./routes/index.tsx": $5,
-    "./routes/test.tsx": $6,
+    "./routes/dashboard/conversations.tsx": $5,
+    "./routes/dashboard/new-conversation.tsx": $6,
+    "./routes/index.tsx": $7,
+    "./routes/test.tsx": $8,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,

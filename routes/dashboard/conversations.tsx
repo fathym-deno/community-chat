@@ -1,35 +1,36 @@
-import { useEffect, useState } from 'react';
-import { listConversations } from '../../state-flow/database.ts';
-import Link from 'next/link';
-import { Conversation } from '../../state-flow/database.ts';
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { listConversations } from "../../state-flow/database.ts";
 
-export default function Conversations() {
-  const [conversations, setConversations] = useState<Conversation[]>([]);
+export const handler: Handlers = {
+  async GET(_req, ctx) {
+    const conversations = await listConversations();
 
-  useEffect(() => {
-    const fetchConversations = async () => {
-      const convos = await listConversations();
-      setConversations(convos);
-    };
+    return ctx.render({
+      conversations,
+    });
+  },
+};
 
-    fetchConversations();
-  }, []);
+export default function Conversations(props: PageProps) {
+  // const convos = props.data.conversations;
+
+  const convoLookups = Object.keys(props.data.conversations);
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Conversations</h1>
+    <div className="container mx-auto px-4">
+      <h1 className="text-2xl font-bold mb-4">Conversations</h1>
       <ul>
-        {conversations.map((convo, index) => (
-          <li key={index} className="mb-2">
-            <Link href={`/dashboard/${convo.id}`}> 
-              <a className="text-blue-500 hover:underline">{convo.title}</a>
-            </Link>
+        {convoLookups.map((convoLookup) => (
+          <li key={convoLookup} className="mb-2">
+            <a href={`/dashboard/${convoLookup}`} className="text-blue-500 hover:underline">
+              {convoLookup}
+            </a>
           </li>
         ))}
       </ul>
-      <Link href="/dashboard/new-conversation">
-        <a className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">New Conversation</a>
-      </Link>
+      <a href="/dashboard/new-conversation" className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        New Conversation
+      </a>
     </div>
   );
 }
