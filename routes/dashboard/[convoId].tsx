@@ -1,17 +1,9 @@
 // deno-lint-ignore-file no-explicit-any
-import { useSignal } from "@preact/signals";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import TextStream from "../islands/TextStream.tsx";
-import { BotChat } from "../components/BotChat.tsx";
-import { Chart } from "$fresh_charts/mod.ts";
-import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
-import PieChart from "../islands/PieChart.tsx";
-import { ConversationMessage } from "../state-flow/database.ts";
-import { handler as openAiSvc } from "./api/[deploymentId]/conversations/[convoId].ts";
-import { useEffect } from "preact/hooks";
-import { SSE } from "npm:sse.js";
-import { ChatHistory } from "../islands/ChatHistory.tsx";
-import { SendIcon } from "../build/iconset/icons/SendIcon.tsx";
+import { ConversationMessage } from "../../state-flow/database.ts";
+import { handler as openAiSvc } from "../api/[deploymentId]/conversations/[convoId].ts";
+import { ChatHistory } from "../../islands/ChatHistory.tsx";
+import { SendIcon } from "../../build/iconset/icons/SendIcon.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
