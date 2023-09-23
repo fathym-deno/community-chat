@@ -13,7 +13,8 @@ import * as $7 from "./routes/dashboard/_middleware.ts";
 import * as $8 from "./routes/dashboard/index.tsx";
 import * as $9 from "./routes/dashboard/new-conversation.tsx";
 import * as $10 from "./routes/dashboard/reports.tsx";
-import * as $11 from "./routes/index.tsx";
+import * as $11 from "./routes/dashboard/signout.tsx";
+import * as $12 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatBox.tsx";
@@ -39,7 +40,8 @@ const manifest = {
     "./routes/dashboard/index.tsx": $8,
     "./routes/dashboard/new-conversation.tsx": $9,
     "./routes/dashboard/reports.tsx": $10,
-    "./routes/index.tsx": $11,
+    "./routes/dashboard/signout.tsx": $11,
+    "./routes/index.tsx": $12,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
