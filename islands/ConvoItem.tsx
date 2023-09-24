@@ -41,7 +41,7 @@ export function ConvoItem(props: ConvoItemProps) {
       </a>
 
       <button class="ml-2" onClick={() => { handleDelete(convoId).then(); }}>
-        Delete
+        <DeleteIcon class="w-6 h-6 text-red-500" />
       </button>
     </>
   );
