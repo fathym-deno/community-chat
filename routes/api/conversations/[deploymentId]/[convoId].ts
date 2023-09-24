@@ -69,6 +69,10 @@ export const handler: Handlers = {
       ...chatMessages,
     ], {
       azureExtensionOptions: loadAzureExtensionOptions(azureSearchIndexName!),
+      maxTokens: 800,
+      temperature: 0,
+      stream: true,
+      topP: 1,
     });
 
     const body = loadReadableChatStream(convoId, chatCompletions);
