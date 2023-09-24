@@ -16,6 +16,7 @@ export default function NavbarBranded() {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
+  const [menuSelected, setMenuSelected] = useState<string>("reports");
 
   function toggleDropdown() {
     setIsDropdownOpen((prevState: boolean) => !prevState);
@@ -113,24 +114,14 @@ export default function NavbarBranded() {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a href="/dashboard">
-                    <ButtonDynamic twcolor="transparent" textcolor="white" fontweight="normal" selected shadow="sm" twsize="sm"
+                    <ButtonDynamic onClick={() => (setMenuSelected('dashboard'))} twcolor="transparent" textcolor="white" fontweight="normal" selected={menuSelected == "dashboard" ? true : false} shadow="sm" twsize="sm"
                     >
                       Dashboard
                     </ButtonDynamic>
                   </a>
-                  <a href="#">
-                    <ButtonDynamic twcolor="transparent" textcolor="white" fontweight="normal" shadow="sm" twsize="sm">
-                      Projects
-                    </ButtonDynamic>
-                  </a>
-                  <a href="#">
-                    <ButtonDynamic twcolor="transparent" textcolor="white" fontweight="normal" shadow="sm" twsize="sm">
-                      Products
-                    </ButtonDynamic>
-                  </a>
-                  <a href="#">
-                    <ButtonDynamic twcolor="transparent" textcolor="white" fontweight="normal" shadow="sm" twsize="sm">
-                      Support
+                  <a href="/dashboard/reports">
+                    <ButtonDynamic onClick={() => (setMenuSelected('reports'))} twcolor="transparent" textcolor="white" fontweight="normal" selected={menuSelected == "reports" ? true : false} shadow="sm" twsize="sm">
+                      Reports
                     </ButtonDynamic>
                   </a>
                   <a>
