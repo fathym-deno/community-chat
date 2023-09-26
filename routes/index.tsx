@@ -2,7 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { setCookie } from "$std/http/cookie.ts";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
+  GET(_req, ctx) {
     return ctx.render({});
   },
   async POST(req, ctx) {
