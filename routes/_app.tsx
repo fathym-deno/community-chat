@@ -18,7 +18,7 @@ export default function App({ Component }: AppProps) {
           <div class="mx-auto flex flex-col">
             <Component />
           </div>
-        </div >
+        </div>
       </body>
     </html>
   );

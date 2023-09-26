@@ -1,5 +1,9 @@
 import { Handlers } from "$fresh/server.ts";
-import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
+import {
+  AzureKeyCredential,
+  FunctionDefinition,
+  OpenAIClient,
+} from "npm:@azure/openai@next";
 import { loadIndigoPersonality } from "../../../../state-flow/personalities.ts";
 import {
   addConversationMessage,
@@ -73,6 +77,9 @@ export const handler: Handlers = {
       temperature: 0,
       stream: true,
       topP: 1,
+      functions: [
+        loadGlenReportFunction(),
+      ],
     });
 
     const body = loadReadableChatStream(convoId, chatCompletions);
@@ -96,3 +103,39 @@ export const handler: Handlers = {
     });
   },
 };
+
+export function loadGlenReportFunction(): FunctionDefinition {
+  return {
+    name: "GlenReport",
+    description: "",
+    parameters: {
+      type: "object",
+      properties: {
+        reportTitle: {
+          type: "string",
+          description: "The title of the report.",
+        },
+        reportSubhead: {
+          type: "string",
+          description:
+            "A more detailed description of the report for us in describing what can be found.",
+        },
+        reportContent: {
+          type: "string",
+          description:
+            "A complete description of the report and what can be found within.",
+        },
+        bulletPointTitle: {
+          type: "string",
+          description: "A title to be used .",
+        },
+        bulletPointSubhead: {
+          type: "string",
+          description:
+            "A complete description of the report and what can be found within.",
+        },
+      },
+      required: [""],
+    },
+  };
+}

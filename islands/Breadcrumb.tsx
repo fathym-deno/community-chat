@@ -37,7 +37,10 @@ export default function Breadcrumb() {
               >
               </path>
             </svg>
-            <a href="#" className="text-secondary-500 dark:text-blue-300 hover:text-secondary-600 dark:hover:text-blue-200">
+            <a
+              href="#"
+              className="text-secondary-500 dark:text-blue-300 hover:text-secondary-600 dark:hover:text-blue-200"
+            >
               Project AwesomeSauce
             </a>
             <DropDown user={user.name} email={user.email} />

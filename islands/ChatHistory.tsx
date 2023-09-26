@@ -23,15 +23,20 @@ interface ChatHistoryProps {
 
 function scrollBottom() {
   setTimeout(() => {
-    document.querySelector('html'), scrollTo(0, document.querySelector('html')!.scrollHeight);
+    document.querySelector("html"),
+      scrollTo(0, document.querySelector("html")!.scrollHeight);
   }, 0);
 }
 
 export function ChatHistory(props: ChatHistoryProps) {
-  const userMessage = useSignal<ConversationMessage | undefined>(props.userMessage ? {
-    From: "user",
-    Content: props.userMessage
-  } : undefined);
+  const userMessage = useSignal<ConversationMessage | undefined>(
+    props.userMessage
+      ? {
+        From: "user",
+        Content: props.userMessage,
+      }
+      : undefined,
+  );
 
   const botMessage = useSignal<ConversationMessage | undefined>(undefined);
 
@@ -54,8 +59,8 @@ export function ChatHistory(props: ChatHistoryProps) {
           location.href = location.href;
         } else {
           botMessage.value = {
-            Content: (botMessage.value?.Content || '') + ev.data,
-            From: "assistant"
+            Content: (botMessage.value?.Content || "") + ev.data,
+            From: "assistant",
           };
         }
 
@@ -71,7 +76,7 @@ export function ChatHistory(props: ChatHistoryProps) {
   return (
     <>
       {props.messages.map((message, index) => {
-        return <ChatBox key={index} message={message} />
+        return <ChatBox key={index} message={message} />;
       })}
 
       {userMessage.value?.Content && <ChatBox message={userMessage.value!} />}

@@ -13,13 +13,15 @@ export const handler: Handlers = {
 
     const resp = await openAiSvc.GET!(req, ctx);
 
-    const messagesData: { key: KeyType, value: ConversationMessage }[] = await resp.json();
+    const messagesData: { key: KeyType; value: ConversationMessage }[] =
+      await resp.json();
 
     const messages: ConversationMessage[] = messagesData.map((md) => md.value);
 
     messages.unshift({
       From: "assistant",
-      Content: "Welcome to Harbor Research, providing AI powered industry knowledge."
+      Content:
+        "Welcome to Harbor Research, providing AI powered industry knowledge.",
     });
 
     return ctx.render({
@@ -31,14 +33,14 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
 
-    ctx.params.newUserMessage = form.get("content")?.toString() || '';
+    ctx.params.newUserMessage = form.get("content")?.toString() || "";
 
     return handler.GET!(req, ctx);
   },
 };
 
 export default function Chat(props: PageProps) {
-  const chatPostSrc = `/dashboard/${props.data.convoId}`
+  const chatPostSrc = `/dashboard/${props.data.convoId}`;
   function onMessageStreamed() {
     // location.href = location.href;
   }
@@ -49,7 +51,8 @@ export default function Chat(props: PageProps) {
         convoId={props.data.convoId}
         messages={props.data.messages}
         userMessage={props.data.newUserMessage}
-        messageStreamed={onMessageStreamed} />
+        messageStreamed={onMessageStreamed}
+      />
 
       <ChatInput postSrc={chatPostSrc} />
     </div>
