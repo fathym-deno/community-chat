@@ -4,7 +4,7 @@ build/
 coverage/
 lcov/
 target/
-# build/
+build/
 fresh.config.ts
 fresh.gen.ts
 # Fresh build directory
