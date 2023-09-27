@@ -17,6 +17,7 @@ import {
 } from "../../../../src/openai/utils.ts";
 
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
+
 const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
 
 const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
