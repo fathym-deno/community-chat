@@ -80,8 +80,8 @@ export const handler: Handlers = {
         temperature: 0,
         stream: true,
         topP: 1,
-        // functionCall: reports ? { name: "GlenReport" } : null,
-        // functions: reports,
+        functionCall: { name: "GlenReport" },
+        functions: [loadGlenReportFunction()],
       },
     );
 
