@@ -98,20 +98,16 @@ export async function listConversationMessages(
 
 export async function resetConversationMessages(
   convoId: string,
-): Promise<{ key: KeyType; value: ConversationMessage }[]> {
+): Promise<void> {
   const convoMsgs = await kv.list({
     prefix: ["Conversations", convoId, "Messages"],
   });
-
-  const messages: { key: KeyType; value: ConversationMessage }[] = [];
 
   for await (const message of convoMsgs) {
     const { key } = message;
 
     await kv.delete(key);
   }
-
-  return messages;
 }
 
 export async function createConversation(id: string, convo: Conversation) {
