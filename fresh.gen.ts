@@ -5,7 +5,7 @@
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/api/conversations/[convoId].ts";
-import * as $3 from "./routes/api/conversations/[deploymentId]/[convoId].ts";
+import * as $3 from "./routes/api/conversations/chat/[convoId].ts";
 import * as $4 from "./routes/api/conversations/index.ts";
 import * as $5 from "./routes/api/embeddings/files.ts";
 import * as $6 from "./routes/dashboard/[convoId].tsx";
@@ -33,7 +33,7 @@ const manifest = {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
     "./routes/api/conversations/[convoId].ts": $2,
-    "./routes/api/conversations/[deploymentId]/[convoId].ts": $3,
+    "./routes/api/conversations/chat/[convoId].ts": $3,
     "./routes/api/conversations/index.ts": $4,
     "./routes/api/embeddings/files.ts": $5,
     "./routes/dashboard/[convoId].tsx": $6,

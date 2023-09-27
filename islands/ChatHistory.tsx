@@ -45,7 +45,7 @@ export function ChatHistory(props: ChatHistoryProps) {
 
     if (userMessage.value) {
       const es = new SSE(
-        `/api/conversations/gpt-35-turbo/${props.convoId}`,
+        `/api/conversations/chat/${props.convoId}`,
         {
           payload: props.userMessage,
         },

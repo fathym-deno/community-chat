@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-explicit-any
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ConversationMessage } from "../../state-flow/database.ts";
-import { handler as openAiSvc } from "../api/conversations/[deploymentId]/[convoId].ts";
+import { handler as openAiSvc } from "../api/conversations/chat/[convoId].ts";
 import { ChatHistory } from "../../islands/ChatHistory.tsx";
 import { SendIcon } from "../../build/iconset/icons/SendIcon.tsx";
 import { ChatInput } from "../../islands/ChatInput.tsx";

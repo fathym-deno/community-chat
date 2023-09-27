@@ -37,7 +37,7 @@ export const handler: Handlers = {
     });
   },
   async POST(req, ctx) {
-    const deploymentId = ctx.params.deploymentId;
+    const deploymentId = "gpt-35-turbo-16k"; //ctx.params.deploymentId;
 
     const convoId = ctx.params.convoId;
 

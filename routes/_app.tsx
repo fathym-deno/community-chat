@@ -1,6 +1,6 @@
 import { AppProps } from "$fresh/server.ts";
 import NavbarBranded from "../islands/NavBarBranded.tsx";
-import { handler } from "./api/conversations/[deploymentId]/[convoId].ts";
+import { handler } from "./api/conversations/chat/[convoId].ts";
 
 export default function App({ Component }: AppProps) {
   return (
