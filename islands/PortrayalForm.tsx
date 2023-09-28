@@ -95,7 +95,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
         </>
       )}
 
-      <button onClick={toggleFormState}>
+      <button type="button" onClick={toggleFormState}>
         Switch to {formState === 'regenerate' ? 'Save' : 'Regenerate'} Form
       </button>
     </form>
