@@ -12,27 +12,17 @@ import { ConversationMessage } from "@fathym/synaptic";
 
 interface ChatHistoryProps {
   convoLookup: string;
-
   messages: ConversationMessage[];
-
   messageStreamed: () => void;
-
   userMessage: string;
-}
-
-function scrollBottom() {
-  setTimeout(() => {
-    document.querySelector("html"),
-      scrollTo(0, document.querySelector("html")!.scrollHeight);
-  }, 0);
 }
 
 export function ChatHistory(props: ChatHistoryProps) {
   const userMessage = useSignal<ConversationMessage | undefined>(
     props.userMessage
       ? {
-        From: "user",
-        Content: props.userMessage,
+          From: "user",
+          Content: props.userMessage,
       }
       : undefined,
   );
@@ -40,8 +30,6 @@ export function ChatHistory(props: ChatHistoryProps) {
   const botMessage = useSignal<ConversationMessage | undefined>(undefined);
 
   useEffect(() => {
-    // scrollBottom();
-
     if (userMessage.value) {
       const es = new SSE(
         `/api/conversations/chat/${props.convoLookup}`,
@@ -53,8 +41,6 @@ export function ChatHistory(props: ChatHistoryProps) {
       es.onmessage = (ev: MessageEvent<string>) => {
         if (ev.data === "[DONE]") {
           es.close();
-
-          // props.messageStreamed();
           location.href = location.href;
         } else {
           botMessage.value = {
@@ -62,9 +48,7 @@ export function ChatHistory(props: ChatHistoryProps) {
             From: "assistant",
           };
         }
-
-        // scrollBottom();
-
+        props.messageStreamed();
         return () => {
           es.close();
         };
