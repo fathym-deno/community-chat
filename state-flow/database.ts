@@ -22,9 +22,9 @@
 //   }
 // }
 
-export type KeyTypePart = Uint8Array | string | number | bigint | boolean;
+// export type KeyTypePart = Uint8Array | string | number | bigint | boolean;
 
-export type KeyType = KeyTypePart[];
+// export type KeyType = KeyTypePart[];
 
 const kv = await Deno.openKv();
 
