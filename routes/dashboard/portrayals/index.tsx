@@ -1,20 +1,32 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { PortrayalManager } from "../../src/PortrayalManager.ts";
+import { Portrayal, PortrayalManager } from "../../../src/PortrayalManager.ts";
 
 const portrayalManager = new PortrayalManager();
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const portrayals = portrayalManager.listPortrayals();
+    const portrayals = portrayalManager.List();
 
     return ctx.render({
       portrayals,
     });
   },
+  async POST(req, ctx) {
+    const portrayal = await req.json();
+    portrayalManager.Save(portrayal);
+
+    const headers = new Headers();
+    headers.set("location", `/dashboard/portrayals`);
+
+    return new Response(null, {
+      status: 303, // See Other
+      headers,
+    });
+  },
 };
 
 export default function Portrayals(props: PageProps) {
-  const portrayals = props.data.portrayals;
+  const portrayals = props.data.portrayals as Portrayal[];
 
   return (
     <div className="container mx-auto px-4">

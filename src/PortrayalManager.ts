@@ -2,17 +2,18 @@ export type Portrayal = {
   lookup: string;
   name: string;
   type: string;
+  // deno-lint-ignore no-explicit-any
   details: any;
 };
 
 export class PortrayalManager {
   private portrayals: Portrayal[] = [];
 
-  listPortrayals(): Portrayal[] {
+  List(): Portrayal[] {
     return this.portrayals;
   }
 
-  savePortrayal(portrayal: Portrayal): void {
+  Save(portrayal: Portrayal): void {
     this.portrayals.push(portrayal);
   }
 }

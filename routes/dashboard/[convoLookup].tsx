@@ -54,7 +54,8 @@ export default function Chat(props: PageProps) {
       />
 
       <ChatInput postSrc={chatPostSrc} />
-      <PortrayalForm postSrc={`/dashboard/${props.data.convoLookup}`} />
+
+      <PortrayalForm postSrc={`/dashboard/portrayals/${props.data.convoLookup}`} />
     </div>
   );
 }
