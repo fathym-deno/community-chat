@@ -7,6 +7,7 @@ import { ChatInput } from "../../islands/ChatInput.tsx";
 import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
 import { useEffect, useState } from "preact/hooks";
 import { ConversationMessage } from "@fathym/synaptic";
+import { Portrayals } from "../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -27,6 +28,7 @@ export const handler: Handlers = {
       convoLookup: ctx.params.convoLookup,
       messages: messages,
       newUserMessage: ctx.params.newUserMessage,
+      portrayalOptions: await Portrayals.Options()
     });
   },
   async POST(req, ctx) {
@@ -45,8 +47,8 @@ export default function Chat(props: PageProps) {
   }
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="md:w-2/3">
+    <div class="flex flex-col md:flex-row">
+      <div class="md:w-2/3">
         <ChatHistory
           convoLookup={props.data.convoLookup}
           messages={props.data.messages}
@@ -57,8 +59,10 @@ export default function Chat(props: PageProps) {
         <ChatInput postSrc={chatPostSrc} />
       </div>
 
-      <div className="md:w-1/3">
-        <PortrayalForm postSrc={`/dashboard/portrayals/${props.data.convoLookup}`} />
+      <div class="md:w-1/3 my-8 md:(my-0 mx-8)">
+        <h2 class="text-2xl">Portrayal Creation</h2>
+
+        <PortrayalForm options={props.data.portrayalOptions} postSrc={`/dashboard/portrayals/${props.data.convoLookup}`} />
       </div>
     </div>
   );

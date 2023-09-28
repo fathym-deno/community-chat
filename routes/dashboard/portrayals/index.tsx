@@ -1,11 +1,9 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { Portrayal, PortrayalManager } from "../../../src/PortrayalManager.ts";
-
-const portrayalManager = new PortrayalManager();
+import { Portrayal, Portrayals } from "../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const portrayals = portrayalManager.List();
+    const portrayals = Portrayals.List();
 
     return ctx.render({
       portrayals,
@@ -13,7 +11,7 @@ export const handler: Handlers = {
   },
   async POST(req, ctx) {
     const portrayal = await req.json();
-    portrayalManager.Save(portrayal);
+    Portrayals.Save(portrayal);
 
     const headers = new Headers();
     headers.set("location", `/dashboard/portrayals`);
@@ -25,7 +23,7 @@ export const handler: Handlers = {
   },
 };
 
-export default function Portrayals(props: PageProps) {
+export default function PortrayalsIndex(props: PageProps) {
   const portrayals = props.data.portrayals as Portrayal[];
 
   return (

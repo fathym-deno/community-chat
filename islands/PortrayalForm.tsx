@@ -1,6 +1,9 @@
 import { JSX } from "preact";
+import { FunctionDefinition } from "npm:@azure/openai@next";
 
 interface PortrayalFormProps {
+  options: FunctionDefinition[];
+
   postSrc: string;
 }
 
@@ -17,8 +20,9 @@ export function PortrayalForm(props: PortrayalFormProps) {
           name="portrayal"
           className="block w-full rounded-sm rounded-r-none border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black"
         >
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
+          {props.options.map(option => {
+            return <option value={option.name}>{option.name}</option>;
+          })}
         </select>
 
         <button
