@@ -41,7 +41,7 @@ export const handler: Handlers = {
 
 export default function Chat(props: PageProps) {
   const chatPostSrc = `/dashboard/${props.data.convoLookup}`;
-  const chatInputRef = useRef(null);
+  const chatInputRef = useRef<HTMLFormElement>(null);
 
   function onMessageStreamed() {
     chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
@@ -58,7 +58,7 @@ export default function Chat(props: PageProps) {
           convoLookup={props.data.convoLookup}
           messages={props.data.messages}
           userMessage={props.data.newUserMessage}
-          messageStreamed={onMessageStreamed}
+          messageStreamed={() => onMessageStreamed()}
         />
 
         <ChatInput postSrc={chatPostSrc} ref={chatInputRef} />

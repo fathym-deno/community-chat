@@ -21,8 +21,8 @@ export function ChatHistory(props: ChatHistoryProps) {
   const userMessage = useSignal<ConversationMessage | undefined>(
     props.userMessage
       ? {
-          From: "user",
-          Content: props.userMessage,
+        From: "user",
+        Content: props.userMessage,
       }
       : undefined,
   );
@@ -48,7 +48,7 @@ export function ChatHistory(props: ChatHistoryProps) {
             From: "assistant",
           };
         }
-        props.messageStreamed();
+        // props.messageStreamed();
         return () => {
           es.close();
         };
