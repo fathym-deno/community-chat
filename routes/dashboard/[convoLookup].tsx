@@ -4,6 +4,7 @@ import { handler as openAiSvc } from "../api/conversations/chat/[convoLookup].ts
 import { ChatHistory } from "../../islands/ChatHistory.tsx";
 import { SendIcon } from "../../build/iconset/icons/SendIcon.tsx";
 import { ChatInput } from "../../islands/ChatInput.tsx";
+import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
 import { useEffect, useState } from "preact/hooks";
 import { ConversationMessage } from "@fathym/synaptic";
 
@@ -53,6 +54,7 @@ export default function Chat(props: PageProps) {
       />
 
       <ChatInput postSrc={chatPostSrc} />
+      <PortrayalForm postSrc={`/dashboard/${props.data.convoLookup}`} />
     </div>
   );
 }
