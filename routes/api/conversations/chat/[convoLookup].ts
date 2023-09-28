@@ -10,6 +10,7 @@ import {
 } from "../../../../src/openai/utils.ts";
 import { ConversationMessage } from "@fathym/synaptic";
 import { HarborPersonality } from "../../../../state-flow/personalities.config.ts";
+import { FunctionDefinition } from "npm:@azure/openai@next";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -27,8 +28,6 @@ export const handler: Handlers = {
     });
   },
   async POST(req, ctx) {
-    const deploymentId = "gpt-35-turbo-16k"; //ctx.params.deploymentId;
-
     const convoLookup = ctx.params.convoLookup;
 
     const personality = await Personalities.Provide(HarborPersonality);
