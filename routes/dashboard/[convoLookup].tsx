@@ -44,11 +44,11 @@ export default function Chat(props: PageProps) {
   const chatInputRef = useRef(null);
 
   function onMessageStreamed() {
-    chatInputRef.current.scrollIntoView({ behavior: 'smooth' });
+    chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
   }
 
   useEffect(() => {
-    chatInputRef.current.scrollIntoView({ behavior: 'smooth' });
+    chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   return (

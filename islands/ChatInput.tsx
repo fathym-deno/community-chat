@@ -2,7 +2,7 @@ import { SendIcon } from "$fathym/atomic-icons";
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
 
-interface ChatInputProps {
+type ChatInputProps = JSX.HTMLAttributes<HTMLFormElement> & {
   postSrc: string;
 }
 
