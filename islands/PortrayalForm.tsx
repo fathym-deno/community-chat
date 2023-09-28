@@ -64,6 +64,15 @@ export function PortrayalForm(props: PortrayalFormProps) {
           />
 
           <input
+            type="hidden"
+            name="details"
+          />
+
+          <div>
+            <pre>{JSON.stringify({}, null, 2)}</pre>
+          </div>
+
+          <input
             type="text"
             name="lookup"
             placeholder="Enter lookup"
