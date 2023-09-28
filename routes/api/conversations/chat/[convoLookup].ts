@@ -41,19 +41,9 @@ export const handler: Handlers = {
 
     const messages = (await ConvoState.History(convoLookup)) || [];
 
-    const declarations = personality.Declarations?.join(" ") || "";
-
-    const instructions = personality.Instructions?.join(" ") || "";
-
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
-    const chatCompletions = await LLM.ChatStream(personality, [
-      {
-        From: "system",
-        Content: `${declarations} ${instructions}`,
-      },
-      ...messages,
-    ], {
+    const chatCompletions = await LLM.ChatStream(personality, messages, {
       Model: "gpt-35-turbo-16k",
       Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
       Stream: true,
