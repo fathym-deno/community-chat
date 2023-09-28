@@ -45,17 +45,21 @@ export default function Chat(props: PageProps) {
   }
 
   return (
-    <div>
-      <ChatHistory
-        convoLookup={props.data.convoLookup}
-        messages={props.data.messages}
-        userMessage={props.data.newUserMessage}
-        messageStreamed={onMessageStreamed}
-      />
+    <div className="flex flex-col md:flex-row">
+      <div className="md:w-2/3">
+        <ChatHistory
+          convoLookup={props.data.convoLookup}
+          messages={props.data.messages}
+          userMessage={props.data.newUserMessage}
+          messageStreamed={onMessageStreamed}
+        />
 
-      <ChatInput postSrc={chatPostSrc} />
+        <ChatInput postSrc={chatPostSrc} />
+      </div>
 
-      <PortrayalForm postSrc={`/dashboard/portrayals/${props.data.convoLookup}`} />
+      <div className="md:w-1/3">
+        <PortrayalForm postSrc={`/dashboard/portrayals/${props.data.convoLookup}`} />
+      </div>
     </div>
   );
 }
