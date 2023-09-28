@@ -1,7 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { useEffect, useState } from "preact/hooks";
 import { ConvoState } from "../../state-flow/database.ts";
-import { useSignal } from "https://esm.sh/v128/@preact/signals@1.1.3/X-ZS8q/dist/signals.js";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
