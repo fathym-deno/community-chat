@@ -14,6 +14,7 @@ import {
   PortrayalsPersonality,
 } from "../../../../state-flow/personalities.config.ts";
 import { FunctionDefinition } from "npm:@azure/openai@next";
+import { Portrayals } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -48,7 +49,7 @@ export const handler: Handlers = {
       Model: "gpt-35-turbo-16k",
       // Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
       FunctionRequired: 0,
-      Functions: loadHarborFunctions(),
+      Functions: await Portrayals.Options(),
     });
 
     const body = JSON.stringify(chatResp);
