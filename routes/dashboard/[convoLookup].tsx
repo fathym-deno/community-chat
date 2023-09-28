@@ -5,7 +5,7 @@ import { ChatHistory } from '../../islands/ChatHistory.tsx';
 import { SendIcon } from '../../build/iconset/icons/SendIcon.tsx';
 import { ChatInput } from '../../islands/ChatInput.tsx';
 import { PortrayalForm } from '../../islands/PortrayalForm.tsx';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState, useRef } from 'preact/hooks';
 import { ConversationMessage } from '@fathym/synaptic';
 import { Portrayals } from '../../src/PortrayalManager.ts';
 
@@ -41,9 +41,15 @@ export const handler: Handlers = {
 
 export default function Chat(props: PageProps) {
   const chatPostSrc = `/dashboard/${props.data.convoLookup}`;
+  const chatInputRef = useRef(null);
+
   function onMessageStreamed() {
-    // location.href = location.href;
+    chatInputRef.current.scrollIntoView({ behavior: 'smooth' });
   }
+
+  useEffect(() => {
+    chatInputRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, []);
 
   return (
     <div class="flex flex-col md:flex-row">
@@ -55,7 +61,7 @@ export default function Chat(props: PageProps) {
           messageStreamed={onMessageStreamed}
         />
 
-        <ChatInput postSrc={chatPostSrc} />
+        <ChatInput postSrc={chatPostSrc} ref={chatInputRef} />
       </div>
 
       <div class="md:w-1/3 my-8 mx-4 md:(my-0 mx-8) sticky top-0">
