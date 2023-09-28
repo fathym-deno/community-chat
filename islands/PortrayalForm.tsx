@@ -68,10 +68,6 @@ export function PortrayalForm(props: PortrayalFormProps) {
             name="details"
           />
 
-          <div>
-            <pre>{JSON.stringify({}, null, 2)}</pre>
-          </div>
-
           <input
             type="text"
             name="lookup"
@@ -85,6 +81,10 @@ export function PortrayalForm(props: PortrayalFormProps) {
             placeholder="Enter name"
             className="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
           />
+
+          <div>
+            <pre>{JSON.stringify({}, null, 2)}</pre>
+          </div>
 
           <button
             type="submit"
