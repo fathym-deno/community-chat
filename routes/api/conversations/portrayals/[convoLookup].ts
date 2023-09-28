@@ -17,37 +17,25 @@ import { FunctionDefinition } from "npm:@azure/openai@next";
 import { Portrayals } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
-    //   const convoLookup = ctx.params.convoLookup;
-
-    //   const messages = (await ConvoState.History(convoLookup)) || [];
-
-    //   const body = JSON.stringify(messages);
-
-    //   return new Response(body, {
-    //     headers: {
-    //       "content-type": "application/json",
-    //       "cache-control": "no-cache",
-    //     },
-    //   });
-    // },
-    // async POST(_req, ctx) {
+  async POST(req, ctx) {
     const convoLookup = ctx.params.convoLookup;
 
     const personality = await Personalities.Provide(PortrayalsPersonality);
 
     const messages = (await ConvoState.History(convoLookup)) || [];
 
-    const convoMsg: ConversationMessage = {
-      Content: "Please make the basic report portrayal content way longer",
+    const apiReq = await req.json();
+
+    const commandMsg: ConversationMessage = {
+      Content: apiReq.command,
       From: "user",
     };
 
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
-    const chatResp = await LLM.Chat(personality, [...messages], {
+    const chatResp = await LLM.Chat(personality, [...messages, commandMsg], {
       Model: "gpt-35-turbo-16k",
-      // Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
+      Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
       FunctionRequired: 0,
       Functions: await Portrayals.Options(),
     });
