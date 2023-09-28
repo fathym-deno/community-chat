@@ -1,8 +1,6 @@
-import {
-  AzureExtensionsOptions,
-  ChatCompletions,
-} from "npm:@azure/openai@next";
-import { addConversationMessage } from "../../state-flow/database.ts";
+import { AzureExtensionsOptions } from "npm:@azure/openai@next";
+import { ConvoState } from "../../state-flow/database.ts";
+import { ChatResponse } from "@fathym/synaptic";
 
 export function loadAzureExtensionOptions(
   indexName: string,
@@ -56,8 +54,8 @@ export function loadExtensionData(indexName: string) {
 }
 
 export function loadReadableChatStream(
-  convoId: string,
-  chatCompletions: AsyncIterable<ChatCompletions>,
+  convoLookup: string,
+  chatResponse: AsyncIterable<ChatResponse>,
 ) {
   const stream = new ReadableStream({
     async start(controller) {
@@ -65,11 +63,11 @@ export function loadReadableChatStream(
 
       // controller.enqueue(`event: message\n\n`);
 
-      for await (const event of chatCompletions) {
-        if (event.choices[0]?.delta?.content) {
-          controller.enqueue(`data: ${event.choices[0]?.delta?.content}\n\n`);
+      for await (const event of chatResponse) {
+        if (event) {
+          controller.enqueue(`data: ${event}\n\n`);
 
-          completeText += event.choices[0]?.delta?.content;
+          completeText += event;
         }
       }
 
@@ -77,7 +75,7 @@ export function loadReadableChatStream(
 
       controller.close();
 
-      await addConversationMessage(convoId, {
+      await ConvoState.Add(convoLookup, {
         From: "assistant",
         Content: completeText,
       });

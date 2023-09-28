@@ -1,11 +1,11 @@
 // deno-lint-ignore-file no-explicit-any
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { ConversationMessage } from "../../state-flow/database.ts";
-import { handler as openAiSvc } from "../api/conversations/chat/[convoId].ts";
+import { handler as openAiSvc } from "../api/conversations/chat/[convoLookup].ts";
 import { ChatHistory } from "../../islands/ChatHistory.tsx";
 import { SendIcon } from "../../build/iconset/icons/SendIcon.tsx";
 import { ChatInput } from "../../islands/ChatInput.tsx";
 import { useEffect, useState } from "preact/hooks";
+import { ConversationMessage } from "@fathym/synaptic";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -13,10 +13,8 @@ export const handler: Handlers = {
 
     const resp = await openAiSvc.GET!(req, ctx);
 
-    const messagesData: { key: KeyType; value: ConversationMessage }[] =
+    const messages: ConversationMessage[] =
       await resp.json();
-
-    const messages: ConversationMessage[] = messagesData.map((md) => md.value);
 
     messages.unshift({
       From: "assistant",
@@ -25,7 +23,7 @@ export const handler: Handlers = {
     });
 
     return ctx.render({
-      convoId: ctx.params.convoId,
+      convoLookup: ctx.params.convoLookup,
       messages: messages,
       newUserMessage: ctx.params.newUserMessage,
     });
@@ -40,7 +38,7 @@ export const handler: Handlers = {
 };
 
 export default function Chat(props: PageProps) {
-  const chatPostSrc = `/dashboard/${props.data.convoId}`;
+  const chatPostSrc = `/dashboard/${props.data.convoLookup}`;
   function onMessageStreamed() {
     // location.href = location.href;
   }
@@ -48,7 +46,7 @@ export default function Chat(props: PageProps) {
   return (
     <div>
       <ChatHistory
-        convoId={props.data.convoId}
+        convoLookup={props.data.convoLookup}
         messages={props.data.messages}
         userMessage={props.data.newUserMessage}
         messageStreamed={onMessageStreamed}

@@ -1,17 +1,12 @@
 import { Handlers } from "$fresh/server.ts";
-import {
-  Conversation,
-  createConversation,
-  deleteConversation,
-  getConversation,
-  resetConversationMessages,
-} from "../../../state-flow/database.ts";
+import { Conversation } from "@fathym/synaptic";
+import { ConvoState } from "../../../state-flow/database.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const convoId = ctx.params.convoId;
+    const convoLookup = ctx.params.convoLookup;
 
-    const convo = await getConversation(convoId);
+    const convo = await ConvoState.Get(convoLookup);
 
     const body = JSON.stringify(convo);
 
@@ -23,11 +18,11 @@ export const handler: Handlers = {
     });
   },
   async POST(req, ctx) {
-    const convoId = ctx.params.convoId;
+    const convoLookup = ctx.params.convoLookup;
 
     const convo: Conversation = await req.json();
 
-    await createConversation(convoId, convo);
+    await ConvoState.Create(convoLookup, convo);
 
     return new Response(JSON.stringify({ Status: "Success" }), {
       headers: {
@@ -37,11 +32,9 @@ export const handler: Handlers = {
     });
   },
   async DELETE(_req, ctx) {
-    const convoId = ctx.params.convoId;
+    const convoLookup = ctx.params.convoLookup;
 
-    await deleteConversation(convoId);
-
-    await resetConversationMessages(convoId);
+    await ConvoState.Delete(convoLookup);
 
     return new Response(JSON.stringify({ Status: "Success" }), {
       headers: {

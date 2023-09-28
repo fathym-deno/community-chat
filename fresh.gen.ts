@@ -4,11 +4,11 @@
 
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/api/conversations/[convoId].ts";
-import * as $3 from "./routes/api/conversations/chat/[convoId].ts";
+import * as $2 from "./routes/api/conversations/[convoLookup].ts";
+import * as $3 from "./routes/api/conversations/chat/[convoLookup].ts";
 import * as $4 from "./routes/api/conversations/index.ts";
 import * as $5 from "./routes/api/embeddings/files.ts";
-import * as $6 from "./routes/dashboard/[convoId].tsx";
+import * as $6 from "./routes/dashboard/[convoLookup].tsx";
 import * as $7 from "./routes/dashboard/_middleware.ts";
 import * as $8 from "./routes/dashboard/index.tsx";
 import * as $9 from "./routes/dashboard/new-conversation.tsx";
@@ -26,17 +26,16 @@ import * as $$7 from "./islands/FileUploader.tsx";
 import * as $$8 from "./islands/NavBar.tsx";
 import * as $$9 from "./islands/NavBarBranded.tsx";
 import * as $$10 from "./islands/PieChart.tsx";
-import * as $$11 from "./islands/TextStream.tsx";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
-    "./routes/api/conversations/[convoId].ts": $2,
-    "./routes/api/conversations/chat/[convoId].ts": $3,
+    "./routes/api/conversations/[convoLookup].ts": $2,
+    "./routes/api/conversations/chat/[convoLookup].ts": $3,
     "./routes/api/conversations/index.ts": $4,
     "./routes/api/embeddings/files.ts": $5,
-    "./routes/dashboard/[convoId].tsx": $6,
+    "./routes/dashboard/[convoLookup].tsx": $6,
     "./routes/dashboard/_middleware.ts": $7,
     "./routes/dashboard/index.tsx": $8,
     "./routes/dashboard/new-conversation.tsx": $9,
@@ -56,7 +55,6 @@ const manifest = {
     "./islands/NavBar.tsx": $$8,
     "./islands/NavBarBranded.tsx": $$9,
     "./islands/PieChart.tsx": $$10,
-    "./islands/TextStream.tsx": $$11,
   },
   baseUrl: import.meta.url,
 };

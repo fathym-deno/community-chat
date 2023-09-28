@@ -1,31 +1,21 @@
 import { Handlers } from "$fresh/server.ts";
 import {
-  AzureKeyCredential,
-  FunctionDefinition,
-  OpenAIClient,
-} from "npm:@azure/openai@next";
-import { loadIndigoPersonality } from "../../../../state-flow/personalities.ts";
-import {
-  addConversationMessage,
-  ConversationMessage,
-  listConversationMessages,
-  resetConversationMessages,
+  ConvoState,
+  LLM,
+  Personalities,
 } from "../../../../state-flow/database.ts";
 import {
   loadAzureExtensionOptions,
   loadReadableChatStream,
 } from "../../../../src/openai/utils.ts";
-
-const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
-const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
-
-const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
+import { ConversationMessage } from "@fathym/synaptic";
+import { HarborPersonality } from "../../../../state-flow/personalities.config.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const convoId = ctx.params.convoId;
+    const convoLookup = ctx.params.convoLookup;
 
-    const messages = (await listConversationMessages(convoId)) || [];
+    const messages = (await ConvoState.History(convoLookup)) || [];
 
     const body = JSON.stringify(messages);
 
@@ -39,53 +29,40 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const deploymentId = "gpt-35-turbo-16k"; //ctx.params.deploymentId;
 
-    const convoId = ctx.params.convoId;
+    const convoLookup = ctx.params.convoLookup;
 
-    const personality = loadIndigoPersonality();
+    const personality = await Personalities.Provide(HarborPersonality);
 
     const convoMsg: ConversationMessage = {
       Content: await req.text(),
       From: "user",
     };
 
-    await addConversationMessage(convoId, convoMsg);
+    await ConvoState.Add(convoLookup, convoMsg);
 
-    const messages = (await listConversationMessages(convoId)) || [];
+    const messages = (await ConvoState.History(convoLookup)) || [];
 
     const declarations = personality.Declarations?.join(" ") || "";
 
     const instructions = personality.Instructions?.join(" ") || "";
 
-    const chatMessages = messages.map((msg) => {
-      return {
-        role: msg.value.From,
-        content: msg.value.Content,
-      };
-    });
-
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
-    const chatCompletions = await client.listChatCompletions(
-      deploymentId,
-      [
-        {
-          role: "system",
-          content: `${declarations} ${instructions}`,
-        },
-        ...chatMessages,
-      ],
+    const chatCompletions = await LLM.ChatStream(personality, [
       {
-        azureExtensionOptions: loadAzureExtensionOptions(azureSearchIndexName!),
-        maxTokens: 800,
-        temperature: 0,
-        stream: true,
-        topP: 1,
-        functionCall: { name: "GlenReport" },
-        functions: [loadGlenReportFunction()],
+        From: "system",
+        Content: `${declarations} ${instructions}`,
       },
-    );
+      ...messages,
+    ], {
+      Model: "gpt-35-turbo-16k",
+      Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
+      Stream: true,
+      // functionCall: { name: "GlenReport" },
+      // functions: [loadGlenReportFunction()],
+    });
 
-    const body = loadReadableChatStream(convoId, chatCompletions);
+    const body = loadReadableChatStream(convoLookup, chatCompletions);
 
     return new Response(body, {
       headers: {
@@ -95,9 +72,9 @@ export const handler: Handlers = {
     });
   },
   async DELETE(_req, ctx) {
-    const convoId = ctx.params.convoId;
+    const convoLookup = ctx.params.convoLookup;
 
-    await resetConversationMessages(convoId);
+    await ConvoState.Reset(convoLookup);
 
     return new Response(null, {
       headers: {

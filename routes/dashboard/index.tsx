@@ -2,12 +2,12 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { ResetIcon } from "../../build/iconset/icons/ResetIcon.tsx";
 import { DeleteIcon } from "$fathym/atomic-icons";
 import { ConvoItem } from "../../islands/ConvoItem.tsx";
-import { listConversations } from "../../state-flow/database.ts";
+import { ConvoState } from "../../state-flow/database.ts";
 import { useEffect, useState } from "preact/hooks";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const conversations = await listConversations();
+    const conversations = await ConvoState.GetAll();
 
     return ctx.render({
       conversations,
@@ -25,7 +25,7 @@ export default function Conversations(props: PageProps) {
         {convoLookups.map((convoLookup) => (
           <li key={convoLookup} className="mb-2">
             <ConvoItem
-              convoId={convoLookup}
+              convoLookup={convoLookup}
               deleteIcon={<DeleteIcon class="text-red-500 w-8 h-8" />}
             />
           </li>

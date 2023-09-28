@@ -1,6 +1,5 @@
 import { JSX } from "preact";
 import { LovebotIcon } from "../build/iconset/icons/LovebotIcon.tsx";
-import { ConversationMessage } from "../state-flow/database.ts";
 import { AcademicIcon } from "../build/iconset/icons/AcademicIcon.tsx";
 import { UserIcon } from "../build/iconset/icons/UserIcon.tsx";
 import { SendIcon } from "../build/iconset/icons/SendIcon.tsx";
@@ -9,10 +8,10 @@ import { ChatBox } from "../islands/ChatBox.tsx";
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 import { SSE } from "npm:sse.js";
-import TextStream from "./TextStream.tsx";
+import { ConversationMessage } from "@fathym/synaptic";
 
 interface ChatHistoryProps {
-  convoId: string;
+  convoLookup: string;
 
   messages: ConversationMessage[];
 
@@ -45,7 +44,7 @@ export function ChatHistory(props: ChatHistoryProps) {
 
     if (userMessage.value) {
       const es = new SSE(
-        `/api/conversations/chat/${props.convoId}`,
+        `/api/conversations/chat/${props.convoLookup}`,
         {
           payload: props.userMessage,
         },
