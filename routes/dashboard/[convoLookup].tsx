@@ -21,7 +21,7 @@ export const handler: Handlers = {
     messages.unshift({
       From: "assistant",
       Content:
-        "Welcome to Harbor Research, providing AI powered industry knowledge.",
+        "Welcome to Harbor Research, providing AI powered industry knowledge."
     });
 
     return ctx.render({
@@ -59,7 +59,7 @@ export default function Chat(props: PageProps) {
         <ChatInput postSrc={chatPostSrc} />
       </div>
 
-      <div class="md:w-1/3 my-8 md:(my-0 mx-8)">
+      <div class="md:w-1/3 my-8 md:(my-0 mx-8) sticky top-0">
         <h2 class="text-2xl">Portrayal Creation</h2>
 
         <PortrayalForm options={props.data.portrayalOptions} postSrc={`/dashboard/portrayals/${props.data.convoLookup}`} />
