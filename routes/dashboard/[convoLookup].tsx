@@ -47,7 +47,7 @@ export default function Chat(props: PageProps) {
 
   return (
     <div class="flex flex-col md:flex-row">
-      <div class="md:w-2/3">
+      <div class="md:w-2/3 mx-4">
         <ChatHistory
           convoLookup={props.data.convoLookup}
           messages={props.data.messages}
@@ -58,7 +58,7 @@ export default function Chat(props: PageProps) {
         <ChatInput postSrc={chatPostSrc} />
       </div>
 
-      <div class="md:w-1/3 my-8 md:(my-0 mx-8) sticky top-0">
+      <div class="md:w-1/3 my-8 mx-4 md:(my-0 mx-8) sticky top-0">
         <div class="sticky top-0">
           <h2 class="text-2xl mt-4">Portrayal Creation</h2>
 
