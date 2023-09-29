@@ -69,9 +69,10 @@ export default function Chat(props: PageProps) {
           <h2 class="text-2xl mt-4">Portrayal Creation</h2>
 
           <PortrayalForm
+            convoLookup={props.data.convoLookup}
             options={props.data.portrayalOptions}
-            regeneratePostSrc={`/dashboard/portrayals/${props.data.convoLookup}`}
-            savePostSrc={`/dashboard/portrayals/${props.data.convoLookup}`}
+            regeneratePostSrc={`/api/conversations/portrayals/${props.data.convoLookup}`}
+            savePostSrc={`/dashboard/portrayals`}
           />
         </div>
       </div>

@@ -42,7 +42,7 @@
     "@fathym/atomic": "https://deno.land/x/fathym_atomic@v0.0.63-integration/mod.ts",
     "@fathym/atomic-icons": "https://deno.land/x/fathym_atomic_icons@v0.0.3-integration33/mod.ts",
     "@fathym/atomic-icons/browser": "https://deno.land/x/fathym_atomic_icons@v0.0.3-integration33/browser.ts",
-    "@fathym/synaptic": "https://deno.land/x/fathym_synaptic@v0.0.19-integration/mod.ts",
+    "@fathym/synaptic": "https://deno.land/x/fathym_synaptic@v0.0.23-integration/mod.ts",
     "$fathym/atomic-icons": "./build/iconset/icons/_exports.ts",
     "$fresh_charts/mod.ts": "https://deno.land/x/fresh_charts@0.3.1/mod.ts",
     "$fresh_charts/utils.ts": "https://deno.land/x/fresh_charts@0.3.1/utils.ts",

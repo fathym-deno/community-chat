@@ -62,7 +62,7 @@ export function bulletListPortrayal(): FunctionDefinition {
   return {
     name: "BulletListPortrayal",
     description:
-      "The bullet list portrayal is used to provide out a title, abstract, and full report content.",
+      "The bullet list portrayal is used to provide out a title, abstract, and the bullets for the list.",
     parameters: {
       type: "object",
       properties: {
@@ -76,7 +76,7 @@ export function bulletListPortrayal(): FunctionDefinition {
           description:
             "The abstract is a more detailed description of the report that can be used by a user to discern if the report is useful for them.",
         },
-        list: {
+        bullets: {
           type: "array",
           description:
             "The 3 - 7 highlighted bullet points to use for the report.",

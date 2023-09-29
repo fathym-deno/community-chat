@@ -12,6 +12,7 @@ export const curIconSetConfig: IconSetConfig = {
     exclaim: "https://api.iconify.design/bi:exclamation-circle.svg",
     delete:
       "https://api.iconify.design/material-symbols:delete-forever-outline-rounded.svg",
+    loading: "https://api.iconify.design/eos-icons:loading.svg",
     reset: "https://api.iconify.design/bx:reset.svg",
     send: "https://api.iconify.design/mdi:send.svg",
   },
