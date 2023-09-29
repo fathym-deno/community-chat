@@ -18,11 +18,11 @@ import { Portrayal, Portrayals } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {
-    const convoLookup = ctx.params.convoLookup;
+    const portrayalLookup = ctx.params.portrayalLookup;
 
     const personality = await Personalities.Provide(PortrayalsPersonality);
 
-    const messages = (await ConvoState.History(convoLookup)) || [];
+    const messages = (await ConvoState.History(portrayalLookup)) || [];
 
     const apiReq = await req.json();
 
@@ -62,6 +62,17 @@ export const handler: Handlers = {
       headers: {
         "content-type": "text/event-stream",
         "cache-control": "no-cache",
+      },
+    });
+  },
+  async DELETE(_req, ctx) {
+    const portrayalLookup = ctx.params.portrayalLookup;
+
+    await Portrayals.Delete(portrayalLookup);
+
+    return new Response(null, {
+      headers: {
+        "content-type": "text/html",
       },
     });
   },

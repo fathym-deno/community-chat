@@ -1,20 +1,27 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { Portrayal, Portrayals } from "../../../src/PortrayalManager.ts";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { PortrayalItem } from '../../../islands/PortrayalItem.tsx';
+import { Portrayal, Portrayals } from '../../../src/PortrayalManager.ts';
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const portrayals = Portrayals.List();
+    const portrayals = await Portrayals.List();
 
     return ctx.render({
       portrayals,
     });
   },
   async POST(req, ctx) {
-    const portrayal = await req.json();
-    Portrayals.Save(portrayal);
+    const form = await req.formData();
+
+    await Portrayals.Save({
+      name: form.get('name')?.toString()!,
+      lookup: form.get('lookup')?.toString()!,
+      type: form.get('type')?.toString()!,
+      details: JSON.parse(form.get('details')?.toString()!),
+    });
 
     const headers = new Headers();
-    headers.set("location", `/dashboard/portrayals`);
+    headers.set('location', `/dashboard/portrayals`);
 
     return new Response(null, {
       status: 303, // See Other
@@ -32,7 +39,7 @@ export default function PortrayalsIndex(props: PageProps) {
       <ul>
         {portrayals.map((portrayal) => (
           <li key={portrayal.lookup} className="mb-2">
-            <div>{portrayal.name}</div>
+            <PortrayalItem portrayal={portrayal} />
           </li>
         ))}
       </ul>

@@ -26,7 +26,6 @@ export default function Conversations(props: PageProps) {
           <li key={convoLookup} className="mb-2">
             <ConvoItem
               convoLookup={convoLookup}
-              deleteIcon={<DeleteIcon class="text-red-500 w-8 h-8" />}
             />
           </li>
         ))}

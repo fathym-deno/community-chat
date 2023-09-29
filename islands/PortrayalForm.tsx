@@ -6,6 +6,7 @@ import { LoadingIcon } from '../build/iconset/icons/LoadingIcon.tsx';
 import { BasicReportPortrayal } from "../components/portrayals/BasicReportPortrayal.tsx";
 import { BulletListPortrayal } from "../components/portrayals/BulletListPortrayal.tsx";
 import { PieChartPortrayal } from "../components/portrayals/PieChartPortrayal.tsx";
+import { PortrayalView } from "../components/portrayals/PortrayalView.tsx";
 
 interface PortrayalFormProps {
   convoLookup: string;
@@ -89,9 +90,9 @@ export function PortrayalForm(props: PortrayalFormProps) {
           <form
             id="portrayal-form"
             method="post"
-            src={
+            action={
               formState === 'regenerate'
-                ? props.regeneratePostSrc
+                ? undefined
                 : props.savePostSrc
             }
             class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40 flex flex-col"
@@ -160,6 +161,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
                 <button
                   type="submit"
                   className="flex items-center space-x-1 rounded-sm border border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 mb-2"
+                  disabled={!portrayal.type || !portrayal.name || !portrayal.lookup || !portrayal.details}
                 >
                   Save
                 </button>
@@ -173,15 +175,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
           </form>
 
           {portrayal.details && (
-            <div class="mb-2">
-              {portrayal.type === 'BasicReportPortrayal' && <BasicReportPortrayal {...portrayal.details} />}
-
-              {portrayal.type === 'BulletListPortrayal' && <BulletListPortrayal {...portrayal.details} />}
-
-              {portrayal.type === 'PieChartPortrayal' && <PieChartPortrayal {...portrayal.details} />}
-
-              {/* <pre>{JSON.stringify(portrayal.details, null, 2)}</pre> */}
-            </div>
+            <PortrayalView portrayal={portrayal} />
           )}
         </>
       )}

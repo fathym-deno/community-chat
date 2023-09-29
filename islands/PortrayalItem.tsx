@@ -1,18 +1,20 @@
 import { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { DeleteIcon } from "$fathym/atomic-icons";
+import { Portrayal } from "../src/PortrayalManager.ts";
 
-interface ConvoItemProps {
-  convoLookup: string;
+interface PortrayalItemProps {
+  portrayal: Portrayal;
 }
 
-export function ConvoItem(props: ConvoItemProps) {
+export function PortrayalItem(props: PortrayalItemProps) {
   const [reload, setReload] = useState(false);
-  const { convoLookup } = props;
 
-  const handleDelete = async (convoLookup: string) => {
-    if (window.confirm("Are you sure you want to delete this conversation?")) {
-      await fetch(`/api/conversations/${convoLookup}`, {
+  const { portrayal } = props;
+
+  const handleDelete = async (portrayalLookup: string) => {
+    if (window.confirm(`Are you sure you want to delete this portrayal: ${portrayalLookup}?`)) {
+      await fetch(`/api/conversations/portrayals/${portrayalLookup}`, {
         method: "delete",
       });
 
@@ -29,16 +31,16 @@ export function ConvoItem(props: ConvoItemProps) {
   return (
     <>
       <a
-        href={`/dashboard/${convoLookup}`}
+        href={`/dashboard/portrayals/${portrayal.lookup}`}
         className="text-blue-500 hover:underline"
       >
-        {convoLookup}
+        {portrayal.name} ({portrayal.lookup})
       </a>
 
       <button
         class="ml-2"
         onClick={() => {
-          handleDelete(convoLookup).then();
+          handleDelete(portrayal.lookup).then();
         }}
       >
         <DeleteIcon class="w-6 h-6 text-red-500" />

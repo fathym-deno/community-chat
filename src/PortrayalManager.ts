@@ -7,19 +7,40 @@ export type Portrayal = {
   // deno-lint-ignore no-explicit-any
   details: any;
 };
-class PortrayalManager {
-  private portrayals: Portrayal[] = [];
 
-  public List(): Portrayal[] {
-    return this.portrayals;
+const kv = await Deno.openKv();
+
+class PortrayalManager {
+  public async Delete(portrayalLookup: string): Promise<void> {
+    await kv.delete(["Portrayals", portrayalLookup]);
+  }
+
+  public async Get(portrayalLookup: string): Promise<Portrayal> {
+    const { value } = await kv.get(["Portrayals", portrayalLookup]);
+
+    return value as Portrayal;
+  }
+
+  public async List(): Promise<Portrayal[]> {
+    const portrayalList = await kv.list({ prefix: ["Portrayals"] });
+
+    const portrayals: Portrayal[] = [];
+
+    for await (const portrayal of portrayalList) {
+      const { value } = portrayal;
+
+      portrayals.push(value as Portrayal);
+    }
+
+    return portrayals;
   }
 
   public Options(): FunctionDefinition[] {
     return loadHarborFunctions();
   }
 
-  public Save(portrayal: Portrayal): void {
-    this.portrayals.push(portrayal);
+  public async Save(portrayal: Portrayal): Promise<void> {
+    await kv.set(["Portrayals", portrayal.lookup], portrayal);
   }
 }
 

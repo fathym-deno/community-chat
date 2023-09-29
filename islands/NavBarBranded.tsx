@@ -167,11 +167,24 @@ export default function NavbarBranded() {
                       twcolor="transparent"
                       textcolor="white"
                       fontweight="normal"
-                      selected={menuSelected == "dashboard" ? true : false}
+                      // selected={menuSelected == "dashboard" ? true : false}
                       shadow="sm"
                       twsize="sm"
                     >
                       Dashboard
+                    </ButtonDynamic>
+                  </a>
+                  <a href="/dashboard/portrayals">
+                    <ButtonDynamic
+                      onClick={() => (setMenuSelected("portrayals"))}
+                      twcolor="transparent"
+                      textcolor="white"
+                      fontweight="normal"
+                      // selected={menuSelected == "reports" ? true : false}
+                      shadow="sm"
+                      twsize="sm"
+                    >
+                      Portrayals
                     </ButtonDynamic>
                   </a>
                   <a href="/dashboard/reports">
@@ -180,16 +193,16 @@ export default function NavbarBranded() {
                       twcolor="transparent"
                       textcolor="white"
                       fontweight="normal"
-                      selected={menuSelected == "reports" ? true : false}
+                      // selected={menuSelected == "reports" ? true : false}
                       shadow="sm"
                       twsize="sm"
                     >
                       Reports
                     </ButtonDynamic>
                   </a>
-                  <a>
+                  {/* <a>
                     <DropDown user={user.name} email={user.email} />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -358,6 +371,12 @@ export default function NavbarBranded() {
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Calendar
+              </a>
+              <a
+                href="#"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >
+                Portrayals
               </a>
               <a
                 href="#"

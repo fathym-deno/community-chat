@@ -7,17 +7,18 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/api/conversations/[convoLookup].ts";
 import * as $3 from "./routes/api/conversations/chat/[convoLookup].ts";
 import * as $4 from "./routes/api/conversations/index.ts";
-import * as $5 from "./routes/api/conversations/portrayals/[convoLookup].ts";
+import * as $5 from "./routes/api/conversations/portrayals/[portrayalLookup].ts";
 import * as $6 from "./routes/api/conversations/portrayals/index.ts";
 import * as $7 from "./routes/api/embeddings/files.ts";
 import * as $8 from "./routes/dashboard/[convoLookup].tsx";
 import * as $9 from "./routes/dashboard/_middleware.ts";
 import * as $10 from "./routes/dashboard/index.tsx";
 import * as $11 from "./routes/dashboard/new-conversation.tsx";
-import * as $12 from "./routes/dashboard/portrayals/index.tsx";
-import * as $13 from "./routes/dashboard/reports.tsx";
-import * as $14 from "./routes/dashboard/signout.tsx";
-import * as $15 from "./routes/index.tsx";
+import * as $12 from "./routes/dashboard/portrayals/[portrayalLookup].tsx";
+import * as $13 from "./routes/dashboard/portrayals/index.tsx";
+import * as $14 from "./routes/dashboard/reports.tsx";
+import * as $15 from "./routes/dashboard/signout.tsx";
+import * as $16 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatBox.tsx";
@@ -30,6 +31,7 @@ import * as $$8 from "./islands/NavBar.tsx";
 import * as $$9 from "./islands/NavBarBranded.tsx";
 import * as $$10 from "./islands/PieChart.tsx";
 import * as $$11 from "./islands/PortrayalForm.tsx";
+import * as $$12 from "./islands/PortrayalItem.tsx";
 
 const manifest = {
   routes: {
@@ -38,17 +40,18 @@ const manifest = {
     "./routes/api/conversations/[convoLookup].ts": $2,
     "./routes/api/conversations/chat/[convoLookup].ts": $3,
     "./routes/api/conversations/index.ts": $4,
-    "./routes/api/conversations/portrayals/[convoLookup].ts": $5,
+    "./routes/api/conversations/portrayals/[portrayalLookup].ts": $5,
     "./routes/api/conversations/portrayals/index.ts": $6,
     "./routes/api/embeddings/files.ts": $7,
     "./routes/dashboard/[convoLookup].tsx": $8,
     "./routes/dashboard/_middleware.ts": $9,
     "./routes/dashboard/index.tsx": $10,
     "./routes/dashboard/new-conversation.tsx": $11,
-    "./routes/dashboard/portrayals/index.tsx": $12,
-    "./routes/dashboard/reports.tsx": $13,
-    "./routes/dashboard/signout.tsx": $14,
-    "./routes/index.tsx": $15,
+    "./routes/dashboard/portrayals/[portrayalLookup].tsx": $12,
+    "./routes/dashboard/portrayals/index.tsx": $13,
+    "./routes/dashboard/reports.tsx": $14,
+    "./routes/dashboard/signout.tsx": $15,
+    "./routes/index.tsx": $16,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
@@ -63,6 +66,7 @@ const manifest = {
     "./islands/NavBarBranded.tsx": $$9,
     "./islands/PieChart.tsx": $$10,
     "./islands/PortrayalForm.tsx": $$11,
+    "./islands/PortrayalItem.tsx": $$12,
   },
   baseUrl: import.meta.url,
 };
