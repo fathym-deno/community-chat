@@ -27,6 +27,7 @@ export const handler: Handlers = {
       convoLookup: ctx.params.convoLookup,
       messages: messages,
       newUserMessage: ctx.params.newUserMessage,
+      useOpenChat: !!ctx.params.useOpenChat,
       portrayalOptions: await Portrayals.Options(),
     });
   },
@@ -34,6 +35,8 @@ export const handler: Handlers = {
     const form = await req.formData();
 
     ctx.params.newUserMessage = form.get('content')?.toString() || '';
+
+    ctx.params.useOpenChat = form.get('useOpenChat')?.toString() || '';
 
     return handler.GET!(req, ctx);
   },
@@ -58,10 +61,15 @@ export default function Chat(props: PageProps) {
           convoLookup={props.data.convoLookup}
           messages={props.data.messages}
           userMessage={props.data.newUserMessage}
+          useOpenChat={props.data.useOpenChat}
           messageStreamed={() => onMessageStreamed()}
         />
 
-        <ChatInput postSrc={chatPostSrc} ref={chatInputRef} />
+        <ChatInput
+          postSrc={chatPostSrc}
+          ref={chatInputRef}
+          useOpenChat={props.data.useOpenChat}
+        />
       </div>
 
       <div class="md:w-1/3 my-8 mx-4 md:(my-0 mx-8) sticky top-0">

@@ -32,6 +32,8 @@ export const handler: Handlers = {
 
     const personality = await Personalities.Provide(HarborPersonality);
 
+    const url = new URL(req.url);
+
     const convoMsg: ConversationMessage = {
       Content: await req.text(),
       From: "user",
@@ -43,10 +45,14 @@ export const handler: Handlers = {
 
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
+    const useOpenChat = url.searchParams.get("useOpenChat") === "true";
+
     const chatCompletions = await LLM.ChatStream(personality, messages, {
       Model: "gpt-4-32k",
       // Model: "gpt-35-turbo-16k",
-      Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
+      Extensions: useOpenChat
+        ? undefined
+        : loadAzureExtensionOptions(azureSearchIndexName!),
       Stream: true,
     });
 

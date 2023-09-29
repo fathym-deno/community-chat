@@ -14,6 +14,7 @@ interface ChatHistoryProps {
   convoLookup: string;
   messages: ConversationMessage[];
   messageStreamed: () => void;
+  useOpenChat: boolean;
   userMessage: string;
 }
 
@@ -32,7 +33,7 @@ export function ChatHistory(props: ChatHistoryProps) {
   useEffect(() => {
     if (userMessage.value) {
       const es = new SSE(
-        `/api/conversations/chat/${props.convoLookup}`,
+        `/api/conversations/chat/${props.convoLookup}?useOpenChat=${props.useOpenChat}`,
         {
           payload: props.userMessage,
         },
