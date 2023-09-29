@@ -16,10 +16,10 @@ export default function PortrayalsIndex(props: PageProps) {
   const portrayal = props.data.portrayal as Portrayal;
 
   return (
-    <div className="container mx-auto px-4 max-w-screen-md">
+    <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold mb-4">{portrayal.name} ({portrayal.lookup})</h1>
 
-      <PortrayalView portrayal={portrayal} />
+      <PortrayalView class="max-w-screen-md" portrayal={portrayal} />
     </div>
   );
 }
