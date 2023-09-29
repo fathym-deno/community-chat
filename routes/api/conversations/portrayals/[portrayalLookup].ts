@@ -46,7 +46,7 @@ export const handler: Handlers = {
     const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
     const chatResp = await LLM.Chat(personality, messages, {
-      Model: "gpt-35-turbo-16k",
+      Model: "gpt-4-32k",
       // Extensions: loadAzureExtensionOptions(azureSearchIndexName!),
       FunctionRequired: 0,
       Functions: [options[currentOptionIndex]],

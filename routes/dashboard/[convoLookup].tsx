@@ -11,7 +11,7 @@ import { Portrayals } from '../../src/PortrayalManager.ts';
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    ctx.params.deploymentId = 'gpt-35-turbo-16k';
+    ctx.params.deploymentId = 'gpt-4-32k';
 
     const resp = await openAiSvc.GET!(req, ctx);
 
