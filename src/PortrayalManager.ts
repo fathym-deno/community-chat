@@ -122,7 +122,7 @@ export function pieChartPortrayal(): FunctionDefinition {
           description:
             "The data represents the value of data that is being tracked for an entity label. There should be the same number of datas in this array as are in the labels array.",
           items: {
-            type: "string",
+            type: "number",
             description: "This is the data value to use for a specific label.",
           },
         },

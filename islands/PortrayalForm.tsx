@@ -5,6 +5,7 @@ import { Portrayal } from '../src/PortrayalManager.ts';
 import { LoadingIcon } from '../build/iconset/icons/LoadingIcon.tsx';
 import { BasicReportPortrayal } from "../components/portrayals/BasicReportPortrayal.tsx";
 import { BulletListPortrayal } from "../components/portrayals/BulletListPortrayal.tsx";
+import { PieChartPortrayal } from "../components/portrayals/PieChartPortrayal.tsx";
 
 interface PortrayalFormProps {
   convoLookup: string;
@@ -176,6 +177,8 @@ export function PortrayalForm(props: PortrayalFormProps) {
               {portrayal.type === 'BasicReportPortrayal' && <BasicReportPortrayal {...portrayal.details} />}
 
               {portrayal.type === 'BulletListPortrayal' && <BulletListPortrayal {...portrayal.details} />}
+
+              {portrayal.type === 'PieChartPortrayal' && <PieChartPortrayal {...portrayal.details} />}
 
               {/* <pre>{JSON.stringify(portrayal.details, null, 2)}</pre> */}
             </div>
