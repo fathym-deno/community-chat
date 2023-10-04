@@ -2,6 +2,8 @@ import { JSX } from "preact";
 import { Portrayal } from "../../src/PortrayalManager.ts";
 import { BasicReportPortrayal } from "./BasicReportPortrayal.tsx";
 import { BulletListPortrayal } from "./BulletListPortrayal.tsx";
+import { BarChartPortrayal } from "./BarChartPortrayal.tsx";
+import { LineChartPortrayal } from "./LineChartPortrayal.tsx";
 import { PieChartPortrayal } from "./PieChartPortrayal.tsx";
 import { classSet } from "@harbor/atomic";
 
@@ -20,6 +22,14 @@ export function PortrayalView(props: PortrayalViewProps) {
 
       {portrayal.type === "BulletListPortrayal" && (
         <BulletListPortrayal {...portrayal.details} />
+      )}
+
+      {portrayal.type === "BarChartPortrayal" && (
+        <BarChartPortrayal {...portrayal.details} />
+      )}
+
+      {portrayal.type === "LineChartPortrayal" && (
+        <LineChartPortrayal {...portrayal.details} />
       )}
 
       {portrayal.type === "PieChartPortrayal" && (
