@@ -1,4 +1,3 @@
-import ChartIsland from "../../islands/ChartIsland.tsx";
 import { ChartPortrayal, ChartPortrayalProps } from "./ChartPortrayal.tsx";
 
 export type PieChartPortrayalProps = Omit<ChartPortrayalProps, "type">;
