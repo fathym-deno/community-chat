@@ -35,7 +35,17 @@ export default function Home(props: PageProps) {
       <div class="mx-auto max-w-screen-md">
         <h1 className="text-2xl font-bold mb-4">Sign In</h1>
 
-        <SignIn signInOptions={{}} />
+        <SignIn signInOptions={{
+          usernameInputProps: {
+            class: "hidden"
+          },
+          forgotPasswordActionProps: {
+            class: "hidden"
+          },
+          submitActionProps: {
+            class: "ml-auto"
+          }
+        }} />
       </div>
 
       <form method="post" className="w-full max-w-sm py-8">
