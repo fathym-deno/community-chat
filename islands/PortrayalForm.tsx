@@ -1,7 +1,7 @@
 import { JSX } from "preact";
 import { FunctionDefinition } from "npm:@azure/openai@next";
 import { useState } from "preact/hooks";
-import { Portrayal } from "./src/PortrayalManager.ts";
+import { Portrayal } from "../src/PortrayalManager.ts";
 import { LoadingIcon } from "../build/iconset/icons/LoadingIcon.tsx";
 import { BasicReportPortrayal } from "../components/portrayals/BasicReportPortrayal.tsx";
 import { BulletListPortrayal } from "../components/portrayals/BulletListPortrayal.tsx";

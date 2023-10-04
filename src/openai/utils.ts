@@ -1,5 +1,5 @@
 import { AzureExtensionsOptions } from "npm:@azure/openai@next";
-import { ConvoState } from "../../../state-flow/database.ts";
+import { ConvoState } from "../../state-flow/database.ts";
 import { ChatResponse } from "@fathym/synaptic";
 
 export function loadAzureExtensionOptions(

@@ -7,7 +7,7 @@ import {
 import {
   loadAzureExtensionOptions,
   loadReadableChatStream,
-} from "../../../../islands/src/openai/utils.ts";
+} from "../../../../src/openai/utils.ts";
 import { ConversationMessage } from "@fathym/synaptic";
 import { HarborPersonality } from "../../../../state-flow/personalities.config.ts";
 

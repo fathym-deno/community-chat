@@ -8,10 +8,7 @@ import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
 import {
   PortrayalsPersonality,
 } from "../../../../state-flow/personalities.config.ts";
-import {
-  Portrayal,
-  Portrayals,
-} from "../../../../islands/src/PortrayalManager.ts";
+import { Portrayal, Portrayals } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {

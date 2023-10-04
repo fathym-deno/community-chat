@@ -1,5 +1,5 @@
 import { JSX } from "preact";
-import { Portrayal } from "../../islands/src/PortrayalManager.ts";
+import { Portrayal } from "../../src/PortrayalManager.ts";
 import { BasicReportPortrayal } from "./BasicReportPortrayal.tsx";
 import { BulletListPortrayal } from "./BulletListPortrayal.tsx";
 import { PieChartPortrayal } from "./PieChartPortrayal.tsx";

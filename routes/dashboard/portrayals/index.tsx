@@ -3,7 +3,7 @@ import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
 import {
   Portrayal,
   Portrayals,
-} from "../../../islands/src/PortrayalManager.ts";
+} from "../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
