@@ -47,7 +47,7 @@ class PortrayalManager {
 export const Portrayals = new PortrayalManager();
 
 export function loadHarborFunctions(): FunctionDefinition[] {
-  return [basicReportPortrayal(), bulletListPortrayal(), pieChartPortrayal()];
+  return [basicReportPortrayal(), bulletListPortrayal(), barChartPortrayal(), lineChartPortrayal(), pieChartPortrayal()];
 }
 
 export function basicReportPortrayal(): FunctionDefinition {
@@ -109,6 +109,86 @@ export function bulletListPortrayal(): FunctionDefinition {
         },
       },
       required: ["title", "abstract", "list"],
+    },
+  };
+}
+
+export function barChartPortrayal(): FunctionDefinition {
+  return {
+    name: "BarChartPortrayal",
+    description:
+      "The bar chart portrayal is used to pull together a chart that represents  acollection of data as a percentage of a whole.",
+    parameters: {
+      type: "object",
+      description:
+        "The bar chart represents a slice of data from the reports that represents data in a pie chart.",
+      properties: {
+        title: {
+          type: "string",
+          description:
+            "The title of the bar chart, short to describe what is in the chart.",
+        },
+        labels: {
+          type: "array",
+          description:
+            "The labels represent the entity whose data is being tracked. There should be the same number of labels in this array as are in the data array.",
+          items: {
+            type: "string",
+            description:
+              "This is a unique label that represents the entity that's data is being tracked.",
+          },
+        },
+        data: {
+          type: "array",
+          description:
+            "The data represents the value of data that is being tracked for an entity label. There should be the same number of datas in this array as are in the labels array.",
+          items: {
+            type: "number",
+            description: "This is the data value to use for a specific label.",
+          },
+        },
+      },
+      required: ["title", "labels", "data"],
+    },
+  };
+}
+
+export function lineChartPortrayal(): FunctionDefinition {
+  return {
+    name: "LineChartPortrayal",
+    description:
+      "The line chart portrayal is used to pull together a chart that represents  acollection of data as a percentage of a whole.",
+    parameters: {
+      type: "object",
+      description:
+        "The line chart represents a slice of data from the reports that represents data in a pie chart.",
+      properties: {
+        title: {
+          type: "string",
+          description:
+            "The title of the line chart, short to describe what is in the chart.",
+        },
+        labels: {
+          type: "array",
+          description:
+            "The labels represent the entity whose data is being tracked. There should be the same number of labels in this array as are in the data array.",
+          items: {
+            type: "string",
+            description:
+              "This is a unique label that represents the entity that's data is being tracked.",
+          },
+        },
+        data: {
+          type: "array",
+          description:
+            "The data represents the value of data that is being tracked for an entity label. There should be the same number of datas in this array as are in the labels array.",
+          items: {
+            type: "number",
+            description: "This is the data value to use for a specific label.",
+          },
+        },
+      },
+      required: ["title", "labels", "data"],
     },
   };
 }
