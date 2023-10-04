@@ -1,5 +1,5 @@
-import { AppProps } from '$fresh/server.ts';
-import { Action, HarborHeader } from '@harbor/atomic';
+import { AppProps } from "$fresh/server.ts";
+import { Action, HarborHeader } from "@harbor/atomic";
 
 export default function App({ Component }: AppProps) {
   return (
@@ -17,7 +17,9 @@ export default function App({ Component }: AppProps) {
               <>
                 <Action href="/dashboard" class="mx-2">Dashboard</Action>
 
-                <Action href="/dashboard/portrayals" class="mx-2">Portrayals</Action>
+                <Action href="/dashboard/portrayals" class="mx-2">
+                  Portrayals
+                </Action>
 
                 <Action href="/dashboard/reports" class="mx-2">Reports</Action>
               </>

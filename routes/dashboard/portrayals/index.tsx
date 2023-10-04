@@ -1,6 +1,9 @@
-import { Handlers, PageProps } from '$fresh/server.ts';
-import { PortrayalItem } from '../../../islands/PortrayalItem.tsx';
-import { Portrayal, Portrayals } from '../../../islands/src/PortrayalManager.ts';
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
+import {
+  Portrayal,
+  Portrayals,
+} from "../../../islands/src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -14,14 +17,14 @@ export const handler: Handlers = {
     const form = await req.formData();
 
     await Portrayals.Save({
-      name: form.get('name')?.toString()!,
-      lookup: form.get('lookup')?.toString()!,
-      type: form.get('type')?.toString()!,
-      details: JSON.parse(form.get('details')?.toString()!),
+      name: form.get("name")?.toString()!,
+      lookup: form.get("lookup")?.toString()!,
+      type: form.get("type")?.toString()!,
+      details: JSON.parse(form.get("details")?.toString()!),
     });
 
     const headers = new Headers();
-    headers.set('location', `/dashboard/portrayals`);
+    headers.set("location", `/dashboard/portrayals`);
 
     return new Response(null, {
       status: 303, // See Other

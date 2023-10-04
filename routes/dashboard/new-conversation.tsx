@@ -3,7 +3,7 @@ import { useEffect, useState } from "preact/hooks";
 import { ConvoState } from "../../state-flow/database.ts";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
+  GET(_req, ctx) {
     return ctx.render({});
   },
   async POST(req, ctx) {

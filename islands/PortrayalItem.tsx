@@ -13,7 +13,11 @@ export function PortrayalItem(props: PortrayalItemProps) {
   const { portrayal } = props;
 
   const handleDelete = async (portrayalLookup: string) => {
-    if (window.confirm(`Are you sure you want to delete this portrayal: ${portrayalLookup}?`)) {
+    if (
+      window.confirm(
+        `Are you sure you want to delete this portrayal: ${portrayalLookup}?`,
+      )
+    ) {
       await fetch(`/api/conversations/portrayals/${portrayalLookup}`, {
         method: "delete",
       });
@@ -24,7 +28,7 @@ export function PortrayalItem(props: PortrayalItemProps) {
 
   useEffect(() => {
     if (reload) {
-      location.href = location.href;
+      location.href = `${location.href}`;
     }
   }, [reload]);
 

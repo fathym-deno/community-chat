@@ -22,7 +22,7 @@ export function ConvoItem(props: ConvoItemProps) {
 
   useEffect(() => {
     if (reload) {
-      location.href = location.href;
+      location.href = `${location.href}`;
     }
   }, [reload]);
 

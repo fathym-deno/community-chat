@@ -1,103 +1,103 @@
-import { classSet } from '@harbor/atomic';
-import { ChartColors, transparentize } from '$fresh_charts/utils.ts';
-import ChartIsland from '../islands/ChartIsland.tsx';
+import { classSet } from "@harbor/atomic";
+import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
+import ChartIsland from "../islands/ChartIsland.tsx";
 
 interface LayoutProps {
   columns?: number;
 }
 
 const templateData = {
-  reportTitle: 'The Rise of Industrial Internet of Things',
+  reportTitle: "The Rise of Industrial Internet of Things",
   reportSubhead:
-    'Combinations of connected hardware and software assets that drive productive efficiency, augmenting what humans can do and in many cases reducing the need for human intervention.',
+    "Combinations of connected hardware and software assets that drive productive efficiency, augmenting what humans can do and in many cases reducing the need for human intervention.",
   reportContent:
     "The Industrial Internet of Things (IIoT) is a system of interconnected devices, machines, and sensors that collect and exchange data in an industrial setting [doc1]. The IIoT is part of Industry 4.0, which combines the hardware developed during Industry 3.0 and connects it through communications networks to new analytics and applications made possible by the Internet [doc1]. The IIoT can be used to sense, monitor, and manage industrial output to drive quantifiable return on investment (ROI) results [doc1]. The IIoT's impact can be felt across the entire value chain from raw materials to product and service delivery [doc1].",
-  bulletPointTitle: 'Key Innovations in the IIoT',
-  bulletPointSubhead: 'IIoT has many important innovations',
+  bulletPointTitle: "Key Innovations in the IIoT",
+  bulletPointSubhead: "IIoT has many important innovations",
   bulletPointContent: [
     {
-      title: 'Predictive Maintenance',
+      title: "Predictive Maintenance",
       content:
-        'Predictive maintenance uses data analytics and machine learning to predict when equipment is likely to fail, allowing for maintenance to be scheduled before a failure occurs .',
+        "Predictive maintenance uses data analytics and machine learning to predict when equipment is likely to fail, allowing for maintenance to be scheduled before a failure occurs .",
     },
     {
-      title: 'Digital Twins',
+      title: "Digital Twins",
       content:
-        'Digital twins are virtual replicas of physical devices or systems that can be used to simulate and optimize performance .',
+        "Digital twins are virtual replicas of physical devices or systems that can be used to simulate and optimize performance .",
     },
     {
-      title: '1D-CFD Simulation',
+      title: "1D-CFD Simulation",
       content:
-        '1D-CFD simulation of system level CFD focuses on the entire system rather than on the details of the flow inside a specific component of that system. Industries that can benefit from a 1D CFD Analysis include automotive, aerospace, chemical processing, energy, and oil & gas [doc1][doc4].',
+        "1D-CFD simulation of system level CFD focuses on the entire system rather than on the details of the flow inside a specific component of that system. Industries that can benefit from a 1D CFD Analysis include automotive, aerospace, chemical processing, energy, and oil & gas [doc1][doc4].",
     },
     {
-      title: 'Software-Defined Testing Systems',
+      title: "Software-Defined Testing Systems",
       content:
-        'National Instruments has reinvented its operating model to focus on software-defined testing systems [doc3].',
+        "National Instruments has reinvented its operating model to focus on software-defined testing systems [doc3].",
     },
     {
-      title: 'Data Analytics and Machine Learning',
+      title: "Data Analytics and Machine Learning",
       content:
-        'National Instruments has strengthened its software position with the addition of technologies such as data analytics and machine learning [doc3].',
+        "National Instruments has strengthened its software position with the addition of technologies such as data analytics and machine learning [doc3].",
     },
   ],
   pieChart: {
-    title: 'Global Automation Market By Product',
+    title: "Global Automation Market By Product",
     labels: [
-      'PLM',
-      'ERP',
-      'MES',
-      'SCADA',
-      'PLC',
-      'DCS',
-      'Other software',
-      'Robotics',
-      'Machine Vision',
-      'Sensors',
-      'Relays & Switches',
-      'Motors & Drives',
-      'Other',
+      "PLM",
+      "ERP",
+      "MES",
+      "SCADA",
+      "PLC",
+      "DCS",
+      "Other software",
+      "Robotics",
+      "Machine Vision",
+      "Sensors",
+      "Relays & Switches",
+      "Motors & Drives",
+      "Other",
     ],
     data: [21, 14, 4, 13, 5, 9, 3, 5, 5, 6, 3, 11, 1],
     borderColor: [
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(153, 102, 255, 1)',
-      'rgba(255, 159, 64, 1)',
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(153, 102, 255, 1)',
-      'rgba(255, 159, 64, 1)',
-      'rgba(75, 192, 192, 1)',
+      "rgba(255, 99, 132, 1)",
+      "rgba(54, 162, 235, 1)",
+      "rgba(255, 206, 86, 1)",
+      "rgba(75, 192, 192, 1)",
+      "rgba(153, 102, 255, 1)",
+      "rgba(255, 159, 64, 1)",
+      "rgba(255, 99, 132, 1)",
+      "rgba(54, 162, 235, 1)",
+      "rgba(255, 206, 86, 1)",
+      "rgba(75, 192, 192, 1)",
+      "rgba(153, 102, 255, 1)",
+      "rgba(255, 159, 64, 1)",
+      "rgba(75, 192, 192, 1)",
     ],
     backgroundColor: [
-      'rgba(255, 99, 132, 0.5)',
-      'rgba(54, 162, 235, 0.5)',
-      'rgba(255, 206, 86, 0.5)',
-      'rgba(75, 192, 192, 0.5)',
-      'rgba(153, 102, 255, 0.5)',
-      'rgba(255, 159, 64, 0.5)',
-      'rgba(255, 99, 132, 0.5)',
-      'rgba(54, 162, 235, 0.5)',
-      'rgba(255, 206, 86, 0.5)',
-      'rgba(75, 192, 192, 0.5)',
-      'rgba(153, 102, 255, 0.5)',
-      'rgba(255, 159, 64, 0.5)',
-      'rgba(75, 192, 192, 0.5)',
+      "rgba(255, 99, 132, 0.5)",
+      "rgba(54, 162, 235, 0.5)",
+      "rgba(255, 206, 86, 0.5)",
+      "rgba(75, 192, 192, 0.5)",
+      "rgba(153, 102, 255, 0.5)",
+      "rgba(255, 159, 64, 0.5)",
+      "rgba(255, 99, 132, 0.5)",
+      "rgba(54, 162, 235, 0.5)",
+      "rgba(255, 206, 86, 0.5)",
+      "rgba(75, 192, 192, 0.5)",
+      "rgba(153, 102, 255, 0.5)",
+      "rgba(255, 159, 64, 0.5)",
+      "rgba(75, 192, 192, 0.5)",
     ],
   },
   lineChart: {
-    title: 'Expected Growth in Industrial Software Market',
-    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+    title: "Expected Growth in Industrial Software Market",
+    labels: ["2018", "2019", "2020", "2021", "2022", "2023"],
     data: [35.02, 40.12, 45.23, 50.34, 55.45, 59.48],
   },
   barChart: {
-    title: 'Expected Growth in Industrial Software Market',
-    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+    title: "Expected Growth in Industrial Software Market",
+    labels: ["2018", "2019", "2020", "2021", "2022", "2023"],
     data: [35.02, 40.12, 45.23, 50.34, 55.45, 59.48],
   },
 };
@@ -236,7 +236,8 @@ export function LayoutIsland(props: LayoutProps) {
   const shell = (
     <div
       class={`grid sm:grid-cols-1 md:grid-cols-${columnsCurrent} md:gap-4 p-4 justify-center content-center`}
-    ></div>
+    >
+    </div>
   );
 
   return (
@@ -244,7 +245,7 @@ export function LayoutIsland(props: LayoutProps) {
       <div
         class={classSet(
           shell.props,
-          'bg-slate-100 dark:bg-slate-900 justify-center content-center'
+          "bg-slate-100 dark:bg-slate-900 justify-center content-center",
         )}
       >
         <div>
@@ -338,17 +339,17 @@ export function LayoutIsland(props: LayoutProps) {
               scales: { y: { ticks: {}, beginAtZero: true } },
             }}
             data={{
-              labels: ['1', '2', '3'],
+              labels: ["1", "2", "3"],
               datasets: [
                 {
-                  label: 'Sessions',
+                  label: "Sessions",
                   data: [123, 234, 234],
                   borderColor: ChartColors.Red,
                   backgroundColor: transparentize(ChartColors.Red, 0.5),
                   borderWidth: 1,
                 },
                 {
-                  label: 'Users',
+                  label: "Users",
                   data: [346, 233, 123],
                   borderColor: ChartColors.Blue,
                   backgroundColor: transparentize(ChartColors.Blue, 0.5),
@@ -363,24 +364,24 @@ export function LayoutIsland(props: LayoutProps) {
           <ChartIsland
             type="scatter"
             data={{
-              labels: ['1', '2', '3', '4', '5'],
+              labels: ["1", "2", "3", "4", "5"],
               datasets: [
                 {
-                  label: 'Scatter A',
+                  label: "Scatter A",
                   data: [123, 234, 200, 168, 93],
                   borderColor: ChartColors.Red,
                   backgroundColor: transparentize(ChartColors.Red, 0.5),
                   borderWidth: 1,
                 },
                 {
-                  label: 'Scatter B',
+                  label: "Scatter B",
                   data: [346, 233, 123, 68, 300],
                   borderColor: ChartColors.Blue,
                   backgroundColor: transparentize(ChartColors.Blue, 0.5),
                   borderWidth: 1,
                 },
                 {
-                  label: 'Scatter C',
+                  label: "Scatter C",
                   data: [216, 293, 170, 110, 243],
                   borderColor: ChartColors.Yellow,
                   backgroundColor: transparentize(ChartColors.Yellow, 0.5),

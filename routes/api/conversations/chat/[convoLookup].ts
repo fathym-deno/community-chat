@@ -10,7 +10,6 @@ import {
 } from "../../../../islands/src/openai/utils.ts";
 import { ConversationMessage } from "@fathym/synaptic";
 import { HarborPersonality } from "../../../../state-flow/personalities.config.ts";
-import { FunctionDefinition } from "npm:@azure/openai@next";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

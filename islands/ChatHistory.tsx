@@ -36,7 +36,7 @@ export function ChatHistory(props: ChatHistoryProps) {
       es.onmessage = (ev: MessageEvent<string>) => {
         if (ev.data === "[DONE]") {
           es.close();
-          location.href = location.href;
+          location.href = `${location.href}`;
         } else {
           botMessage.value = {
             Content: (botMessage.value?.Content || "") + ev.data,

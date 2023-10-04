@@ -1,6 +1,6 @@
-import { SendIcon } from '$fathym/atomic-icons';
-import { JSX } from 'preact';
-import { useState } from 'preact/hooks';
+import { SendIcon } from "$fathym/atomic-icons";
+import { JSX } from "preact";
+import { useState } from "preact/hooks";
 
 type ChatInputProps = JSX.HTMLAttributes<HTMLFormElement> & {
   postSrc: string;
@@ -9,10 +9,10 @@ type ChatInputProps = JSX.HTMLAttributes<HTMLFormElement> & {
 
 export function ChatInput(props: ChatInputProps) {
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
+    if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
 
-      const formEl: HTMLFormElement = document.querySelector('#chat-input')!;
+      const formEl: HTMLFormElement = document.querySelector("#chat-input")!;
 
       formEl.submit();
     }
@@ -31,7 +31,8 @@ export function ChatInput(props: ChatInputProps) {
           className="block w-full rounded-sm rounded-r-none border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black"
           placeholder="Ask Thinky... (Shift + Enter for a new line)"
           onKeyDown={handleKeyDown}
-        ></textarea>
+        >
+        </textarea>
 
         <button
           type="submit"

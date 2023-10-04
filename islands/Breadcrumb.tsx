@@ -13,7 +13,8 @@ export default function Breadcrumb() {
 
   return (
     <>
-      {/* <nav aria-label="breadcrumb">
+      {
+        /* <nav aria-label="breadcrumb">
         <ol className="inline-flex items-center space-x-2 px-2 py-1 text-sm font-medium">
           <li className="hidden md:inline-flex items-center">
             <a
@@ -70,7 +71,8 @@ export default function Breadcrumb() {
             </a>
           </li>
         </ol>
-      </nav> */}
+      </nav> */
+      }
     </>
   );
 }

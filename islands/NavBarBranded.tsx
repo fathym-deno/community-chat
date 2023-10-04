@@ -87,9 +87,11 @@ export default function NavbarBranded() {
                       Reports
                     </ButtonDynamic>
                   </a>
-                  {/* <a>
+                  {
+                    /* <a>
                     <DropDown user={user.name} email={user.email} />
-                  </a> */}
+                  </a> */
+                  }
                 </div>
               </div>
             </div>

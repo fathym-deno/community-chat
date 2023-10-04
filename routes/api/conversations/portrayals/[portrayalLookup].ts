@@ -4,16 +4,10 @@ import {
   LLM,
   Personalities,
 } from "../../../../state-flow/database.ts";
-import {
-  loadAzureExtensionOptions,
-  loadReadableChatStream,
-} from "../../../../islands/src/openai/utils.ts";
 import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
 import {
-  HarborPersonality,
   PortrayalsPersonality,
 } from "../../../../state-flow/personalities.config.ts";
-import { FunctionDefinition } from "npm:@azure/openai@next";
 import {
   Portrayal,
   Portrayals,
@@ -46,7 +40,7 @@ export const handler: Handlers = {
       o.name === apiReq.portrayal.type
     );
 
-    const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
+    // const azureSearchIndexName = Deno.env.get("AZURE_SEARCH_INDEX_NAME");
 
     const chatResp = await LLM.Chat(personality, messages, {
       Model: "gpt-4-32k",

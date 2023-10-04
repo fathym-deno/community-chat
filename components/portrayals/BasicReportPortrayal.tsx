@@ -1,4 +1,4 @@
-import { render } from '$gfm';
+import { render } from "$gfm";
 
 interface BasicReportPortrayalProps {
   abstract: string;
@@ -22,7 +22,8 @@ export function BasicReportPortrayal(props: BasicReportPortrayalProps) {
       <div
         class="p-3 pb-6 text-sm font-light"
         dangerouslySetInnerHTML={{ __html: contentMdx }}
-      ></div>
+      >
+      </div>
     </div>
   );
 }

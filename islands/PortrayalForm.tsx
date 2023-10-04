@@ -1,8 +1,8 @@
-import { JSX } from 'preact';
-import { FunctionDefinition } from 'npm:@azure/openai@next';
-import { useState } from 'preact/hooks';
-import { Portrayal } from './src/PortrayalManager.ts';
-import { LoadingIcon } from '../build/iconset/icons/LoadingIcon.tsx';
+import { JSX } from "preact";
+import { FunctionDefinition } from "npm:@azure/openai@next";
+import { useState } from "preact/hooks";
+import { Portrayal } from "./src/PortrayalManager.ts";
+import { LoadingIcon } from "../build/iconset/icons/LoadingIcon.tsx";
 import { BasicReportPortrayal } from "../components/portrayals/BasicReportPortrayal.tsx";
 import { BulletListPortrayal } from "../components/portrayals/BulletListPortrayal.tsx";
 import { PieChartPortrayal } from "../components/portrayals/PieChartPortrayal.tsx";
@@ -19,13 +19,13 @@ interface PortrayalFormProps {
 }
 
 export function PortrayalForm(props: PortrayalFormProps) {
-  const [formState, setFormState] = useState('regenerate');
-  const [command, setCommand] = useState('');
+  const [formState, setFormState] = useState("regenerate");
+  const [command, setCommand] = useState("");
   const [loading, setLoading] = useState(false);
   const [portrayal, setPortrayal] = useState<Portrayal>({} as Portrayal);
 
   const toggleFormState = () => {
-    setFormState(formState === 'regenerate' ? 'save' : 'regenerate');
+    setFormState(formState === "regenerate" ? "save" : "regenerate");
   };
 
   // deno-lint-ignore no-explicit-any
@@ -57,14 +57,13 @@ export function PortrayalForm(props: PortrayalFormProps) {
     });
   };
 
-  // deno-lint-ignore no-explicit-any
   const regenerate = () => {
     setLoading(true);
 
     fetch(props.regeneratePostSrc, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify({
         command: command,
@@ -90,14 +89,10 @@ export function PortrayalForm(props: PortrayalFormProps) {
           <form
             id="portrayal-form"
             method="post"
-            action={
-              formState === 'regenerate'
-                ? undefined
-                : props.savePostSrc
-            }
+            action={formState === "regenerate" ? undefined : props.savePostSrc}
             class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40 flex flex-col"
           >
-            {formState === 'regenerate' && (
+            {formState === "regenerate" && (
               <>
                 <select
                   name="portrayal"
@@ -130,7 +125,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
               </>
             )}
 
-            {formState === 'save' && (
+            {formState === "save" && (
               <>
                 <input type="hidden" name="type" value={portrayal.type} />
 
@@ -161,7 +156,8 @@ export function PortrayalForm(props: PortrayalFormProps) {
                 <button
                   type="submit"
                   className="flex items-center space-x-1 rounded-sm border border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 mb-2"
-                  disabled={!portrayal.type || !portrayal.name || !portrayal.lookup || !portrayal.details}
+                  disabled={!portrayal.type || !portrayal.name ||
+                    !portrayal.lookup || !portrayal.details}
                 >
                   Save
                 </button>
@@ -169,14 +165,13 @@ export function PortrayalForm(props: PortrayalFormProps) {
             )}
 
             <button type="button" onClick={toggleFormState}>
-              Switch to {formState === 'regenerate' ? 'Save' : 'Regenerate'}{' '}
+              Switch to {formState === "regenerate" ? "Save" : "Regenerate"}
+              {" "}
               Form
             </button>
           </form>
 
-          {portrayal.details && (
-            <PortrayalView portrayal={portrayal} />
-          )}
+          {portrayal.details && <PortrayalView portrayal={portrayal} />}
         </>
       )}
 
