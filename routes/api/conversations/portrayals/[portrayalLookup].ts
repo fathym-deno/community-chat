@@ -7,14 +7,17 @@ import {
 import {
   loadAzureExtensionOptions,
   loadReadableChatStream,
-} from "../../../../src/openai/utils.ts";
+} from "../../../../islands/src/openai/utils.ts";
 import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
 import {
   HarborPersonality,
   PortrayalsPersonality,
 } from "../../../../state-flow/personalities.config.ts";
 import { FunctionDefinition } from "npm:@azure/openai@next";
-import { Portrayal, Portrayals } from "../../../../src/PortrayalManager.ts";
+import {
+  Portrayal,
+  Portrayals,
+} from "../../../../islands/src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {

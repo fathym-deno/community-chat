@@ -1,9 +1,9 @@
 import { JSX } from 'preact';
-import { Portrayal } from '../../src/PortrayalManager.ts';
+import { Portrayal } from '../../islands/src/PortrayalManager.ts';
 import { BasicReportPortrayal } from './BasicReportPortrayal.tsx';
 import { BulletListPortrayal } from './BulletListPortrayal.tsx';
 import { PieChartPortrayal } from './PieChartPortrayal.tsx';
-import { classSet } from '@fathym/atomic';
+import { classSet } from '@harbor/atomic';
 
 type PortrayalViewProps = JSX.HTMLAttributes<HTMLDivElement> & {
   portrayal: Portrayal;

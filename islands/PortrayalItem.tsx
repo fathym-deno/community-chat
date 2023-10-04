@@ -1,7 +1,7 @@
 import { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { DeleteIcon } from "$fathym/atomic-icons";
-import { Portrayal } from "../src/PortrayalManager.ts";
+import { Portrayal } from "./src/PortrayalManager.ts";
 
 interface PortrayalItemProps {
   portrayal: Portrayal;

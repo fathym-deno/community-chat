@@ -32,6 +32,8 @@ import * as $$9 from "./islands/NavBarBranded.tsx";
 import * as $$10 from "./islands/PieChart.tsx";
 import * as $$11 from "./islands/PortrayalForm.tsx";
 import * as $$12 from "./islands/PortrayalItem.tsx";
+import * as $$13 from "./islands/src/PortrayalManager.ts";
+import * as $$14 from "./islands/src/openai/utils.ts";
 
 const manifest = {
   routes: {
@@ -67,6 +69,8 @@ const manifest = {
     "./islands/PieChart.tsx": $$10,
     "./islands/PortrayalForm.tsx": $$11,
     "./islands/PortrayalItem.tsx": $$12,
+    "./islands/src/PortrayalManager.ts": $$13,
+    "./islands/src/openai/utils.ts": $$14,
   },
   baseUrl: import.meta.url,
 };

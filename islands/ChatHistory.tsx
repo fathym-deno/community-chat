@@ -1,9 +1,3 @@
-import { JSX } from "preact";
-import { LovebotIcon } from "../build/iconset/icons/LovebotIcon.tsx";
-import { AcademicIcon } from "../build/iconset/icons/AcademicIcon.tsx";
-import { UserIcon } from "../build/iconset/icons/UserIcon.tsx";
-import { SendIcon } from "../build/iconset/icons/SendIcon.tsx";
-import { classSet } from "@fathym/atomic";
 import { ChatBox } from "../islands/ChatBox.tsx";
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";

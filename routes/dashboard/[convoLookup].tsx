@@ -7,7 +7,7 @@ import { ChatInput } from '../../islands/ChatInput.tsx';
 import { PortrayalForm } from '../../islands/PortrayalForm.tsx';
 import { useEffect, useState, useRef } from 'preact/hooks';
 import { ConversationMessage } from '@fathym/synaptic';
-import { Portrayals } from '../../src/PortrayalManager.ts';
+import { Portrayals } from '../../islands/src/PortrayalManager.ts';
 
 export const handler: Handlers = {
   async GET(req, ctx) {

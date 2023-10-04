@@ -1,10 +1,6 @@
-import { JSX } from 'preact';
-import { classSet } from '@fathym/atomic';
+import { classSet } from '@harbor/atomic';
 import { ChartColors, transparentize } from '$fresh_charts/utils.ts';
-import { bubbles, color } from '$fresh_charts/examples/utils.ts';
-import { type ChartJs } from '$fresh_charts/deps.ts';
 import ChartIsland from '../islands/ChartIsland.tsx';
-import { Chart } from '$fresh_charts/island.tsx';
 
 interface LayoutProps {
   columns?: number;
