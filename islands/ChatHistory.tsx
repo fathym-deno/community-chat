@@ -68,12 +68,15 @@ export function ChatHistory(props: ChatHistoryProps) {
         const icon: JSX.Element =
           message.From === 'user' ? icons.user : icons.bot;
 
+        const justifyEnd = message.From === 'user';
+
         return (
           <ChatBox
             key={index}
             color={color}
             content={message.Content}
             icon={icon}
+            justifyEnd={justifyEnd}
             timestamp={message.Timestamp!}
           />
         );
@@ -84,6 +87,7 @@ export function ChatHistory(props: ChatHistoryProps) {
           color={colors.user}
           content={userMessage.value.Content}
           icon={icons.user}
+          justifyEnd={true}
           timestamp={new Date()}
         />
       )}
