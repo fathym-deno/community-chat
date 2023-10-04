@@ -1,4 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { handler as portrayalsSvc } from "../../api/conversations/portrayals/[portrayalLookup].ts";
 import { PortrayalView } from "../../../components/portrayals/PortrayalView.tsx";
 import {
   Portrayal,
@@ -6,8 +7,10 @@ import {
 } from "../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
-    const portrayal = await Portrayals.Get(ctx.params.portrayalLookup);
+  async GET(req, ctx) {
+    const resp = await portrayalsSvc.GET!(req, ctx);
+
+    const portrayal: Portrayal = await resp.json();
 
     return ctx.render({
       portrayal,

@@ -11,6 +11,13 @@ import {
 import { Portrayal, Portrayals } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
+  async GET(_req, ctx) {
+    const portrayal = await Portrayals.Get(ctx.params.portrayalLookup);
+
+    return ctx.render({
+      portrayal,
+    });
+  },
   async POST(req, ctx) {
     const portrayalLookup = ctx.params.portrayalLookup;
 
