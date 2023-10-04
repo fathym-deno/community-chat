@@ -6,6 +6,7 @@ import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
 import { useEffect, useRef } from "preact/hooks";
 import { ConversationMessage } from "@fathym/synaptic";
 import { Portrayals } from "../../src/PortrayalManager.ts";
+import { SendIcon } from "$fathym/atomic-icons";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -64,6 +65,8 @@ export default function Chat(props: PageProps) {
         />
 
         <ChatInput
+          icon=">"
+          // icon={<SendIcon class="w-6 h-6" />}
           postSrc={chatPostSrc}
           ref={chatInputRef}
           useOpenChat={props.data.useOpenChat}

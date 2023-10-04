@@ -28,9 +28,8 @@ import * as $$5 from "./islands/DropDownButton.jsx";
 import * as $$6 from "./islands/FileUploader.tsx";
 import * as $$7 from "./islands/NavBar.tsx";
 import * as $$8 from "./islands/NavBarBranded.tsx";
-import * as $$9 from "./islands/PieChart.tsx";
-import * as $$10 from "./islands/PortrayalForm.tsx";
-import * as $$11 from "./islands/PortrayalItem.tsx";
+import * as $$9 from "./islands/PortrayalForm.tsx";
+import * as $$10 from "./islands/PortrayalItem.tsx";
 
 const manifest = {
   routes: {
@@ -62,9 +61,8 @@ const manifest = {
     "./islands/FileUploader.tsx": $$6,
     "./islands/NavBar.tsx": $$7,
     "./islands/NavBarBranded.tsx": $$8,
-    "./islands/PieChart.tsx": $$9,
-    "./islands/PortrayalForm.tsx": $$10,
-    "./islands/PortrayalItem.tsx": $$11,
+    "./islands/PortrayalForm.tsx": $$9,
+    "./islands/PortrayalItem.tsx": $$10,
   },
   baseUrl: import.meta.url,
 };

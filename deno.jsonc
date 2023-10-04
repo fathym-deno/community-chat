@@ -28,7 +28,7 @@
     "@fathym/atomic-icons": "https://deno.land/x/fathym_atomic_icons@v0.0.5-integration/mod.ts",
     "@fathym/atomic-icons/browser": "https://deno.land/x/fathym_atomic_icons@v0.0.5-integration/browser.ts",
     "@fathym/synaptic": "https://deno.land/x/fathym_synaptic@v0.0.25-integration/mod.ts",
-    "@harbor/atomic": "https://deno.land/x/harbor_research_harbor_atomic@v0.0.28-integration/mod.ts",
+    "@harbor/atomic": "https://deno.land/x/harbor_research_harbor_atomic@v0.0.30-integration/mod.ts",
     "$fathym/atomic-icons": "./build/iconset/icons/_exports.ts",
     "$fresh/": "https://deno.land/x/fresh@1.4.3/",
     "$fresh/plugins/twind.ts": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/twind.ts",
