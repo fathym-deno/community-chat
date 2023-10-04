@@ -1,4 +1,5 @@
 import { ChartType } from "$fresh_charts/island.tsx";
+import { ChartOptions } from "$fresh_charts/core.ts";
 import ChartIsland from "../../islands/ChartIsland.tsx";
 
 export type ChartPortrayalProps<
@@ -7,6 +8,8 @@ export type ChartPortrayalProps<
   data: number[];
 
   labels: string[];
+
+  options?: ChartOptions<TType>;
 
   title: string;
 
@@ -27,7 +30,7 @@ export function ChartPortrayal(props: ChartPortrayalProps) {
         }
         <ChartIsland
           type={props.type}
-          options={{}}
+          options={props.options || {}}
           data={{
             labels: props.labels,
             datasets: [
