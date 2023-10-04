@@ -11,7 +11,7 @@
         "run",
         "--unstable",
         "--config",
-        "./deno.json",
+        "./deno.jsonc",
         "--inspect-wait",
         "--allow-all",
         "./dev.ts"

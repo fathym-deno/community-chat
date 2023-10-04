@@ -21,19 +21,18 @@ import * as $15 from "./routes/dashboard/signout.tsx";
 import * as $16 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
-import * as $$2 from "./islands/ChatBox.tsx";
-import * as $$3 from "./islands/ChatHistory.tsx";
-import * as $$4 from "./islands/ChatInput.tsx";
-import * as $$5 from "./islands/ConvoItem.tsx";
-import * as $$6 from "./islands/DropDownButton.jsx";
-import * as $$7 from "./islands/FileUploader.tsx";
-import * as $$8 from "./islands/NavBar.tsx";
-import * as $$9 from "./islands/NavBarBranded.tsx";
-import * as $$10 from "./islands/PieChart.tsx";
-import * as $$11 from "./islands/PortrayalForm.tsx";
-import * as $$12 from "./islands/PortrayalItem.tsx";
-import * as $$13 from "./islands/src/PortrayalManager.ts";
-import * as $$14 from "./islands/src/openai/utils.ts";
+import * as $$2 from "./islands/ChatHistory.tsx";
+import * as $$3 from "./islands/ChatInput.tsx";
+import * as $$4 from "./islands/ConvoItem.tsx";
+import * as $$5 from "./islands/DropDownButton.jsx";
+import * as $$6 from "./islands/FileUploader.tsx";
+import * as $$7 from "./islands/NavBar.tsx";
+import * as $$8 from "./islands/NavBarBranded.tsx";
+import * as $$9 from "./islands/PieChart.tsx";
+import * as $$10 from "./islands/PortrayalForm.tsx";
+import * as $$11 from "./islands/PortrayalItem.tsx";
+import * as $$12 from "./islands/src/PortrayalManager.ts";
+import * as $$13 from "./islands/src/openai/utils.ts";
 
 const manifest = {
   routes: {
@@ -58,19 +57,18 @@ const manifest = {
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
     "./islands/ChartIsland.tsx": $$1,
-    "./islands/ChatBox.tsx": $$2,
-    "./islands/ChatHistory.tsx": $$3,
-    "./islands/ChatInput.tsx": $$4,
-    "./islands/ConvoItem.tsx": $$5,
-    "./islands/DropDownButton.jsx": $$6,
-    "./islands/FileUploader.tsx": $$7,
-    "./islands/NavBar.tsx": $$8,
-    "./islands/NavBarBranded.tsx": $$9,
-    "./islands/PieChart.tsx": $$10,
-    "./islands/PortrayalForm.tsx": $$11,
-    "./islands/PortrayalItem.tsx": $$12,
-    "./islands/src/PortrayalManager.ts": $$13,
-    "./islands/src/openai/utils.ts": $$14,
+    "./islands/ChatHistory.tsx": $$2,
+    "./islands/ChatInput.tsx": $$3,
+    "./islands/ConvoItem.tsx": $$4,
+    "./islands/DropDownButton.jsx": $$5,
+    "./islands/FileUploader.tsx": $$6,
+    "./islands/NavBar.tsx": $$7,
+    "./islands/NavBarBranded.tsx": $$8,
+    "./islands/PieChart.tsx": $$9,
+    "./islands/PortrayalForm.tsx": $$10,
+    "./islands/PortrayalItem.tsx": $$11,
+    "./islands/src/PortrayalManager.ts": $$12,
+    "./islands/src/openai/utils.ts": $$13,
   },
   baseUrl: import.meta.url,
 };

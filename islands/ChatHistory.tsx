@@ -1,8 +1,10 @@
-import { ChatBox } from "../islands/ChatBox.tsx";
-import { useEffect } from "preact/hooks";
-import { useSignal } from "@preact/signals";
-import { SSE } from "npm:sse.js";
-import { ConversationMessage } from "@fathym/synaptic";
+import { useEffect } from 'preact/hooks';
+import { useSignal } from '@preact/signals';
+import { SSE } from 'npm:sse.js';
+import { ConversationMessage } from '@fathym/synaptic';
+import { ChatBox } from '@harbor/atomic';
+import { LovebotIcon, UserIcon } from '$fathym/atomic-icons';
+import { JSX } from 'preact';
 
 interface ChatHistoryProps {
   convoLookup: string;
@@ -16,10 +18,10 @@ export function ChatHistory(props: ChatHistoryProps) {
   const userMessage = useSignal<ConversationMessage | undefined>(
     props.userMessage
       ? {
-        From: "user",
+        From: 'user',
         Content: props.userMessage,
       }
-      : undefined,
+      : undefined
   );
 
   const botMessage = useSignal<ConversationMessage | undefined>(undefined);
@@ -30,17 +32,17 @@ export function ChatHistory(props: ChatHistoryProps) {
         `/api/conversations/chat/${props.convoLookup}?useOpenChat=${props.useOpenChat}`,
         {
           payload: props.userMessage,
-        },
+        }
       );
 
       es.onmessage = (ev: MessageEvent<string>) => {
-        if (ev.data === "[DONE]") {
+        if (ev.data === '[DONE]') {
           es.close();
           location.href = `${location.href}`;
         } else {
           botMessage.value = {
-            Content: (botMessage.value?.Content || "") + ev.data,
-            From: "assistant",
+            Content: (botMessage.value?.Content || '') + ev.data,
+            From: 'assistant',
           };
         }
         // props.messageStreamed();
@@ -51,15 +53,49 @@ export function ChatHistory(props: ChatHistoryProps) {
     }
   }, []);
 
+  const colors = { user: 'blue', bot: 'green' };
+
+  const icons = {
+    user: <UserIcon class="w-6 h-6" />,
+    bot: <LovebotIcon class="w-6 h-6" />,
+  };
+
   return (
     <>
       {props.messages.map((message, index) => {
-        return <ChatBox key={index} message={message} />;
+        const color = message.From === 'user' ? colors.user : colors.bot;
+
+        const icon: JSX.Element =
+          message.From === 'user' ? icons.user : icons.bot;
+
+        return (
+          <ChatBox
+            key={index}
+            color={color}
+            content={message.Content}
+            icon={icon}
+            timestamp={message.Timestamp!}
+          />
+        );
       })}
 
-      {userMessage.value?.Content && <ChatBox message={userMessage.value!} />}
+      {userMessage.value?.Content && (
+        <ChatBox
+          color={colors.user}
+          content={userMessage.value.Content}
+          icon={icons.user}
+          timestamp={new Date()}
+        />
+      )}
 
-      {botMessage.value?.Content && <ChatBox message={botMessage.value!} />}
+      {botMessage.value?.Content && (
+        <ChatBox
+          color={colors.bot}
+          content={botMessage.value.Content}
+          icon={icons.bot}
+          timestamp={new Date()}
+        />
+      )}
     </>
   );
 }
