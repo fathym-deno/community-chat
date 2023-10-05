@@ -7,6 +7,7 @@ import {
 import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
 import personalities from "./personalities.config.ts";
 import { PortrayalManager } from "./PortrayalManager.ts";
+import { ReportManager } from "./ReportManager.ts";
 
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
 const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
@@ -22,3 +23,5 @@ export const LLM = new OpenAILLMAccessor(client);
 export const Personalities = new ConfigPersonalityProvider(personalities);
 
 export const Portrayals = new PortrayalManager(kv);
+
+export const Reports = new ReportManager(kv);
