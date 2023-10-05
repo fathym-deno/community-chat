@@ -2,8 +2,11 @@ import { FunctionDefinition } from "npm:@azure/openai@next";
 
 export type Portrayal = {
   Lookup: string;
+
   Name: string;
+
   Type: string;
+
   // deno-lint-ignore no-explicit-any
   Details: any;
 };

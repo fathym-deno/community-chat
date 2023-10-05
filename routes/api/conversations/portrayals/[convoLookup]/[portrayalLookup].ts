@@ -4,10 +4,10 @@ import {
   LLM,
   Personalities,
   Portrayals,
-} from "../../../../src/services.ts";
+} from "../../../../../src/services.ts";
 import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
-import { PortrayalsPersonality } from "../../../../src/personalities.config.ts";
-import { Portrayal } from "../../../../src/PortrayalManager.ts";
+import { PortrayalsPersonality } from "../../../../../src/personalities.config.ts";
+import { Portrayal } from "../../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -18,11 +18,13 @@ export const handler: Handlers = {
     });
   },
   async POST(req, ctx) {
+    const convoLookup = ctx.params.convoLookup;
+
     const portrayalLookup = ctx.params.portrayalLookup;
 
     const personality = await Personalities.Provide(PortrayalsPersonality);
 
-    const messages = (await ConvoState.History(portrayalLookup)) || [];
+    const messages = (await ConvoState.History(convoLookup)) || [];
 
     const apiReq = await req.json();
 

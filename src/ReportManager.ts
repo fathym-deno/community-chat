@@ -1,9 +1,22 @@
-import { FunctionDefinition } from "npm:@azure/openai@next";
+export type ReportLayout = {
+  Columns: number;
+};
+
+export type ReportLayoutSlot = {
+  ColumnSpan?: number;
+
+  PortrayalLookup: string;
+
+  RowSpan?: number;
+};
 
 export type Report = {
   Lookup: string;
-  Layout: ReportLayout;
+
+  Layout: string;
+
   Name: string;
+
   Slots: ReportLayoutSlot[];
 };
 
@@ -42,14 +55,6 @@ export class ReportManager {
     await this.kv.set([...this.reportsRoot, report.Lookup], report);
   }
 }
-
-export type ReportLayout = {
-  Columns: number;
-};
-
-export type ReportLayoutSlot = {
-  PortrayalLookup: string;
-};
 
 export function loadLayouts(): ReportLayout[] {
   return [basicLayout()];
