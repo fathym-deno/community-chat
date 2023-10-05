@@ -1,25 +1,25 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { handler as openAiSvc } from "../api/conversations/chat/[convoLookup].ts";
-import { ChatHistory } from "../../islands/ChatHistory.tsx";
-import { ChatInput } from "../../islands/ChatInput.tsx";
-import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
-import { useEffect, useRef } from "preact/hooks";
-import { ConversationMessage } from "@fathym/synaptic";
-import { Portrayals } from "../../src/PortrayalManager.ts";
-import { SendIcon } from "$fathym/atomic-icons";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { handler as openAiSvc } from '../api/conversations/chat/[convoLookup].ts';
+import { ChatHistory } from '../../islands/ChatHistory.tsx';
+import { ChatInput } from '../../islands/_islands.tsx';
+import { PortrayalForm } from '../../islands/PortrayalForm.tsx';
+import { useEffect, useRef } from 'preact/hooks';
+import { ConversationMessage } from '@fathym/synaptic';
+import { Portrayals } from '../../src/PortrayalManager.ts';
+import { SendIcon } from '$fathym/atomic-icons';
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    ctx.params.deploymentId = "gpt-4-32k";
+    ctx.params.deploymentId = 'gpt-4-32k';
 
     const resp = await openAiSvc.GET!(req, ctx);
 
     const messages: ConversationMessage[] = await resp.json();
 
     messages.unshift({
-      From: "assistant",
+      From: 'assistant',
       Content:
-        "Welcome to Harbor Research, providing AI powered industry knowledge.",
+        'Welcome to Harbor Research, providing AI powered industry knowledge.',
     });
 
     return ctx.render({
@@ -33,9 +33,9 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
 
-    ctx.params.newUserMessage = form.get("content")?.toString() || "";
+    ctx.params.newUserMessage = form.get('content')?.toString() || '';
 
-    ctx.params.useOpenChat = form.get("useOpenChat")?.toString() || "";
+    ctx.params.useOpenChat = form.get('useOpenChat')?.toString() || '';
 
     return handler.GET!(req, ctx);
   },
@@ -46,11 +46,12 @@ export default function Chat(props: PageProps) {
   const chatInputRef = useRef<HTMLFormElement>(null);
 
   function onMessageStreamed() {
-    chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
+    chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
   }
 
   useEffect(() => {
-    chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
+    chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
+    console.log(chatInputRef.current!);
   }, []);
 
   return (
@@ -65,12 +66,14 @@ export default function Chat(props: PageProps) {
         />
 
         <ChatInput
-          icon=">"
+          // icon=">"
           // icon={<SendIcon class="w-6 h-6" />}
-          postSrc={chatPostSrc}
+          src={chatPostSrc}
           ref={chatInputRef}
           useOpenChat={props.data.useOpenChat}
-        />
+        >
+          <SendIcon class="w-6 h-6" />
+        </ChatInput>
       </div>
 
       <div class="md:w-1/3 my-8 mx-4 md:(my-0 mx-8) sticky top-0">

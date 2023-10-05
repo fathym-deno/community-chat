@@ -22,14 +22,14 @@ import * as $16 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatHistory.tsx";
-import * as $$3 from "./islands/ChatInput.tsx";
-import * as $$4 from "./islands/ConvoItem.tsx";
-import * as $$5 from "./islands/DropDownButton.jsx";
-import * as $$6 from "./islands/FileUploader.tsx";
-import * as $$7 from "./islands/NavBar.tsx";
-import * as $$8 from "./islands/NavBarBranded.tsx";
-import * as $$9 from "./islands/PortrayalForm.tsx";
-import * as $$10 from "./islands/PortrayalItem.tsx";
+import * as $$3 from "./islands/ConvoItem.tsx";
+import * as $$4 from "./islands/DropDownButton.jsx";
+import * as $$5 from "./islands/FileUploader.tsx";
+import * as $$6 from "./islands/NavBar.tsx";
+import * as $$7 from "./islands/NavBarBranded.tsx";
+import * as $$8 from "./islands/PortrayalForm.tsx";
+import * as $$9 from "./islands/PortrayalItem.tsx";
+import * as $$10 from "./islands/_islands.tsx";
 
 const manifest = {
   routes: {
@@ -55,14 +55,14 @@ const manifest = {
     "./islands/Breadcrumb.tsx": $$0,
     "./islands/ChartIsland.tsx": $$1,
     "./islands/ChatHistory.tsx": $$2,
-    "./islands/ChatInput.tsx": $$3,
-    "./islands/ConvoItem.tsx": $$4,
-    "./islands/DropDownButton.jsx": $$5,
-    "./islands/FileUploader.tsx": $$6,
-    "./islands/NavBar.tsx": $$7,
-    "./islands/NavBarBranded.tsx": $$8,
-    "./islands/PortrayalForm.tsx": $$9,
-    "./islands/PortrayalItem.tsx": $$10,
+    "./islands/ConvoItem.tsx": $$3,
+    "./islands/DropDownButton.jsx": $$4,
+    "./islands/FileUploader.tsx": $$5,
+    "./islands/NavBar.tsx": $$6,
+    "./islands/NavBarBranded.tsx": $$7,
+    "./islands/PortrayalForm.tsx": $$8,
+    "./islands/PortrayalItem.tsx": $$9,
+    "./islands/_islands.tsx": $$10,
   },
   baseUrl: import.meta.url,
 };
