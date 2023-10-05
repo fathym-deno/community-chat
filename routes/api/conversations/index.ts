@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import { ConvoState } from "../../../state-flow/database.ts";
+import { ConvoState } from "../../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(_req, _ctx) {

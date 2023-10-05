@@ -2,7 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { ResetIcon } from "../../build/iconset/icons/ResetIcon.tsx";
 import { DeleteIcon } from "$fathym/atomic-icons";
 import { ConvoItem } from "../../islands/ConvoItem.tsx";
-import { ConvoState } from "../../state-flow/database.ts";
+import { ConvoState } from "../../src/services.ts";
 import { useEffect, useState } from "preact/hooks";
 
 export const handler: Handlers = {

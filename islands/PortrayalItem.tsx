@@ -35,16 +35,16 @@ export function PortrayalItem(props: PortrayalItemProps) {
   return (
     <>
       <a
-        href={`/dashboard/portrayals/${portrayal.lookup}`}
+        href={`/dashboard/portrayals/${portrayal.Lookup}`}
         className="text-blue-500 hover:underline"
       >
-        {portrayal.name} ({portrayal.lookup})
+        {portrayal.Name} ({portrayal.Lookup})
       </a>
 
       <button
         class="ml-2"
         onClick={() => {
-          handleDelete(portrayal.lookup).then();
+          handleDelete(portrayal.Lookup).then();
         }}
       >
         <DeleteIcon class="w-6 h-6 text-red-500" />

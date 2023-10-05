@@ -1,28 +1,34 @@
 import { FunctionDefinition } from "npm:@azure/openai@next";
 
 export type Portrayal = {
-  lookup: string;
-  name: string;
-  type: string;
+  Lookup: string;
+  Name: string;
+  Type: string;
   // deno-lint-ignore no-explicit-any
-  details: any;
+  Details: any;
 };
 
-const kv = await Deno.openKv();
+export class PortrayalManager {
+  constructor(
+    protected kv: Deno.Kv,
+    protected portrayalsRoot = ["Portrayals"],
+  ) {}
 
-class PortrayalManager {
   public async Delete(portrayalLookup: string): Promise<void> {
-    await kv.delete(["Portrayals", portrayalLookup]);
+    await this.kv.delete([...this.portrayalsRoot, portrayalLookup]);
   }
 
   public async Get(portrayalLookup: string): Promise<Portrayal> {
-    const { value } = await kv.get(["Portrayals", portrayalLookup]);
+    const { value } = await this.kv.get([
+      ...this.portrayalsRoot,
+      portrayalLookup,
+    ]);
 
     return value as Portrayal;
   }
 
   public async List(): Promise<Portrayal[]> {
-    const portrayalList = await kv.list({ prefix: ["Portrayals"] });
+    const portrayalList = await this.kv.list({ prefix: this.portrayalsRoot });
 
     const portrayals: Portrayal[] = [];
 
@@ -40,11 +46,9 @@ class PortrayalManager {
   }
 
   public async Save(portrayal: Portrayal): Promise<void> {
-    await kv.set(["Portrayals", portrayal.lookup], portrayal);
+    await this.kv.set([...this.portrayalsRoot, portrayal.Lookup], portrayal);
   }
 }
-
-export const Portrayals = new PortrayalManager();
 
 export function loadHarborFunctions(): FunctionDefinition[] {
   return [
@@ -57,7 +61,7 @@ export function loadHarborFunctions(): FunctionDefinition[] {
     bubbleChartPortrayal(),
     scatterChartPortrayal(),
     polarChartPortrayal(),
-    radarChartPortrayal()
+    radarChartPortrayal(),
   ];
 }
 
@@ -320,18 +324,19 @@ export function bubbleChartPortrayal(): FunctionDefinition {
             properties: {
               x: {
                 type: "number",
-                description: "The x-coordinate of the data point."
+                description: "The x-coordinate of the data point.",
               },
               y: {
                 type: "number",
-                description: "The y-coordinate of the data point."
+                description: "The y-coordinate of the data point.",
               },
               r: {
                 type: "number",
-                description: "The radius of the data point. If there is no value for this radius, use a standard value."
-              }
+                description:
+                  "The radius of the data point. If there is no value for this radius, use a standard value.",
+              },
             },
-            required: ["x", "y", "r"]
+            required: ["x", "y", "r"],
           },
         },
       },
@@ -371,19 +376,18 @@ export function scatterChartPortrayal(): FunctionDefinition {
             "The datasets represent the collection of data points. Each data point should have x and y.",
           items: {
             type: "object",
-            description:
-              "This is a unique data object that includes x and y.",
+            description: "This is a unique data object that includes x and y.",
             properties: {
               x: {
                 type: "number",
-                description: "The x-coordinate of the data point."
+                description: "The x-coordinate of the data point.",
               },
               y: {
                 type: "number",
-                description: "The y-coordinate of the data point."
-              }
+                description: "The y-coordinate of the data point.",
+              },
             },
-            required: ["x", "y"]
+            required: ["x", "y"],
           },
         },
       },

@@ -1,10 +1,7 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { handler as portrayalsSvc } from "../../api/conversations/portrayals/[portrayalLookup].ts";
-import { PortrayalView } from "../../../components/portrayals/PortrayalView.tsx";
-import {
-  Portrayal,
-  Portrayals,
-} from "../../../src/PortrayalManager.ts";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { handler as portrayalsSvc } from '../../api/conversations/portrayals/[portrayalLookup].ts';
+import { PortrayalView } from '../../../components/portrayals/PortrayalView.tsx';
+import { Portrayal } from '../../../src/PortrayalManager.ts';
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -24,7 +21,7 @@ export default function PortrayalsIndex(props: PageProps) {
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold mb-4">
-        {portrayal.name} ({portrayal.lookup})
+        {portrayal.Name} ({portrayal.Lookup})
       </h1>
 
       <PortrayalView class="max-w-screen-md" portrayal={portrayal} />

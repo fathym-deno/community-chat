@@ -5,8 +5,8 @@ import { ChatInput } from '../../islands/_islands.tsx';
 import { PortrayalForm } from '../../islands/PortrayalForm.tsx';
 import { useEffect, useRef } from 'preact/hooks';
 import { ConversationMessage } from '@fathym/synaptic';
-import { Portrayals } from '../../src/PortrayalManager.ts';
 import { SendIcon } from '$fathym/atomic-icons';
+import { Portrayals } from "../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {

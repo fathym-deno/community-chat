@@ -3,12 +3,11 @@ import {
   ConvoState,
   LLM,
   Personalities,
-} from "../../../../state-flow/database.ts";
+  Portrayals,
+} from "../../../../src/services.ts";
 import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
-import {
-  PortrayalsPersonality,
-} from "../../../../state-flow/personalities.config.ts";
-import { Portrayal, Portrayals } from "../../../../src/PortrayalManager.ts";
+import { PortrayalsPersonality } from "../../../../src/personalities.config.ts";
+import { Portrayal } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

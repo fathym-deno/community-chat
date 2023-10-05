@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { useEffect, useState } from "preact/hooks";
-import { ConvoState } from "../../state-flow/database.ts";
+import { ConvoState } from "../../src/services.ts";
 
 export const handler: Handlers = {
   GET(_req, ctx) {

@@ -21,44 +21,44 @@ export function PortrayalView(props: PortrayalViewProps) {
 
   return (
     <div {...props} class={classSet(props, "mb-2")}>
-      {portrayal.type === "BasicReportPortrayal" && (
-        <BasicReportPortrayal {...portrayal.details} />
+      {portrayal.Type === "BasicReportPortrayal" && (
+        <BasicReportPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "BulletListPortrayal" && (
-        <BulletListPortrayal {...portrayal.details} />
+      {portrayal.Type === "BulletListPortrayal" && (
+        <BulletListPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "BarChartPortrayal" && (
-        <BarChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "BarChartPortrayal" && (
+        <BarChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "LineChartPortrayal" && (
-        <LineChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "LineChartPortrayal" && (
+        <LineChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "PieChartPortrayal" && (
-        <PieChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "PieChartPortrayal" && (
+        <PieChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "DoughnutChartPortrayal" && (
-        <DoughnutChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "DoughnutChartPortrayal" && (
+        <DoughnutChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "BubbleChartPortrayal" && (
-        <BubbleChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "BubbleChartPortrayal" && (
+        <BubbleChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "ScatterChartPortrayal" && (
-        <ScatterChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "ScatterChartPortrayal" && (
+        <ScatterChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "PolarChartPortrayal" && (
-        <PolarChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "PolarChartPortrayal" && (
+        <PolarChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.type === "RadarChartPortrayal" && (
-        <RadarChartPortrayal {...portrayal.details} />
+      {portrayal.Type === "RadarChartPortrayal" && (
+        <RadarChartPortrayal {...portrayal.Details} />
       )}
 
       {/* <pre>{JSON.stringify(portrayal.details, null, 2)}</pre> */}
