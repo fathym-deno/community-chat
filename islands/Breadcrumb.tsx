@@ -15,18 +15,18 @@ export default function Breadcrumb() {
     <>
       {
         /* <nav aria-label="breadcrumb">
-        <ol className="inline-flex items-center space-x-2 px-2 py-1 text-sm font-medium">
-          <li className="hidden md:inline-flex items-center">
+        <ol class="inline-flex items-center space-x-2 px-2 py-1 text-sm font-medium">
+          <li class="hidden md:inline-flex items-center">
             <a
               href="#"
-              className="text-secondary-500 dark:text-blue-300 hover:text-secondary-600 dark:hover:text-blue-200"
+              class="text-secondary-500 dark:text-blue-300 hover:text-secondary-600 dark:hover:text-blue-200"
             >
               My Enterprise
             </a>
           </li>
-          <li className="hidden md:inline-flex items-center space-x-2">
+          <li class="hidden md:inline-flex items-center space-x-2">
             <svg
-              className="h-6 w-6 text-gray-400"
+              class="h-6 w-6 text-gray-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -40,18 +40,18 @@ export default function Breadcrumb() {
             </svg>
             <a
               href="#"
-              className="text-secondary-500 dark:text-blue-300 hover:text-secondary-600 dark:hover:text-blue-200"
+              class="text-secondary-500 dark:text-blue-300 hover:text-secondary-600 dark:hover:text-blue-200"
             >
               Project AwesomeSauce
             </a>
             <DropDown user={user.name} email={user.email} />
           </li>
           <li
-            className="inline-flex items-center space-x-2"
+            class="inline-flex items-center space-x-2"
             aria-current="page"
           >
             <svg
-              className="rotate-180 md:rotate-0 h-6 w-6 text-gray-400"
+              class="rotate-180 md:rotate-0 h-6 w-6 text-gray-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ export default function Breadcrumb() {
               </path>
             </svg>
             <a
-              className="text-secondary-700 dark:text-blue-200 hover:text-secondary-600 dark:hover:text-blue-100"
+              class="text-secondary-700 dark:text-blue-200 hover:text-secondary-600 dark:hover:text-blue-100"
               href="#"
             >
               AppSmooth

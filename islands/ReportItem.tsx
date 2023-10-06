@@ -1,18 +1,24 @@
 import { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { DeleteIcon } from "$fathym/atomic-icons";
+import { Report } from "../src/ReportManager.ts";
 
-interface ConvoItemProps {
-  convoLookup: string;
+interface ReportItemProps {
+  report: Report;
 }
 
-export function ConvoItem(props: ConvoItemProps) {
+export function ReportItem(props: ReportItemProps) {
   const [reload, setReload] = useState(false);
-  const { convoLookup } = props;
 
-  const handleDelete = async (convoLookup: string) => {
-    if (window.confirm("Are you sure you want to delete this conversation?")) {
-      await fetch(`/api/conversations/${convoLookup}`, {
+  const { report } = props;
+
+  const handleDelete = async (reportLookup: string) => {
+    if (
+      window.confirm(
+        `Are you sure you want to delete this report: ${reportLookup}?`,
+      )
+    ) {
+      await fetch(`/api/conversations/reports/${reportLookup}`, {
         method: "delete",
       });
 
@@ -29,16 +35,16 @@ export function ConvoItem(props: ConvoItemProps) {
   return (
     <>
       <a
-        href={`/dashboard/${convoLookup}`}
+        href={`/dashboard/reports/${report.Lookup}`}
         class="text-blue-500 hover:underline"
       >
-        {convoLookup}
+        {report.Name} ({report.Lookup})
       </a>
 
       <button
         class="ml-2"
         onClick={() => {
-          handleDelete(convoLookup).then();
+          handleDelete(report.Lookup).then();
         }}
       >
         <DeleteIcon class="w-6 h-6 text-red-500" />

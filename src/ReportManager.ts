@@ -1,5 +1,7 @@
 export type ReportLayout = {
   Columns: number;
+
+  RowHeight?: number;
 };
 
 export type ReportLayoutSlot = {

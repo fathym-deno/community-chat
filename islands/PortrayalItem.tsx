@@ -36,7 +36,7 @@ export function PortrayalItem(props: PortrayalItemProps) {
     <>
       <a
         href={`/dashboard/portrayals/${portrayal.Lookup}`}
-        className="text-blue-500 hover:underline"
+        class="text-blue-500 hover:underline"
       >
         {portrayal.Name} ({portrayal.Lookup})
       </a>

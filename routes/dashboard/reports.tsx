@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { LayoutIsland } from "../../components/Layout.tsx";
+import { LayoutIsland } from "../../components/reports/Layout.tsx";
 
 export const handler: Handlers = {
   GET(req, ctx) {

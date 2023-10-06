@@ -36,12 +36,12 @@ export default function Navbar() {
   }
 
   return (
-    <div className="min-h-full">
-      <nav className="bg-slate-800">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 text-[#67C7C5]">
+    <div class="min-h-full">
+      <nav class="bg-slate-800">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 text-[#67C7C5]">
                 <svg
                   fill="currentColor"
                   width="40"
@@ -67,8 +67,8 @@ export default function Navbar() {
                   </g>
                 </svg>
               </div>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
                   <a href="#">
                     <ButtonDynamic
                       twcolor="transparent"
@@ -121,16 +121,16 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-            <div className="hidden md:block">
-              <div className="ml-4 flex items-center md:ml-6">
+            <div class="hidden md:block">
+              <div class="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
-                  <span className="absolute -inset-1.5"></span>
-                  <span className="sr-only">View notifications</span>
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">View notifications</span>
                   <svg
-                    className="h-6 w-6"
+                    class="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
@@ -145,7 +145,7 @@ export default function Navbar() {
                   </svg>
                 </button>
 
-                <div className="relative ml-3">
+                <div class="relative ml-3">
                   <div
                     onMouseLeave={() => {
                       document.addEventListener(
@@ -156,17 +156,17 @@ export default function Navbar() {
                   >
                     <button
                       type="button"
-                      className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       id="user-menu-button"
                       onClick={toggleDropdown}
                       aria-expanded={isDropdownOpen}
                       aria-controls="dropdown-panel"
                       aria-haspopup="true"
                     >
-                      <span className="absolute -inset-1.5"></span>
-                      <span className="sr-only">Open user menu</span>
+                      <span class="absolute -inset-1.5"></span>
+                      <span class="sr-only">Open user menu</span>
                       <img
-                        className="h-8 w-8 rounded-full"
+                        class="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
@@ -175,14 +175,14 @@ export default function Navbar() {
                   {isDropdownOpen && (
                     <div
                       id="dropdown-panel"
-                      className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu-button"
                     >
                       <a
                         href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
+                        class="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         id="user-menu-item-0"
                       >
@@ -190,7 +190,7 @@ export default function Navbar() {
                       </a>
                       <a
                         href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
+                        class="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         id="user-menu-item-1"
                       >
@@ -198,7 +198,7 @@ export default function Navbar() {
                       </a>
                       <a
                         href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
+                        class="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -210,7 +210,7 @@ export default function Navbar() {
               </div>
             </div>
             <div
-              className="-mr-2 flex md:hidden"
+              class="-mr-2 flex md:hidden"
               onMouseLeave={() => {
                 document.addEventListener(
                   "click",
@@ -220,15 +220,15 @@ export default function Navbar() {
             >
               <button
                 type="button"
-                className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 onClick={toggleMobile}
                 aria-expanded={isMobileOpen}
                 aria-controls="mobile-menu"
               >
-                <span className="absolute -inset-0.5"></span>
-                <span className="sr-only">Open main menu</span>
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open main menu</span>
                 <svg
-                  className="block h-6 w-6"
+                  class="block h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -242,7 +242,7 @@ export default function Navbar() {
                   />
                 </svg>
                 <svg
-                  className="hidden h-6 w-6"
+                  class="hidden h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -260,65 +260,65 @@ export default function Navbar() {
           </div>
         </div>
         {isMobileOpen && (
-          <div className="md:hidden" id="mobile-menu">
-            <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <div class="md:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               <a
                 href="/dashboard"
-                className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                 aria-current="page"
               >
                 Dashboard
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Team
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Projects
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Calendar
               </a>
               <a
                 href="#"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
                 Reports
               </a>
             </div>
-            <div className="border-t border-gray-700 pb-3 pt-4">
-              <div className="flex items-center px-5">
-                <div className="flex-shrink-0">
+            <div class="border-t border-gray-700 pb-3 pt-4">
+              <div class="flex items-center px-5">
+                <div class="flex-shrink-0">
                   <img
-                    className="h-10 w-10 rounded-full"
+                    class="h-10 w-10 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   />
                 </div>
-                <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">
+                <div class="ml-3">
+                  <div class="text-base font-medium leading-none text-white">
                     {user.name}
                   </div>
-                  <div className="text-sm font-medium leading-none text-gray-400">
+                  <div class="text-sm font-medium leading-none text-gray-400">
                     {user.email}
                   </div>
                 </div>
                 <button
                   type="button"
-                  className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  class="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
-                  <span className="absolute -inset-1.5"></span>
-                  <span className="sr-only">View notifications</span>
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">View notifications</span>
                   <svg
-                    className="h-6 w-6"
+                    class="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
@@ -333,22 +333,22 @@ export default function Navbar() {
                   </svg>
                 </button>
               </div>
-              <div className="mt-3 space-y-1 px-2">
+              <div class="mt-3 space-y-1 px-2">
                 <a
                   href="#"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                  class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                 >
                   Your Profile
                 </a>
                 <a
                   href="#"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                  class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                 >
                   Settings
                 </a>
                 <a
                   href="#"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                  class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                 >
                   Sign out
                 </a>
@@ -358,14 +358,14 @@ export default function Navbar() {
         )}
       </nav>
 
-      <header className="bg-white dark:bg-slate-900 shadow">
-        <div className="mx-auto max-w-7xl px-2 py-1 sm:px-2 lg:px-4">
+      <header class="bg-white dark:bg-slate-900 shadow">
+        <div class="mx-auto max-w-7xl px-2 py-1 sm:px-2 lg:px-4">
           <Breadcrumb />
         </div>
       </header>
 
       <main>
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
           {/* Your content */}
         </div>
       </main>

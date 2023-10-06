@@ -14,7 +14,7 @@ export type ChartPortrayalProps<
   title: string;
 
   type: TType;
-}
+};
 
 export function ChartPortrayal(props: ChartPortrayalProps) {
   return (

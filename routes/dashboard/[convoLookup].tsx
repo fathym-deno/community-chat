@@ -1,25 +1,25 @@
-import { Handlers, PageProps } from '$fresh/server.ts';
-import { handler as openAiSvc } from '../api/conversations/chat/[convoLookup].ts';
-import { ChatHistory } from '../../islands/ChatHistory.tsx';
-import { ChatInput } from '../../islands/_islands.tsx';
-import { PortrayalForm } from '../../islands/PortrayalForm.tsx';
-import { useEffect, useRef } from 'preact/hooks';
-import { ConversationMessage } from '@fathym/synaptic';
-import { SendIcon } from '$fathym/atomic-icons';
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { handler as openAiSvc } from "../api/conversations/chat/[convoLookup].ts";
+import { ChatHistory } from "../../islands/ChatHistory.tsx";
+import { ChatInput } from "../../islands/_islands.tsx";
+import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
+import { useEffect, useRef } from "preact/hooks";
+import { ConversationMessage } from "@fathym/synaptic";
+import { SendIcon } from "$fathym/atomic-icons";
 import { Portrayals } from "../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    ctx.params.deploymentId = 'gpt-4-32k';
+    ctx.params.deploymentId = "gpt-4-32k";
 
     const resp = await openAiSvc.GET!(req, ctx);
 
     const messages: ConversationMessage[] = await resp.json();
 
     messages.unshift({
-      From: 'assistant',
+      From: "assistant",
       Content:
-        'Welcome to Harbor Research, providing AI powered industry knowledge.',
+        "Welcome to Harbor Research, providing AI powered industry knowledge.",
     });
 
     return ctx.render({
@@ -33,9 +33,9 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
 
-    ctx.params.newUserMessage = form.get('content')?.toString() || '';
+    ctx.params.newUserMessage = form.get("content")?.toString() || "";
 
-    ctx.params.useOpenChat = form.get('useOpenChat')?.toString() || '';
+    ctx.params.useOpenChat = form.get("useOpenChat")?.toString() || "";
 
     return handler.GET!(req, ctx);
   },
@@ -46,11 +46,11 @@ export default function Chat(props: PageProps) {
   const chatInputRef = useRef<HTMLFormElement>(null);
 
   function onMessageStreamed() {
-    chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
+    chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
   }
 
   useEffect(() => {
-    chatInputRef.current!.scrollIntoView({ behavior: 'smooth' });
+    chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
     console.log(chatInputRef.current!);
   }, []);
 
@@ -83,7 +83,7 @@ export default function Chat(props: PageProps) {
           <PortrayalForm
             convoLookup={props.data.convoLookup}
             options={props.data.portrayalOptions}
-            regeneratePostSrc={`/api/conversations/portrayals/${props.data.convoLookup}`}
+            regeneratePostSrc={`/api/conversations/portrayals/save/${props.data.convoLookup}`}
             savePostSrc={`/dashboard/portrayals`}
           />
         </div>

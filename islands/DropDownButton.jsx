@@ -22,7 +22,7 @@ export default function DropDown({ user, email, ...props }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-4 h-4"
+          class="w-4 h-4"
         >
           <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
         </svg>
@@ -36,7 +36,7 @@ export default function DropDown({ user, email, ...props }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-4 h-4"
+          class="w-4 h-4"
         >
           <path
             fillRule="evenodd"
@@ -54,7 +54,7 @@ export default function DropDown({ user, email, ...props }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-4 h-4"
+          class="w-4 h-4"
         >
           <path
             fillRule="evenodd"
@@ -73,7 +73,7 @@ export default function DropDown({ user, email, ...props }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-4 h-4"
+          class="w-4 h-4"
         >
           <path
             fillRule="evenodd"
@@ -91,7 +91,7 @@ export default function DropDown({ user, email, ...props }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-4 h-4"
+          class="w-4 h-4"
         >
           <path
             fillRule="evenodd"
@@ -111,7 +111,7 @@ export default function DropDown({ user, email, ...props }) {
   return (
     <div>
       <div
-        className="relative inline-block"
+        class="relative inline-block"
         onMouseLeave={() => {
           document.addEventListener("click", onClickOutsideListener);
         }}
@@ -134,10 +134,10 @@ export default function DropDown({ user, email, ...props }) {
               className={isDropdownOpen ? "group group-open" : "group"}
               open={isDropdownOpen}
             >
-              <div className="h-4 w-4 text-gray-400 group-open:text-indigo-600">
+              <div class="h-4 w-4 text-gray-400 group-open:text-indigo-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
+                  class="h-4 w-4"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -155,35 +155,35 @@ export default function DropDown({ user, email, ...props }) {
         {isDropdownOpen && (
           <div
             id="dropdown-panel"
-            className="absolute left-0 z-10 mt-2 w-60 divide-y divide-gray-100 dark:divide-slate-700 rounded-md border border-gray-100 dark:border-slate-700 bg-white dark:bg-slate-800 text-left text-sm shadow-lg"
+            class="absolute left-0 z-10 mt-2 w-60 divide-y divide-gray-100 dark:divide-slate-700 rounded-md border border-gray-100 dark:border-slate-700 bg-white dark:bg-slate-800 text-left text-sm shadow-lg"
           >
-            <div className="py-3 px-4">
-              <div className="flex items-center gap-3">
-                <div className="relative h-10 w-10">
+            <div class="py-3 px-4">
+              <div class="flex items-center gap-3">
+                <div class="relative h-10 w-10">
                   <img
-                    className="h-full w-full rounded-full object-cover object-center ring ring-white dark:ring-slate-800"
+                    class="h-full w-full rounded-full object-cover object-center ring ring-white dark:ring-slate-800"
                     src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   />
-                  <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white dark:ring-slate-800">
+                  <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white dark:ring-slate-800">
                   </span>
                 </div>
-                <div className="text-sm w-36">
-                  <div className="font-medium text-gray-700 dark:text-gray-100">
+                <div class="text-sm w-36">
+                  <div class="font-medium text-gray-700 dark:text-gray-100">
                     Matthew Smith
                   </div>
-                  <div className="text-xs text-gray-400 dark:text-gray-200 overflow-hidden">
+                  <div class="text-xs text-gray-400 dark:text-gray-200 overflow-hidden">
                     matthew.smith@fathym.com
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-1">
+            <div class="p-1">
               {menuItems.map((item, index) => (
                 <a
                   href={item.link}
-                  className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:text-blue-200 dark:hover:bg-slate-900"
+                  class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:text-blue-200 dark:hover:bg-slate-900"
                 >
                   {item.icon}
                   {item.title}
