@@ -1,15 +1,11 @@
 import { Handlers } from "$fresh/server.ts";
-import {
-  ConvoState,
-  LLM,
-  Personalities,
-} from "../../../../state-flow/database.ts";
+import { ConvoState, LLM, Personalities } from "../../../../src/services.ts";
 import {
   loadAzureExtensionOptions,
   loadReadableChatStream,
 } from "../../../../src/openai/utils.ts";
 import { ConversationMessage } from "@fathym/synaptic";
-import { HarborPersonality } from "../../../../state-flow/personalities.config.ts";
+import { HarborPersonality } from "../../../../src/personalities.config.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

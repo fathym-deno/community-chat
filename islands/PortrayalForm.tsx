@@ -3,9 +3,6 @@ import { FunctionDefinition } from "npm:@azure/openai@next";
 import { useState } from "preact/hooks";
 import { Portrayal } from "../src/PortrayalManager.ts";
 import { LoadingIcon } from "../build/iconset/icons/LoadingIcon.tsx";
-import { BasicReportPortrayal } from "../components/portrayals/BasicReportPortrayal.tsx";
-import { BulletListPortrayal } from "../components/portrayals/BulletListPortrayal.tsx";
-import { PieChartPortrayal } from "../components/portrayals/PieChartPortrayal.tsx";
 import { PortrayalView } from "../components/portrayals/PortrayalView.tsx";
 
 interface PortrayalFormProps {
@@ -32,7 +29,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
   const handleTypeChange = (event: any) => {
     setPortrayal({
       ...portrayal,
-      type: event.target.value,
+      Type: event.target.value,
     });
   };
 
@@ -45,7 +42,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
   const handleLookupChange = (event: any) => {
     setPortrayal({
       ...portrayal,
-      lookup: event.target.value,
+      Lookup: event.target.value,
     });
   };
 
@@ -53,7 +50,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
   const handleNameChange = (event: any) => {
     setPortrayal({
       ...portrayal,
-      name: event.target.value,
+      Name: event.target.value,
     });
   };
 
@@ -96,8 +93,8 @@ export function PortrayalForm(props: PortrayalFormProps) {
               <>
                 <select
                   name="portrayal"
-                  className="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
-                  value={portrayal.type}
+                  class="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
+                  value={portrayal.Type}
                   onChange={handleTypeChange}
                 >
                   <option>-- Choose --</option>
@@ -109,16 +106,16 @@ export function PortrayalForm(props: PortrayalFormProps) {
                 <textarea
                   name="command"
                   placeholder="Enter command"
-                  className="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
+                  class="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
                   value={command}
                   onChange={handleCommandChange}
                 />
 
                 <button
                   type="button"
-                  className="flex items-center space-x-1 rounded-sm border border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 mb-2"
+                  class="flex items-center space-x-1 rounded-sm border border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 mb-2"
                   onClick={regenerate}
-                  disabled={!portrayal.type}
+                  disabled={!portrayal.Type}
                 >
                   Generate
                 </button>
@@ -127,20 +124,20 @@ export function PortrayalForm(props: PortrayalFormProps) {
 
             {formState === "save" && (
               <>
-                <input type="hidden" name="type" value={portrayal.type} />
+                <input type="hidden" name="type" value={portrayal.Type} />
 
                 <input
                   type="hidden"
                   name="details"
-                  value={JSON.stringify(portrayal.details)}
+                  value={JSON.stringify(portrayal.Details)}
                 />
 
                 <input
                   type="text"
                   name="lookup"
                   placeholder="Enter lookup"
-                  className="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
-                  value={portrayal.lookup}
+                  class="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
+                  value={portrayal.Lookup}
                   onChange={handleLookupChange}
                 />
 
@@ -148,16 +145,16 @@ export function PortrayalForm(props: PortrayalFormProps) {
                   type="text"
                   name="name"
                   placeholder="Enter name"
-                  className="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
-                  value={portrayal.name}
+                  class="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
+                  value={portrayal.Name}
                   onChange={handleNameChange}
                 />
 
                 <button
                   type="submit"
-                  className="flex items-center space-x-1 rounded-sm border border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 mb-2"
-                  disabled={!portrayal.type || !portrayal.name ||
-                    !portrayal.lookup || !portrayal.details}
+                  class="flex items-center space-x-1 rounded-sm border border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300 mb-2"
+                  disabled={!portrayal.Type || !portrayal.Name ||
+                    !portrayal.Lookup || !portrayal.Details}
                 >
                   Save
                 </button>
@@ -171,7 +168,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
             </button>
           </form>
 
-          {portrayal.details && <PortrayalView portrayal={portrayal} />}
+          {portrayal.Details && <PortrayalView portrayal={portrayal} />}
         </>
       )}
 
