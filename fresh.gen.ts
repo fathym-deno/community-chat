@@ -9,7 +9,7 @@ import * as $3 from "./routes/api/conversations/chat/[convoLookup].ts";
 import * as $4 from "./routes/api/conversations/index.ts";
 import * as $5 from "./routes/api/conversations/portrayals/[portrayalLookup].ts";
 import * as $6 from "./routes/api/conversations/portrayals/index.ts";
-import * as $7 from "./routes/api/conversations/portrayals/save/[convoLookup].ts";
+import * as $7 from "./routes/api/conversations/portrayals/regenerate/[convoLookup].ts";
 import * as $8 from "./routes/api/conversations/reports/[reportLookup].ts";
 import * as $9 from "./routes/api/conversations/reports/index.ts";
 import * as $10 from "./routes/api/embeddings/files.ts";
@@ -23,9 +23,8 @@ import * as $17 from "./routes/dashboard/reports.tsx";
 import * as $18 from "./routes/dashboard/reports/[reportLookup].tsx";
 import * as $19 from "./routes/dashboard/reports/index.tsx";
 import * as $20 from "./routes/dashboard/reports/new.tsx";
-import * as $21 from "./routes/dashboard/reports/sample/[portrayalLookup].tsx";
-import * as $22 from "./routes/dashboard/signout.tsx";
-import * as $23 from "./routes/index.tsx";
+import * as $21 from "./routes/dashboard/signout.tsx";
+import * as $22 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChartIsland.tsx";
 import * as $$2 from "./islands/ChatHistory.tsx";
@@ -48,7 +47,7 @@ const manifest = {
     "./routes/api/conversations/index.ts": $4,
     "./routes/api/conversations/portrayals/[portrayalLookup].ts": $5,
     "./routes/api/conversations/portrayals/index.ts": $6,
-    "./routes/api/conversations/portrayals/save/[convoLookup].ts": $7,
+    "./routes/api/conversations/portrayals/regenerate/[convoLookup].ts": $7,
     "./routes/api/conversations/reports/[reportLookup].ts": $8,
     "./routes/api/conversations/reports/index.ts": $9,
     "./routes/api/embeddings/files.ts": $10,
@@ -62,9 +61,8 @@ const manifest = {
     "./routes/dashboard/reports/[reportLookup].tsx": $18,
     "./routes/dashboard/reports/index.tsx": $19,
     "./routes/dashboard/reports/new.tsx": $20,
-    "./routes/dashboard/reports/sample/[portrayalLookup].tsx": $21,
-    "./routes/dashboard/signout.tsx": $22,
-    "./routes/index.tsx": $23,
+    "./routes/dashboard/signout.tsx": $21,
+    "./routes/index.tsx": $22,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,

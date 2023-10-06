@@ -11,6 +11,26 @@ export const handler: Handlers = {
       portrayals,
     });
   },
+  async POST(req, ctx) {
+    const form = await req.formData();
+
+    const portrayalLookup = form.get('lookup')?.toString()!;
+
+    await Portrayals.Save({
+      Name: form.get('name')?.toString()!,
+      Lookup: portrayalLookup,
+      Type: form.get('type')?.toString()!,
+      Details: JSON.parse(form.get('details')?.toString()!),
+    });
+
+    const headers = new Headers();
+    headers.set('location', `/dashboard/portrayals/${portrayalLookup}`);
+
+    return new Response(null, {
+      status: 303, // See Other
+      headers,
+    });
+  },
 };
 
 export default function PortrayalsIndex(props: PageProps) {
