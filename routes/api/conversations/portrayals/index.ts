@@ -1,11 +1,9 @@
 import { Handlers } from "$fresh/server.ts";
-import { ConvoState } from "../../../state-flow/database.ts";
+import { Portrayals } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, _ctx) {
-    const convos = (await ConvoState.GetAll()) || {};
-
-    const body = JSON.stringify(convos);
+    const body = JSON.stringify(await Portrayals.Options());
 
     return new Response(body, {
       headers: {

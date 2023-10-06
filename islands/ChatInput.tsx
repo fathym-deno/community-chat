@@ -2,9 +2,10 @@ import { SendIcon } from "$fathym/atomic-icons";
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
 
-interface ChatInputProps {
+type ChatInputProps = JSX.HTMLAttributes<HTMLFormElement> & {
   postSrc: string;
-}
+  useOpenChat: boolean;
+};
 
 export function ChatInput(props: ChatInputProps) {
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -40,6 +41,17 @@ export function ChatInput(props: ChatInputProps) {
         >
           <SendIcon class="w-6 h-6" />
         </button>
+      </div>
+      <div className="mt-2">
+        <label className="inline-flex items-center">
+          <input
+            type="checkbox"
+            name="useOpenChat"
+            className="form-checkbox h-5 w-5 text-blue-600"
+            checked={props.useOpenChat}
+          />
+          <span className="ml-2 text-gray-700">Use Open Chat</span>
+        </label>
       </div>
     </form>
   );

@@ -1,6 +1,5 @@
 import { AppProps } from "$fresh/server.ts";
-import NavbarBranded from "../islands/NavBarBranded.tsx";
-import { handler } from "./api/conversations/chat/[convoId].ts";
+import { Action, HarborHeader } from "@harbor/atomic";
 
 export default function App({ Component }: AppProps) {
   return (
@@ -13,7 +12,19 @@ export default function App({ Component }: AppProps) {
       </head>
       <body class="mx-auto dark:text-white dark:bg-gray-900">
         <div class="mx-auto dark:bg-gray-900">
-          <NavbarBranded />
+          <HarborHeader
+            nav={
+              <>
+                <Action href="/dashboard" class="mx-2">Dashboard</Action>
+
+                <Action href="/dashboard/portrayals" class="mx-2">
+                  Portrayals
+                </Action>
+
+                <Action href="/dashboard/reports" class="mx-2">Reports</Action>
+              </>
+            }
+          />
 
           <div class="mx-auto flex flex-col">
             <Component />

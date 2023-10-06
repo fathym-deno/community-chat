@@ -1,71 +1,51 @@
-import { JSX } from "preact";
-import { LovebotIcon } from "../build/iconset/icons/LovebotIcon.tsx";
-import { ConversationMessage } from "../state-flow/database.ts";
-import { AcademicIcon } from "../build/iconset/icons/AcademicIcon.tsx";
-import { UserIcon } from "../build/iconset/icons/UserIcon.tsx";
-import { SendIcon } from "../build/iconset/icons/SendIcon.tsx";
-import { classSet } from "@fathym/atomic";
-import { ChatBox } from "../islands/ChatBox.tsx";
-import { useEffect } from "preact/hooks";
-import { useSignal } from "@preact/signals";
-import { SSE } from "npm:sse.js";
-import TextStream from "./TextStream.tsx";
+import { useEffect } from 'preact/hooks';
+import { useSignal } from '@preact/signals';
+import { SSE } from 'npm:sse.js';
+import { ConversationMessage } from '@fathym/synaptic';
+import { ChatBox } from '@harbor/atomic';
+import { LovebotIcon, UserIcon } from '$fathym/atomic-icons';
+import { JSX } from 'preact';
 
 interface ChatHistoryProps {
-  convoId: string;
-
+  convoLookup: string;
   messages: ConversationMessage[];
-
   messageStreamed: () => void;
-
+  useOpenChat: boolean;
   userMessage: string;
-}
-
-function scrollBottom() {
-  setTimeout(() => {
-    document.querySelector("html"),
-      scrollTo(0, document.querySelector("html")!.scrollHeight);
-  }, 0);
 }
 
 export function ChatHistory(props: ChatHistoryProps) {
   const userMessage = useSignal<ConversationMessage | undefined>(
     props.userMessage
       ? {
-        From: "user",
+        From: 'user',
         Content: props.userMessage,
       }
-      : undefined,
+      : undefined
   );
 
   const botMessage = useSignal<ConversationMessage | undefined>(undefined);
 
   useEffect(() => {
-    // scrollBottom();
-
     if (userMessage.value) {
       const es = new SSE(
-        `/api/conversations/chat/${props.convoId}`,
+        `/api/conversations/chat/${props.convoLookup}?useOpenChat=${props.useOpenChat}`,
         {
           payload: props.userMessage,
-        },
+        }
       );
 
       es.onmessage = (ev: MessageEvent<string>) => {
-        if (ev.data === "[DONE]") {
+        if (ev.data === '[DONE]') {
           es.close();
-
-          // props.messageStreamed();
-          location.href = location.href;
+          location.href = `${location.href}`;
         } else {
           botMessage.value = {
-            Content: (botMessage.value?.Content || "") + ev.data,
-            From: "assistant",
+            Content: (botMessage.value?.Content || '') + ev.data,
+            From: 'assistant',
           };
         }
-
-        // scrollBottom();
-
+        // props.messageStreamed();
         return () => {
           es.close();
         };
@@ -73,15 +53,49 @@ export function ChatHistory(props: ChatHistoryProps) {
     }
   }, []);
 
+  const colors = { user: 'blue', bot: 'green' };
+
+  const icons = {
+    user: <UserIcon class="w-6 h-6" />,
+    bot: <LovebotIcon class="w-6 h-6" />,
+  };
+
   return (
     <>
       {props.messages.map((message, index) => {
-        return <ChatBox key={index} message={message} />;
+        const color = message.From === 'user' ? colors.user : colors.bot;
+
+        const icon: JSX.Element =
+          message.From === 'user' ? icons.user : icons.bot;
+
+        return (
+          <ChatBox
+            key={index}
+            color={color}
+            content={message.Content}
+            icon={icon}
+            timestamp={message.Timestamp!}
+          />
+        );
       })}
 
-      {userMessage.value?.Content && <ChatBox message={userMessage.value!} />}
+      {userMessage.value?.Content && (
+        <ChatBox
+          color={colors.user}
+          content={userMessage.value.Content}
+          icon={icons.user}
+          timestamp={new Date()}
+        />
+      )}
 
-      {botMessage.value?.Content && <ChatBox message={botMessage.value!} />}
+      {botMessage.value?.Content && (
+        <ChatBox
+          color={colors.bot}
+          content={botMessage.value.Content}
+          icon={icons.bot}
+          timestamp={new Date()}
+        />
+      )}
     </>
   );
 }

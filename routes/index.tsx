@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { setCookie } from "$std/http/cookie.ts";
+import { SignIn } from "@harbor/atomic";
 
 export const handler: Handlers = {
   GET(_req, ctx) {
@@ -30,9 +31,26 @@ export const handler: Handlers = {
 
 export default function Home(props: PageProps) {
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
-      <form method="post" className="w-full max-w-sm">
+    <div className="container px-4">
+      <div class="mx-auto max-w-screen-md">
+        <h1 className="text-2xl font-bold mb-4">Sign In</h1>
+
+        <SignIn
+          signInOptions={{
+            usernameInputProps: {
+              class: "hidden",
+            },
+            forgotPasswordActionProps: {
+              class: "hidden",
+            },
+            submitActionProps: {
+              class: "ml-auto",
+            },
+          }}
+        />
+      </div>
+
+      <form method="post" className="w-full max-w-sm py-8">
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label
