@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { Portrayal } from "../../../../src/PortrayalManager.ts";
-import { Portrayals } from "../../../../src/services.ts";
+import { Portrayal } from "../../../src/PortrayalManager.ts";
+import { Portrayals } from "../../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

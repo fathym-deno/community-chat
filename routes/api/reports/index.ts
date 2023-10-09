@@ -1,11 +1,9 @@
 import { Handlers } from "$fresh/server.ts";
-import { ConvoState } from "../../../src/services.ts";
+import { Reports } from "../../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(_req, _ctx) {
-    const convos = (await ConvoState.GetAll()) || {};
-
-    const body = JSON.stringify(convos);
+    const body = JSON.stringify(await Reports.Layouts());
 
     return new Response(body, {
       headers: {

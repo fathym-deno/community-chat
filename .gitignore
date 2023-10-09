@@ -9,3 +9,5 @@ fresh.config.ts
 fresh.gen.ts
 # Fresh build directory
 _fresh/
+# Deno KV
+denoKv/

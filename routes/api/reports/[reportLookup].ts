@@ -1,6 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import { Reports } from "../../../../src/services.ts";
-import { Report } from "../../../../src/ReportManager.ts";
+import { Reports } from "../../../src/services.ts";
+import { Report } from "../../../src/ReportManager.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {

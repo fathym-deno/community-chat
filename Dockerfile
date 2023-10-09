@@ -1,4 +1,4 @@
-FROM denoland/deno:1.33.2
+FROM denoland/deno:latest
 
 ARG VERSION
 ENV DENO_DEPLOYMENT_ID=${VERSION}

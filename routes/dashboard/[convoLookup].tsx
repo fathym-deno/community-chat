@@ -1,5 +1,4 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { handler as openAiSvc } from "../api/conversations/chat/[convoLookup].ts";
 import { ChatHistory } from "../../islands/ChatHistory.tsx";
 import { ChatInput } from "../../islands/_islands.tsx";
 import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
@@ -7,12 +6,11 @@ import { useEffect, useRef } from "preact/hooks";
 import { ConversationMessage } from "@fathym/synaptic";
 import { SendIcon } from "$fathym/atomic-icons";
 import { Portrayals } from "../../src/services.ts";
+import { synapticPluginDef } from "../../fresh.config.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    ctx.params.deploymentId = "gpt-4-32k";
-
-    const resp = await openAiSvc.GET!(req, ctx);
+    const resp = await synapticPluginDef.Handlers.ChatConvoLookup.GET!(req, ctx);
 
     const messages: ConversationMessage[] = await resp.json();
 
@@ -83,7 +81,7 @@ export default function Chat(props: PageProps) {
           <PortrayalForm
             convoLookup={props.data.convoLookup}
             options={props.data.portrayalOptions}
-            regeneratePostSrc={`/api/conversations/portrayals/regenerate/${props.data.convoLookup}`}
+            regeneratePostSrc={`/api/portrayals/regenerate/${props.data.convoLookup}`}
             savePostSrc={`/dashboard/portrayals`}
           />
         </div>

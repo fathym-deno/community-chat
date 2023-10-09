@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { handler as portrayalsSvc } from "../../api/conversations/portrayals/[portrayalLookup].ts";
+import { handler as portrayalsSvc } from "../../api/portrayals/[portrayalLookup].ts";
 import { PortrayalView } from "../../../components/portrayals/PortrayalView.tsx";
 import { Portrayal } from "../../../src/PortrayalManager.ts";
 
