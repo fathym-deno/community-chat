@@ -23,17 +23,16 @@ import * as $17 from "./routes/dashboard/reports/new.tsx";
 import * as $18 from "./routes/dashboard/signout.tsx";
 import * as $19 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
-import * as $$1 from "./islands/ChartIsland.tsx";
-import * as $$2 from "./islands/ChatHistory.tsx";
-import * as $$3 from "./islands/ConvoItem.tsx";
-import * as $$4 from "./islands/DropDownButton.jsx";
-import * as $$5 from "./islands/FileUploader.tsx";
-import * as $$6 from "./islands/NavBar.tsx";
-import * as $$7 from "./islands/NavBarBranded.tsx";
-import * as $$8 from "./islands/PortrayalForm.tsx";
-import * as $$9 from "./islands/PortrayalItem.tsx";
-import * as $$10 from "./islands/ReportItem.tsx";
-import * as $$11 from "./islands/_islands.tsx";
+import * as $$1 from "./islands/ChatHistory.tsx";
+import * as $$2 from "./islands/ConvoItem.tsx";
+import * as $$3 from "./islands/DropDownButton.jsx";
+import * as $$4 from "./islands/FileUploader.tsx";
+import * as $$5 from "./islands/NavBar.tsx";
+import * as $$6 from "./islands/NavBarBranded.tsx";
+import * as $$7 from "./islands/PortrayalForm.tsx";
+import * as $$8 from "./islands/PortrayalItem.tsx";
+import * as $$9 from "./islands/ReportItem.tsx";
+import * as $$10 from "./islands/_islands.tsx";
 
 const manifest = {
   routes: {
@@ -60,17 +59,16 @@ const manifest = {
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
-    "./islands/ChartIsland.tsx": $$1,
-    "./islands/ChatHistory.tsx": $$2,
-    "./islands/ConvoItem.tsx": $$3,
-    "./islands/DropDownButton.jsx": $$4,
-    "./islands/FileUploader.tsx": $$5,
-    "./islands/NavBar.tsx": $$6,
-    "./islands/NavBarBranded.tsx": $$7,
-    "./islands/PortrayalForm.tsx": $$8,
-    "./islands/PortrayalItem.tsx": $$9,
-    "./islands/ReportItem.tsx": $$10,
-    "./islands/_islands.tsx": $$11,
+    "./islands/ChatHistory.tsx": $$1,
+    "./islands/ConvoItem.tsx": $$2,
+    "./islands/DropDownButton.jsx": $$3,
+    "./islands/FileUploader.tsx": $$4,
+    "./islands/NavBar.tsx": $$5,
+    "./islands/NavBarBranded.tsx": $$6,
+    "./islands/PortrayalForm.tsx": $$7,
+    "./islands/PortrayalItem.tsx": $$8,
+    "./islands/ReportItem.tsx": $$9,
+    "./islands/_islands.tsx": $$10,
   },
   baseUrl: import.meta.url,
 };

@@ -8,11 +8,20 @@ import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
 import personalities from "./personalities.config.ts";
 import { PortrayalManager } from "./PortrayalManager.ts";
 import { ReportManager } from "./ReportManager.ts";
+import { existsSync } from "@fathym/common";
+import { dirname } from "$std/path/mod.ts";
 
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
 const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
+const denoKvPath = Deno.env.get("DENO_KV_PATH") || undefined;
 
-const kv = await Deno.openKv('./denoKv/deno.db');
+if (denoKvPath && !existsSync(denoKvPath)) {
+  const path = dirname(denoKvPath);
+
+  Deno.mkdirSync(path);
+}
+
+const kv = await Deno.openKv(denoKvPath);
 
 const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
 

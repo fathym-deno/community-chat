@@ -1,6 +1,6 @@
 import { ChartType } from "$fresh_charts/island.tsx";
 import { ChartOptions } from "$fresh_charts/core.ts";
-import ChartIsland from "../../islands/ChartIsland.tsx";
+import ChartIsland from "../../islands/_islands.tsx";
 
 export type ChartPortrayalProps<
   TType extends ChartType = ChartType,
