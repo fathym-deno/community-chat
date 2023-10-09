@@ -12,7 +12,7 @@ import { ReportManager } from "./ReportManager.ts";
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
 const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
 
-const kv = await Deno.openKv();
+const kv = await Deno.openKv('./denoKv/deno.db');
 
 const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
 
