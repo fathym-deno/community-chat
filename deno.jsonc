@@ -30,7 +30,7 @@
     "_@fathym/synaptic": "../synaptic/mod.ts",
     "@fathym/synaptic": "https://deno.land/x/fathym_synaptic@v0.0.26-integration/mod.ts",
     "_@harbor/atomic": "../../harbor-research/harbor-atomic/mod.ts",
-    "@harbor/atomic": "https://deno.land/x/harbor_research_harbor_atomic@v0.0.31-integration/mod.ts",
+    "@harbor/atomic": "https://deno.land/x/harbor_research_harbor_atomic@v0.0.32-integration/mod.ts",
     "$fathym/atomic-icons": "./build/iconset/icons/_exports.ts",
     "$fresh/": "https://deno.land/x/fresh@1.4.3/",
     "$fresh/plugins/twind.ts": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/twind.ts",
