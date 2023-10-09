@@ -18,7 +18,7 @@ export function ReportItem(props: ReportItemProps) {
         `Are you sure you want to delete this report: ${reportLookup}?`,
       )
     ) {
-      await fetch(`/api/conversations/reports/${reportLookup}`, {
+      await fetch(`/api/reports/${reportLookup}`, {
         method: "delete",
       });
 

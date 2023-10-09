@@ -18,7 +18,7 @@ export function PortrayalItem(props: PortrayalItemProps) {
         `Are you sure you want to delete this portrayal: ${portrayalLookup}?`,
       )
     ) {
-      await fetch(`/api/conversations/portrayals/${portrayalLookup}`, {
+      await fetch(`/api/portrayals/${portrayalLookup}`, {
         method: "delete",
       });
 

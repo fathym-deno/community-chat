@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { handler as reportsSvc } from "../../api/conversations/reports/[reportLookup].ts";
+import { handler as reportsSvc } from "../../api/reports/[reportLookup].ts";
 import { PortrayalView } from "../../../components/portrayals/PortrayalView.tsx";
 import { Report } from "../../../src/ReportManager.ts";
 import { LayoutIsland } from "../../../components/reports/Layout.tsx";

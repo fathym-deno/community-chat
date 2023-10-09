@@ -4,10 +4,10 @@ import {
   LLM,
   Personalities,
   Portrayals,
-} from "../../../../../src/services.ts";
+} from "../../../../src/services.ts";
 import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
-import { PortrayalsPersonality } from "../../../../../src/personalities.config.ts";
-import { Portrayal } from "../../../../../src/PortrayalManager.ts";
+import { PortrayalsPersonality } from "../../../../src/personalities.config.ts";
+import { Portrayal } from "../../../../src/PortrayalManager.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {
