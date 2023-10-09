@@ -11,8 +11,7 @@ import {
   RadarChartPortrayal,
   ScatterChartPortrayal,
 } from '../../islands/_charts.ts';
-import { BasicReportPortrayal } from './BasicReportPortrayal.tsx';
-import { BulletListPortrayal } from './BulletListPortrayal.tsx';
+import { BasicSummaryPortrayal, BulletListPortrayal } from './_molecules.tsx';
 
 type PortrayalViewProps = JSX.HTMLAttributes<HTMLDivElement> & {
   portrayal: Portrayal;
@@ -23,8 +22,8 @@ export function PortrayalView(props: PortrayalViewProps) {
 
   return (
     <div {...props} class={classSet(props, 'mb-2')}>
-      {portrayal.Type === 'BasicReportPortrayal' && (
-        <BasicReportPortrayal {...portrayal.Details} />
+      {portrayal.Type === 'BasicSummaryPortrayal' && (
+        <BasicSummaryPortrayal {...portrayal.Details} />
       )}
 
       {portrayal.Type === 'BulletListPortrayal' && (

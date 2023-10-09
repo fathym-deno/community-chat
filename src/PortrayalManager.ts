@@ -70,7 +70,7 @@ export function loadHarborFunctions(): FunctionDefinition[] {
 
 export function basicReportPortrayal(): FunctionDefinition {
   return {
-    name: "BasicReportPortrayal",
+    name: "BasicSummaryPortrayal",
     description:
       "The basic report portrayal is used to provide out a title, abstract, and full report content.",
     parameters: {
