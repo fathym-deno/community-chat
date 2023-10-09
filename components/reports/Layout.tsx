@@ -1,5 +1,6 @@
-import { Chart, classSet } from "@harbor/atomic";
+import { classSet } from "@harbor/atomic";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
+import { Chart } from "$fresh_charts/island.tsx";
 
 interface LayoutProps {
   columns?: number;
