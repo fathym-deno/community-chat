@@ -1,6 +1,5 @@
-import { classSet } from "@harbor/atomic";
+import { Chart, classSet } from "@harbor/atomic";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
-import ChartIsland from "../../islands/_islands.tsx";
 
 interface LayoutProps {
   columns?: number;
@@ -286,7 +285,7 @@ export function LayoutIsland(props: LayoutProps) {
             <div class="text-small font-light mb-4 text-slate-800 dark:text-white">
               Subheading for context commentary
             </div>
-            <ChartIsland
+            <Chart
               type="pie"
               options={{}}
               data={{

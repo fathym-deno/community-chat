@@ -1,16 +1,18 @@
-import { JSX } from "preact";
-import { Portrayal } from "../../src/PortrayalManager.ts";
-import { BasicReportPortrayal } from "./BasicReportPortrayal.tsx";
-import { BulletListPortrayal } from "./BulletListPortrayal.tsx";
-import { BarChartPortrayal } from "./BarChartPortrayal.tsx";
-import { LineChartPortrayal } from "./LineChartPortrayal.tsx";
-import { PieChartPortrayal } from "./PieChartPortrayal.tsx";
-import { DoughnutChartPortrayal } from "./DoughnutChartPortrayal.tsx";
-import { BubbleChartPortrayal } from "./BubbleChartPortrayal.tsx";
-import { ScatterChartPortrayal } from "./ScatterChartPortrayal.tsx";
-import { PolarChartPortrayal } from "./PolarChartPortrayal.tsx";
-import { RadarChartPortrayal } from "./RadarChartPortrayal.tsx";
-import { classSet } from "@harbor/atomic";
+import { JSX } from 'preact';
+import { classSet } from '@harbor/atomic';
+import { Portrayal } from '../../src/PortrayalManager.ts';
+import {
+  BarChartPortrayal,
+  BubbleChartPortrayal,
+  DoughnutChartPortrayal,
+  LineChartPortrayal,
+  PieChartPortrayal,
+  PolarChartPortrayal,
+  RadarChartPortrayal,
+  ScatterChartPortrayal,
+} from '../../islands/_charts.ts';
+import { BasicReportPortrayal } from './BasicReportPortrayal.tsx';
+import { BulletListPortrayal } from './BulletListPortrayal.tsx';
 
 type PortrayalViewProps = JSX.HTMLAttributes<HTMLDivElement> & {
   portrayal: Portrayal;
@@ -20,44 +22,44 @@ export function PortrayalView(props: PortrayalViewProps) {
   const { portrayal } = props;
 
   return (
-    <div {...props} class={classSet(props, "mb-2")}>
-      {portrayal.Type === "BasicReportPortrayal" && (
+    <div {...props} class={classSet(props, 'mb-2')}>
+      {portrayal.Type === 'BasicReportPortrayal' && (
         <BasicReportPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "BulletListPortrayal" && (
+      {portrayal.Type === 'BulletListPortrayal' && (
         <BulletListPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "BarChartPortrayal" && (
+      {portrayal.Type === 'BarChartPortrayal' && (
         <BarChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "LineChartPortrayal" && (
+      {portrayal.Type === 'LineChartPortrayal' && (
         <LineChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "PieChartPortrayal" && (
+      {portrayal.Type === 'PieChartPortrayal' && (
         <PieChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "DoughnutChartPortrayal" && (
+      {portrayal.Type === 'DoughnutChartPortrayal' && (
         <DoughnutChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "BubbleChartPortrayal" && (
+      {portrayal.Type === 'BubbleChartPortrayal' && (
         <BubbleChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "ScatterChartPortrayal" && (
+      {portrayal.Type === 'ScatterChartPortrayal' && (
         <ScatterChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "PolarChartPortrayal" && (
+      {portrayal.Type === 'PolarChartPortrayal' && (
         <PolarChartPortrayal {...portrayal.Details} />
       )}
 
-      {portrayal.Type === "RadarChartPortrayal" && (
+      {portrayal.Type === 'RadarChartPortrayal' && (
         <RadarChartPortrayal {...portrayal.Details} />
       )}
 
