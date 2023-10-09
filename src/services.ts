@@ -12,7 +12,7 @@ import { existsSync } from "@fathym/common";
 import { dirname } from "$std/path/mod.ts";
 
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
-const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
+const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "test";
 const denoKvPath = Deno.env.get("DENO_KV_PATH") || undefined;
 
 if (denoKvPath && !existsSync(denoKvPath)) {
