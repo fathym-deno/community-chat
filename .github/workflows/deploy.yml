@@ -26,7 +26,7 @@ jobs:
       - name: Build step
         run: "deno task build" # 📝 Update the build command(s) if necessary
         env:
-          OPENAI_API_KEY: ${{env.OPENAI_API_KEY}}
+          OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
