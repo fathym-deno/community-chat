@@ -10,7 +10,7 @@ import { Conversation } from "@fathym/synaptic";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    const resp = await synapticPluginDef.Handlers.GetAllConversations.GET!(req, ctx);
+    const resp = await synapticPluginDef.Handlers.Conversations.GET!(req, ctx);
 
     const conversations: {
       [lookup: string]: Conversation;

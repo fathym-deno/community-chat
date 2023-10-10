@@ -4,10 +4,13 @@ import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
 import { PageItem } from "../../../islands/PageItem.tsx";
 import { Page } from "@fathym/synaptic";
 import { Pages } from "../../../src/services.ts";
+import { synapticPluginDef } from "../../../fresh.config.ts";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
-    const pages = await Pages.List();
+  async GET(req, ctx) {
+    const resp = await synapticPluginDef.Handlers.Pages.GET!(req, ctx);
+
+    const pages: Page[] = await resp.json();
 
     return ctx.render({
       pages,

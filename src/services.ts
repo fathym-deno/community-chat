@@ -32,6 +32,6 @@ export const LLM = new OpenAILLMAccessor(client);
 
 export const Personalities = new ConfigPersonalityProvider(personalities);
 
-export const Portrayals = new PageBlockManager(kv, loadHarborFunctions());
+export const PageBlocks = new PageBlockManager(kv, loadHarborFunctions());
 
 export const Pages = new PageManager(kv);

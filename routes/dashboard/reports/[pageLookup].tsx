@@ -1,11 +1,11 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { handler as pagesSvc } from '../../api/pages/[pageLookup].ts';
 import { LayoutIsland } from '../../../components/pages/Layout.tsx';
 import { Page } from '@fathym/synaptic';
+import { synapticPluginDef } from "../../../fresh.config.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    const resp = await pagesSvc.GET!(req, ctx);
+    const resp = await synapticPluginDef.Handlers.PageLookup.GET!(req, ctx);
 
     const page: Page = await resp.json();
 

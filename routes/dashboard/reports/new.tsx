@@ -3,6 +3,7 @@ import { useEffect, useState } from "preact/hooks";
 import { Pages } from "../../../src/services.ts";
 import { Page } from "@fathym/synaptic";
 import { Action, Input } from "@harbor/atomic";
+import { synapticPluginDef } from "../../../fresh.config.ts";
 
 export const handler: Handlers = {
   GET(_req, ctx) {
@@ -13,10 +14,16 @@ export const handler: Handlers = {
     const name = form.get("name")?.toString() || "";
     const pageLookup = form.get("pageLookup")?.toString() || "";
 
-    await Pages.Save({
-      Name: name,
-      Lookup: pageLookup,
-    } as Page);
+    const body = new Request("https://unused.com/", {
+      ...req,
+      method: "POST",
+      body: JSON.stringify({
+        Name: name,
+        Lookup: pageLookup,
+      }),
+    });
+
+    await synapticPluginDef.Handlers.Pages.POST!(body, ctx);
 
     const headers = new Headers();
     headers.set("location", `/dashboard/reports/${pageLookup}`);
