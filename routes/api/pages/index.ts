@@ -3,7 +3,7 @@ import { Pages } from "../../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(_req, _ctx) {
-    const body = JSON.stringify(await Pages.Layouts());
+    const body = JSON.stringify(await Pages.List());
 
     return new Response(body, {
       headers: {

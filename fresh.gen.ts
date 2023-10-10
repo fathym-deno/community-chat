@@ -7,20 +7,22 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/api/embeddings/files.ts";
 import * as $3 from "./routes/api/pages/[pageLookup].ts";
 import * as $4 from "./routes/api/pages/blocks/[blockLookup].ts";
-import * as $5 from "./routes/api/pages/blocks/index.ts";
-import * as $6 from "./routes/api/pages/blocks/regenerate/[convoLookup].ts";
-import * as $7 from "./routes/api/pages/index.ts";
-import * as $8 from "./routes/dashboard/[convoLookup].tsx";
-import * as $9 from "./routes/dashboard/_middleware.ts";
-import * as $10 from "./routes/dashboard/index.tsx";
-import * as $11 from "./routes/dashboard/new-conversation.tsx";
-import * as $12 from "./routes/dashboard/portrayals/[blockLookup].tsx";
-import * as $13 from "./routes/dashboard/portrayals/index.tsx";
-import * as $14 from "./routes/dashboard/reports/[pageLookup].tsx";
-import * as $15 from "./routes/dashboard/reports/index.tsx";
-import * as $16 from "./routes/dashboard/reports/new.tsx";
-import * as $17 from "./routes/dashboard/signout.tsx";
-import * as $18 from "./routes/index.tsx";
+import * as $5 from "./routes/api/pages/blocks/functions.ts";
+import * as $6 from "./routes/api/pages/blocks/index.ts";
+import * as $7 from "./routes/api/pages/blocks/regenerate/[convoLookup].ts";
+import * as $8 from "./routes/api/pages/index.ts";
+import * as $9 from "./routes/api/pages/layouts.ts";
+import * as $10 from "./routes/dashboard/[convoLookup].tsx";
+import * as $11 from "./routes/dashboard/_middleware.ts";
+import * as $12 from "./routes/dashboard/index.tsx";
+import * as $13 from "./routes/dashboard/new-conversation.tsx";
+import * as $14 from "./routes/dashboard/portrayals/[blockLookup].tsx";
+import * as $15 from "./routes/dashboard/portrayals/index.tsx";
+import * as $16 from "./routes/dashboard/reports/[pageLookup].tsx";
+import * as $17 from "./routes/dashboard/reports/index.tsx";
+import * as $18 from "./routes/dashboard/reports/new.tsx";
+import * as $19 from "./routes/dashboard/signout.tsx";
+import * as $20 from "./routes/index.tsx";
 import * as $$0 from "./islands/Breadcrumb.tsx";
 import * as $$1 from "./islands/ChatHistory.tsx";
 import * as $$2 from "./islands/ConvoItem.tsx";
@@ -41,20 +43,22 @@ const manifest = {
     "./routes/api/embeddings/files.ts": $2,
     "./routes/api/pages/[pageLookup].ts": $3,
     "./routes/api/pages/blocks/[blockLookup].ts": $4,
-    "./routes/api/pages/blocks/index.ts": $5,
-    "./routes/api/pages/blocks/regenerate/[convoLookup].ts": $6,
-    "./routes/api/pages/index.ts": $7,
-    "./routes/dashboard/[convoLookup].tsx": $8,
-    "./routes/dashboard/_middleware.ts": $9,
-    "./routes/dashboard/index.tsx": $10,
-    "./routes/dashboard/new-conversation.tsx": $11,
-    "./routes/dashboard/portrayals/[blockLookup].tsx": $12,
-    "./routes/dashboard/portrayals/index.tsx": $13,
-    "./routes/dashboard/reports/[pageLookup].tsx": $14,
-    "./routes/dashboard/reports/index.tsx": $15,
-    "./routes/dashboard/reports/new.tsx": $16,
-    "./routes/dashboard/signout.tsx": $17,
-    "./routes/index.tsx": $18,
+    "./routes/api/pages/blocks/functions.ts": $5,
+    "./routes/api/pages/blocks/index.ts": $6,
+    "./routes/api/pages/blocks/regenerate/[convoLookup].ts": $7,
+    "./routes/api/pages/index.ts": $8,
+    "./routes/api/pages/layouts.ts": $9,
+    "./routes/dashboard/[convoLookup].tsx": $10,
+    "./routes/dashboard/_middleware.ts": $11,
+    "./routes/dashboard/index.tsx": $12,
+    "./routes/dashboard/new-conversation.tsx": $13,
+    "./routes/dashboard/portrayals/[blockLookup].tsx": $14,
+    "./routes/dashboard/portrayals/index.tsx": $15,
+    "./routes/dashboard/reports/[pageLookup].tsx": $16,
+    "./routes/dashboard/reports/index.tsx": $17,
+    "./routes/dashboard/reports/new.tsx": $18,
+    "./routes/dashboard/signout.tsx": $19,
+    "./routes/index.tsx": $20,
   },
   islands: {
     "./islands/Breadcrumb.tsx": $$0,
