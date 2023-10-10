@@ -1,1 +1,1 @@
-export { ChatInput } from "@harbor/atomic";
+export { ChatInput, LineItem } from "@harbor/atomic";

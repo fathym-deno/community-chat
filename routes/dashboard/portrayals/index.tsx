@@ -1,7 +1,9 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { PageBlock } from "@fathym/synaptic";
-import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
 import { synapticPluginDef } from "../../../fresh.config.ts";
+import { DeleteIcon } from "$fathym/atomic-icons";
+import { LineItem } from "../../../islands/_islands.tsx";
+import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {

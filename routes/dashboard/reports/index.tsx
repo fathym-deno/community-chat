@@ -1,10 +1,10 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { Action } from "@harbor/atomic";
-import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
-import { PageItem } from "../../../islands/PageItem.tsx";
+import { LineItem } from "../../../islands/_islands.tsx";
 import { Page } from "@fathym/synaptic";
-import { Pages } from "../../../src/services.ts";
 import { synapticPluginDef } from "../../../fresh.config.ts";
+import { DeleteIcon } from "$fathym/atomic-icons";
+import { PageItem } from "../../../islands/PageItem.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {

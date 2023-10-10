@@ -1,48 +1,24 @@
-import { JSX } from "preact";
-import { useEffect, useState } from "preact/hooks";
 import { DeleteIcon } from "$fathym/atomic-icons";
+import { LineItem } from "@harbor/atomic";
 
 interface ConvoItemProps {
   convoLookup: string;
 }
 
 export function ConvoItem(props: ConvoItemProps) {
-  const [reload, setReload] = useState(false);
   const { convoLookup } = props;
 
-  const handleDelete = async (convoLookup: string) => {
-    if (window.confirm("Are you sure you want to delete this conversation?")) {
-      await fetch(`/api/conversations/${convoLookup}`, {
-        method: "delete",
-      });
-
-      setReload(true);
-    }
-  };
-
-  useEffect(() => {
-    if (reload) {
-      location.href = `${location.href}`;
-    }
-  }, [reload]);
-
   return (
-    <>
-      <a
-        href={`/dashboard/${convoLookup}`}
-        class="text-blue-500 hover:underline"
-      >
-        {convoLookup}
-      </a>
-
-      <button
-        class="ml-2"
-        onClick={() => {
-          handleDelete(convoLookup).then();
-        }}
-      >
-        <DeleteIcon class="w-6 h-6 text-red-500" />
-      </button>
-    </>
+    <LineItem
+      actionPath={`/dashboard/${convoLookup}`}
+      actionText={`${convoLookup}`}
+      confirmAction={() => {
+        fetch(`/api/conversations/${convoLookup}`, {
+          method: 'delete',
+        }).then();
+      }}
+      confirmIcon={<DeleteIcon class="w-6 h-6 text-red-500" />}
+      confirmText={`Are you sure you want to delete this conversation: ${convoLookup}?`}
+    />
   );
 }
