@@ -1,6 +1,5 @@
 import { JSX } from 'preact';
 import { classSet } from '@harbor/atomic';
-import { Portrayal } from '../../src/PortrayalManager.ts';
 import {
   BarChartPortrayal,
   BubbleChartPortrayal,
@@ -12,9 +11,10 @@ import {
   ScatterChartPortrayal,
 } from '../../islands/_charts.ts';
 import { BasicSummaryPortrayal, BulletListPortrayal } from './_molecules.tsx';
+import { PageBlock } from "@fathym/synaptic";
 
 type PortrayalViewProps = JSX.HTMLAttributes<HTMLDivElement> & {
-  portrayal: Portrayal;
+  portrayal: PageBlock;
 };
 
 export function PortrayalView(props: PortrayalViewProps) {

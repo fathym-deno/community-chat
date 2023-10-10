@@ -1,24 +1,24 @@
 import { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { DeleteIcon } from "$fathym/atomic-icons";
-import { Report } from "../src/ReportManager.ts";
+import { Page } from "@fathym/synaptic";
 
-interface ReportItemProps {
-  report: Report;
+interface PageItemProps {
+  page: Page;
 }
 
-export function ReportItem(props: ReportItemProps) {
+export function PageItem(props: PageItemProps) {
   const [reload, setReload] = useState(false);
 
-  const { report } = props;
+  const { page } = props;
 
-  const handleDelete = async (reportLookup: string) => {
+  const handleDelete = async (pageLookup: string) => {
     if (
       window.confirm(
-        `Are you sure you want to delete this report: ${reportLookup}?`,
+        `Are you sure you want to delete this page: ${pageLookup}?`,
       )
     ) {
-      await fetch(`/api/reports/${reportLookup}`, {
+      await fetch(`/api/pages/${pageLookup}`, {
         method: "delete",
       });
 
@@ -35,16 +35,16 @@ export function ReportItem(props: ReportItemProps) {
   return (
     <>
       <a
-        href={`/dashboard/reports/${report.Lookup}`}
+        href={`/dashboard/reports/${page.Lookup}`}
         class="text-blue-500 hover:underline"
       >
-        {report.Name} ({report.Lookup})
+        {page.Name} ({page.Lookup})
       </a>
 
       <button
         class="ml-2"
         onClick={() => {
-          handleDelete(report.Lookup).then();
+          handleDelete(page.Lookup).then();
         }}
       >
         <DeleteIcon class="w-6 h-6 text-red-500" />

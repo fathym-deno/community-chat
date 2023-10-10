@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { useEffect, useState } from "preact/hooks";
-import { Reports } from "../../../src/services.ts";
-import { Report } from "../../../src/ReportManager.ts";
+import { Pages } from "../../../src/services.ts";
+import { Page } from "@fathym/synaptic";
 import { Action, Input } from "@harbor/atomic";
 
 export const handler: Handlers = {
@@ -11,15 +11,15 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
     const name = form.get("name")?.toString() || "";
-    const reportLookup = form.get("reportLookup")?.toString() || "";
+    const pageLookup = form.get("pageLookup")?.toString() || "";
 
-    await Reports.Save({
+    await Pages.Save({
       Name: name,
-      Lookup: reportLookup,
-    } as Report);
+      Lookup: pageLookup,
+    } as Page);
 
     const headers = new Headers();
-    headers.set("location", `/dashboard/reports/${reportLookup}`);
+    headers.set("location", `/dashboard/reports/${pageLookup}`);
     return new Response(null, {
       status: 303, // See Other
       headers,
@@ -49,13 +49,13 @@ export default function NewConversation(props: PageProps) {
           <div class="md:w-1/3">
             <label
               class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              htmlFor="reportLookup"
+              htmlFor="pageLookup"
             >
               Report Lookup
             </label>
           </div>
           <div class="md:w-2/3">
-            <Input id="reportLookup" type="text" name="reportLookup" />
+            <Input id="pageLookup" type="text" name="pageLookup" />
           </div>
         </div>
         <div class="md:flex md:items-center">

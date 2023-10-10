@@ -4,10 +4,13 @@ import {
   LLM,
   Personalities,
   Portrayals,
-} from "../../../../src/services.ts";
-import { ConversationMessage, FunctionToCall } from "@fathym/synaptic";
-import { PortrayalsPersonality } from "../../../../src/personalities.config.ts";
-import { Portrayal } from "../../../../src/PortrayalManager.ts";
+} from "../../../../../src/services.ts";
+import {
+  ConversationMessage,
+  FunctionToCall,
+  PageBlock,
+} from "@fathym/synaptic";
+import { PortrayalsPersonality } from "../../../../../src/personalities.config.ts";
 
 export const handler: Handlers = {
   async POST(req, ctx) {
@@ -17,7 +20,8 @@ export const handler: Handlers = {
 
     const messages = (await ConvoState.History(convoLookup)) || [];
 
-    const apiReq: { command: string; portrayal: Portrayal } = await req.json();
+    const apiReq: { command: string; portrayal: PageBlock } = await req
+      .json();
 
     const commandMsg: ConversationMessage | undefined = apiReq.command
       ? {
@@ -49,7 +53,7 @@ export const handler: Handlers = {
       ...apiReq.portrayal,
       Details: chatResp.arguments,
       Type: chatResp.name,
-    } as Portrayal);
+    } as PageBlock);
 
     return new Response(body, {
       headers: {

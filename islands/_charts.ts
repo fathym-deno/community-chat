@@ -8,3 +8,4 @@ export {
   RadarChart as RadarChartPortrayal,
   ScatterChart as ScatterChartPortrayal,
 } from "@harbor/atomic";
+export { Chart } from "$fresh_charts/island.tsx";

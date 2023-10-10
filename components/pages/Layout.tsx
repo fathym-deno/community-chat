@@ -1,16 +1,16 @@
 import { classSet } from "@harbor/atomic";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
-import { Chart } from "$fresh_charts/island.tsx";
+import { Chart } from "../../islands/_charts.ts";
 
 interface LayoutProps {
   columns?: number;
 }
 
 const templateData = {
-  reportTitle: "The Rise of Industrial Internet of Things",
-  reportSubhead:
+  pageTitle: "The Rise of Industrial Internet of Things",
+  pageSubhead:
     "Combinations of connected hardware and software assets that drive productive efficiency, augmenting what humans can do and in many cases reducing the need for human intervention.",
-  reportContent:
+  pageContent:
     "The Industrial Internet of Things (IIoT) is a system of interconnected devices, machines, and sensors that collect and exchange data in an industrial setting [doc1]. The IIoT is part of Industry 4.0, which combines the hardware developed during Industry 3.0 and connects it through communications networks to new analytics and applications made possible by the Internet [doc1]. The IIoT can be used to sense, monitor, and manage industrial output to drive quantifiable return on investment (ROI) results [doc1]. The IIoT's impact can be felt across the entire value chain from raw materials to product and service delivery [doc1].",
   bulletPointTitle: "Key Innovations in the IIoT",
   bulletPointSubhead: "IIoT has many important innovations",
@@ -250,13 +250,13 @@ export function LayoutIsland(props: LayoutProps) {
       >
         <div>
           <div class="text-lg font-bold text-slate-700 dark:text-white justify-center content-center">
-            {templateData.reportTitle}
+            {templateData.pageTitle}
           </div>
           <div class="text-sm font-light text-slate-800 dark:text-white">
-            {templateData.reportSubhead}
+            {templateData.pageSubhead}
           </div>
           <div class="p-3 pb-6 text-sm font-light">
-            {templateData.reportContent}
+            {templateData.pageContent}
           </div>
 
           <div class="text-md font-bold text-slate-700 dark:text-white justify-center content-center">
@@ -310,7 +310,7 @@ export function LayoutIsland(props: LayoutProps) {
               <div class="text-lg font-bold text-slate-700 dark:text-white justify-center content-center">
                 {templateData.lineChart.title}
               </div>
-              <ChartIsland
+              <Chart
                 type="line"
                 options={{
                   scales: { y: { ticks: {}, beginAtZero: true } },
@@ -333,7 +333,7 @@ export function LayoutIsland(props: LayoutProps) {
           <div class="text-lg font-bold text-slate-700 dark:text-white justify-center content-center">
             Bar Chart Sessions and Users
           </div>
-          <ChartIsland
+          <Chart
             type="bar"
             options={{
               scales: { y: { ticks: {}, beginAtZero: true } },
@@ -361,7 +361,7 @@ export function LayoutIsland(props: LayoutProps) {
           <div class="text-lg font-bold text-slate-700 dark:text-white justify-center content-center">
             Scatter Plot
           </div>
-          <ChartIsland
+          <Chart
             type="scatter"
             data={{
               labels: ["1", "2", "3", "4", "5"],

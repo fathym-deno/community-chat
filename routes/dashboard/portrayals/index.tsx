@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { PageBlock } from "@fathym/synaptic";
 import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
-import { Portrayal } from "../../../src/PortrayalManager.ts";
 import { Portrayals } from "../../../src/services.ts";
 
 export const handler: Handlers = {
@@ -34,7 +34,7 @@ export const handler: Handlers = {
 };
 
 export default function PortrayalsIndex(props: PageProps) {
-  const portrayals = props.data.portrayals as Portrayal[];
+  const portrayals = props.data.portrayals as PageBlock[];
 
   return (
     <div class="container mx-auto px-4">

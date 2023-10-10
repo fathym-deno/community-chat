@@ -1,61 +1,8 @@
 import { FunctionDefinition } from "npm:@azure/openai@next";
 
-export type Portrayal = {
-  Lookup: string;
-
-  Name: string;
-
-  Type: string;
-
-  // deno-lint-ignore no-explicit-any
-  Details: any;
-};
-
-export class PortrayalManager {
-  constructor(
-    protected kv: Deno.Kv,
-    protected portrayalsRoot = ["Portrayals"],
-  ) {}
-
-  public async Delete(portrayalLookup: string): Promise<void> {
-    await this.kv.delete([...this.portrayalsRoot, portrayalLookup]);
-  }
-
-  public async Get(portrayalLookup: string): Promise<Portrayal> {
-    const { value } = await this.kv.get([
-      ...this.portrayalsRoot,
-      portrayalLookup,
-    ]);
-
-    return value as Portrayal;
-  }
-
-  public async List(): Promise<Portrayal[]> {
-    const portrayalList = await this.kv.list({ prefix: this.portrayalsRoot });
-
-    const portrayals: Portrayal[] = [];
-
-    for await (const portrayal of portrayalList) {
-      const { value } = portrayal;
-
-      portrayals.push(value as Portrayal);
-    }
-
-    return portrayals;
-  }
-
-  public Options(): FunctionDefinition[] {
-    return loadHarborFunctions();
-  }
-
-  public async Save(portrayal: Portrayal): Promise<void> {
-    await this.kv.set([...this.portrayalsRoot, portrayal.Lookup], portrayal);
-  }
-}
-
 export function loadHarborFunctions(): FunctionDefinition[] {
   return [
-    basicReportPortrayal(),
+    basicPagePortrayal(),
     bulletListPortrayal(),
     barChartPortrayal(),
     lineChartPortrayal(),
@@ -68,28 +15,28 @@ export function loadHarborFunctions(): FunctionDefinition[] {
   ];
 }
 
-export function basicReportPortrayal(): FunctionDefinition {
+export function basicPagePortrayal(): FunctionDefinition {
   return {
     name: "BasicSummaryPortrayal",
     description:
-      "The basic report portrayal is used to provide out a title, abstract, and full report content.",
+      "The basic page portrayal is used to provide out a title, abstract, and full page content.",
     parameters: {
       type: "object",
       properties: {
         title: {
           type: "string",
           description:
-            "The title of the report should be a short, understandable set of text that describes what is in the report.",
+            "The title of the page should be a short, understandable set of text that describes what is in the page.",
         },
         abstract: {
           type: "string",
           description:
-            "The abstract is a more detailed description of the report that can be used by a user to discern if the report is useful for them.",
+            "The abstract is a more detailed description of the page that can be used by a user to discern if the page is useful for them.",
         },
         content: {
           type: "string",
           description:
-            "This is the complete report content, it should be verbose and express a detailed set of information to inform report consumers. It should be written as MDX, and contain 5 to 10 sections of markdown content, where each section is 200 - 500 characters. This makes each report content 1000 - 5000 characters long.",
+            "This is the complete page content, it should be verbose and express a detailed set of information to inform page consumers. It should be written as MDX, and contain 5 to 10 sections of markdown content, where each section is 200 - 500 characters. This makes each page content 1000 - 5000 characters long.",
         },
       },
       required: ["title", "abstract", "content"],
@@ -108,17 +55,17 @@ export function bulletListPortrayal(): FunctionDefinition {
         title: {
           type: "string",
           description:
-            "The title of the report should be a short, understandable set of text that describes what is in the report.",
+            "The title of the page should be a short, understandable set of text that describes what is in the page.",
         },
         abstract: {
           type: "string",
           description:
-            "The abstract is a more detailed description of the report that can be used by a user to discern if the report is useful for them.",
+            "The abstract is a more detailed description of the page that can be used by a user to discern if the page is useful for them.",
         },
         bullets: {
           type: "array",
           description:
-            "The 3 - 7 highlighted bullet points to use for the report.",
+            "The 3 - 7 highlighted bullet points to use for the page.",
           items: {
             type: "string",
             description:
@@ -139,7 +86,7 @@ export function barChartPortrayal(): FunctionDefinition {
     parameters: {
       type: "object",
       description:
-        "The bar chart represents a slice of data from the reports that represents data in a pie chart.",
+        "The bar chart represents a slice of data from the pages that represents data in a pie chart.",
       properties: {
         title: {
           type: "string",
@@ -179,7 +126,7 @@ export function lineChartPortrayal(): FunctionDefinition {
     parameters: {
       type: "object",
       description:
-        "The line chart represents a slice of data from the reports that represents data in a pie chart.",
+        "The line chart represents a slice of data from the pages that represents data in a pie chart.",
       properties: {
         title: {
           type: "string",
@@ -219,7 +166,7 @@ export function pieChartPortrayal(): FunctionDefinition {
     parameters: {
       type: "object",
       description:
-        "The pie chart represents a slice of data from the reports that represents data in a pie chart.",
+        "The pie chart represents a slice of data from the pages that represents data in a pie chart.",
       properties: {
         title: {
           type: "string",
@@ -259,7 +206,7 @@ export function doughnutChartPortrayal(): FunctionDefinition {
     parameters: {
       type: "object",
       description:
-        "The doughnut chart represents a slice of data from the reports that represents data in a pie chart.",
+        "The doughnut chart represents a slice of data from the pages that represents data in a pie chart.",
       properties: {
         title: {
           type: "string",
@@ -407,7 +354,7 @@ export function polarChartPortrayal(): FunctionDefinition {
     parameters: {
       type: "object",
       description:
-        "The polar area chart represents a slice of data from the reports that represents data in a pie chart.",
+        "The polar area chart represents a slice of data from the pages that represents data in a pie chart.",
       properties: {
         title: {
           type: "string",
@@ -447,7 +394,7 @@ export function radarChartPortrayal(): FunctionDefinition {
     parameters: {
       type: "object",
       description:
-        "The radar chart represents a slice of data from the reports that represents data in a pie chart.",
+        "The radar chart represents a slice of data from the pages that represents data in a pie chart.",
       properties: {
         title: {
           type: "string",

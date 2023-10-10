@@ -1,10 +1,10 @@
 import { JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { DeleteIcon } from "$fathym/atomic-icons";
-import { Portrayal } from "../src/PortrayalManager.ts";
+import { PageBlock } from "@fathym/synaptic";
 
 interface PortrayalItemProps {
-  portrayal: Portrayal;
+  portrayal: PageBlock;
 }
 
 export function PortrayalItem(props: PortrayalItemProps) {
@@ -18,7 +18,7 @@ export function PortrayalItem(props: PortrayalItemProps) {
         `Are you sure you want to delete this portrayal: ${portrayalLookup}?`,
       )
     ) {
-      await fetch(`/api/portrayals/${portrayalLookup}`, {
+      await fetch(`/api/pages/blocks/${portrayalLookup}`, {
         method: "delete",
       });
 

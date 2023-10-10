@@ -45,6 +45,7 @@ export default function Chat(props: PageProps) {
 
   function onMessageStreamed() {
     chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
+    console.log("streamed");
   }
 
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function Chat(props: PageProps) {
           <PortrayalForm
             convoLookup={props.data.convoLookup}
             options={props.data.portrayalOptions}
-            regeneratePostSrc={`/api/portrayals/regenerate/${props.data.convoLookup}`}
+            regeneratePostSrc={`/api/pages/blocks/regenerate/${props.data.convoLookup}`}
             savePostSrc={`/dashboard/portrayals`}
           />
         </div>

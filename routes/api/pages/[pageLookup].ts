@@ -1,12 +1,11 @@
 import { Handlers } from "$fresh/server.ts";
-import { Reports } from "../../../src/services.ts";
-import { Report } from "../../../src/ReportManager.ts";
+import { Pages } from "../../../src/services.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    const report = await Reports.Get(ctx.params.reportLookup);
+    const page = await Pages.Get(ctx.params.pageLookup);
 
-    const body = JSON.stringify(report);
+    const body = JSON.stringify(page);
 
     return new Response(body, {
       headers: {
@@ -16,9 +15,9 @@ export const handler: Handlers = {
     });
   },
   async POST(req, _ctx) {
-    const report: Report = await req.json();
+    const page: Page = await req.json();
 
-    const body = JSON.stringify(report);
+    const body = JSON.stringify(page);
 
     return new Response(body, {
       headers: {
@@ -28,9 +27,9 @@ export const handler: Handlers = {
     });
   },
   async DELETE(_req, ctx) {
-    const reportLookup = ctx.params.reportLookup;
+    const pageLookup = ctx.params.pageLookup;
 
-    await Reports.Delete(reportLookup);
+    await Pages.Delete(pageLookup);
 
     return new Response(null, {
       headers: {
