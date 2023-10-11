@@ -2,6 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { useEffect, useState } from "preact/hooks";
 import { ConvoState } from "../../src/services.ts";
 import { Action, Input } from "@harbor/atomic";
+import { synapticPluginDef } from "../../fresh.config.ts";
 
 export const handler: Handlers = {
   GET(_req, ctx) {
@@ -11,9 +12,17 @@ export const handler: Handlers = {
     const form = await req.formData();
     const convoLookup = form.get("convoLookup")?.toString() || "";
 
-    await ConvoState.Create(convoLookup, {
-      Title: "",
+    ctx.params.convoLookup = convoLookup;
+
+    const body = new Request("https://unused.com/", {
+      ...req,
+      method: "POST",
+      body: JSON.stringify({
+        Title: "",
+      }),
     });
+
+    await synapticPluginDef.Handlers.ConvoLookup.POST!(body, ctx);
 
     const headers = new Headers();
     headers.set("location", `/dashboard/${convoLookup}`);

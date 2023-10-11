@@ -1,22 +1,22 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { handler as portrayalsSvc } from "../../api/portrayals/[portrayalLookup].ts";
 import { PortrayalView } from "../../../components/portrayals/PortrayalView.tsx";
-import { Portrayal } from "../../../src/PortrayalManager.ts";
+import { PageBlock } from "@fathym/synaptic";
+import { synapticPluginDef } from "../../../fresh.config.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    const resp = await portrayalsSvc.GET!(req, ctx);
+    const resp = await synapticPluginDef.Handlers.PageBlockLookup.GET!(req, ctx);
 
-    const portrayal: Portrayal = await resp.json();
+    const block: PageBlock = await resp.json();
 
     return ctx.render({
-      portrayal,
+      portrayal: block,
     });
   },
 };
 
 export default function PortrayalsIndex(props: PageProps) {
-  const portrayal = props.data.portrayal as Portrayal;
+  const portrayal = props.data.portrayal as PageBlock;
 
   return (
     <div class="container mx-auto px-4">

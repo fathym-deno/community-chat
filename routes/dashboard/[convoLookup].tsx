@@ -5,8 +5,9 @@ import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
 import { useEffect, useRef } from "preact/hooks";
 import { ConversationMessage } from "@fathym/synaptic";
 import { SendIcon } from "$fathym/atomic-icons";
-import { Portrayals } from "../../src/services.ts";
+import { PageBlocks } from "../../src/services.ts";
 import { synapticPluginDef } from "../../fresh.config.ts";
+import { FunctionDefinition } from "npm:@azure/openai@next";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -20,12 +21,16 @@ export const handler: Handlers = {
         "Welcome to Harbor Research, providing AI powered industry knowledge.",
     });
 
+    const optionsResp = await synapticPluginDef.Handlers.PageBlockFunctions.GET!(req, ctx);
+
+    const options: FunctionDefinition[] = await optionsResp.json();
+
     return ctx.render({
       convoLookup: ctx.params.convoLookup,
       messages: messages,
       newUserMessage: ctx.params.newUserMessage,
       useOpenChat: !!ctx.params.useOpenChat,
-      portrayalOptions: await Portrayals.Options(),
+      portrayalOptions: options,
     });
   },
   async POST(req, ctx) {
@@ -45,6 +50,7 @@ export default function Chat(props: PageProps) {
 
   function onMessageStreamed() {
     chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
+    console.log("streamed");
   }
 
   useEffect(() => {
@@ -81,7 +87,7 @@ export default function Chat(props: PageProps) {
           <PortrayalForm
             convoLookup={props.data.convoLookup}
             options={props.data.portrayalOptions}
-            regeneratePostSrc={`/api/portrayals/regenerate/${props.data.convoLookup}`}
+            regeneratePostSrc={`/api/pages/blocks/regenerate/${props.data.convoLookup}`}
             savePostSrc={`/dashboard/portrayals`}
           />
         </div>

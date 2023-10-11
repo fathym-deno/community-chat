@@ -1,6 +1,7 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { setCookie } from "$std/http/cookie.ts";
-import { SignIn } from "@harbor/atomic";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { setCookie } from '$std/http/cookie.ts';
+import { SignIn } from '@harbor/atomic';
+import { SignaturedDeclaration } from "https://deno.land/x/ts_morph@17.0.1/ts_morph.js";
 
 export const handler: Handlers = {
   GET(_req, ctx) {
@@ -8,14 +9,14 @@ export const handler: Handlers = {
   },
   async POST(req, ctx) {
     const form = await req.formData();
-    const password = form.get("password")?.toString() || "";
+    const password = form.get('password')?.toString() || '';
 
-    if (password === Deno.env.get("PASSWORD")) {
+    if (password === Deno.env.get('PASSWORD')) {
       const headers = new Headers();
-      headers.set("location", "/dashboard");
+      headers.set('location', '/dashboard');
 
       // Create a new cookie
-      const cookie = { name: "user", value: "loggedIn" };
+      const cookie = { name: 'user', value: 'loggedIn' };
 
       setCookie(headers, cookie);
 
@@ -37,20 +38,24 @@ export default function Home(props: PageProps) {
 
         <SignIn
           signInOptions={{
+            formProps: {
+              method: "post",
+              class: "w-full max-w-sm py-8"
+            },
             usernameInputProps: {
-              class: "hidden",
+              class: 'hidden',
             },
             forgotPasswordActionProps: {
-              class: "hidden",
+              class: 'hidden',
             },
             submitActionProps: {
-              class: "ml-auto",
+              class: 'ml-auto',
             },
           }}
         />
       </div>
 
-      <form method="post" class="w-full max-w-sm py-8">
+      {/* <form method="post" class="w-full max-w-sm py-8">
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
             <label
@@ -80,7 +85,7 @@ export default function Home(props: PageProps) {
             </button>
           </div>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }

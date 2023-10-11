@@ -3,16 +3,17 @@ import {
   DenoKVConversationState,
   IConversationState,
   OpenAILLMAccessor,
+  PageBlockManager,
+  PageManager,
 } from "@fathym/synaptic";
 import { AzureKeyCredential, OpenAIClient } from "npm:@azure/openai@next";
 import personalities from "./personalities.config.ts";
-import { PortrayalManager } from "./PortrayalManager.ts";
-import { ReportManager } from "./ReportManager.ts";
 import { existsSync } from "@fathym/common";
 import { dirname } from "$std/path/mod.ts";
+import { loadHarborFunctions } from "./functions.config.ts";
 
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
-const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "";
+const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "test";
 const denoKvPath = Deno.env.get("DENO_KV_PATH") || undefined;
 
 if (denoKvPath && !existsSync(denoKvPath)) {
@@ -31,6 +32,6 @@ export const LLM = new OpenAILLMAccessor(client);
 
 export const Personalities = new ConfigPersonalityProvider(personalities);
 
-export const Portrayals = new PortrayalManager(kv);
+export const PageBlocks = new PageBlockManager(kv, loadHarborFunctions());
 
-export const Reports = new ReportManager(kv);
+export const Pages = new PageManager(kv);

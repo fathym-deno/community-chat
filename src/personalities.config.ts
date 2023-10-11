@@ -21,7 +21,7 @@ personalities[PortrayalsPersonality] = {
   ],
   Commands: [{
     From: "user",
-    Content: "Generate the report for me in valid JSON, `\n` for new lines.",
+    Content: "Generate the page for me in valid JSON, `\n` for new lines.",
   }],
 };
 

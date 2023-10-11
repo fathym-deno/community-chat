@@ -1,14 +1,18 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { ResetIcon } from "../../build/iconset/icons/ResetIcon.tsx";
+import { Action } from "@harbor/atomic";
+import { synapticPluginDef } from "../../fresh.config.ts";
+import { Conversation } from "@fathym/synaptic";
+import { LineItem } from "../../islands/_islands.tsx";
 import { DeleteIcon } from "$fathym/atomic-icons";
 import { ConvoItem } from "../../islands/ConvoItem.tsx";
-import { ConvoState } from "../../src/services.ts";
-import { useEffect, useState } from "preact/hooks";
-import { Action } from "@harbor/atomic";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
-    const conversations = await ConvoState.GetAll();
+  async GET(req, ctx) {
+    const resp = await synapticPluginDef.Handlers.Conversations.GET!(req, ctx);
+
+    const conversations: {
+      [lookup: string]: Conversation;
+    } = await resp.json();
 
     return ctx.render({
       conversations,

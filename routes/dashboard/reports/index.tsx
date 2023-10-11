@@ -1,30 +1,33 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { Action } from "@harbor/atomic";
-import { PortrayalItem } from "../../../islands/PortrayalItem.tsx";
-import { ReportItem } from "../../../islands/ReportItem.tsx";
-import { Report } from "../../../src/ReportManager.ts";
-import { Reports } from "../../../src/services.ts";
+import { LineItem } from "../../../islands/_islands.tsx";
+import { Page } from "@fathym/synaptic";
+import { synapticPluginDef } from "../../../fresh.config.ts";
+import { DeleteIcon } from "$fathym/atomic-icons";
+import { PageItem } from "../../../islands/PageItem.tsx";
 
 export const handler: Handlers = {
-  async GET(_req, ctx) {
-    const reports = await Reports.List();
+  async GET(req, ctx) {
+    const resp = await synapticPluginDef.Handlers.Pages.GET!(req, ctx);
+
+    const pages: Page[] = await resp.json();
 
     return ctx.render({
-      reports,
+      pages,
     });
   },
 };
 
-export default function ReportsIndex(props: PageProps) {
-  const reports = props.data.reports as Report[];
+export default function PagesIndex(props: PageProps) {
+  const pages = props.data.pages as Page[];
 
   return (
     <div class="container mx-auto px-4">
       <h1 class="text-2xl font-bold mb-4">Reports</h1>
       <ul>
-        {reports.map((report) => (
-          <li key={report.Lookup} class="mb-2">
-            <ReportItem report={report} />
+        {pages.map((page) => (
+          <li key={page.Lookup} class="mb-2">
+            <PageItem page={page} />
           </li>
         ))}
       </ul>
