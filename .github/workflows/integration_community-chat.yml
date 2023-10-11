@@ -29,6 +29,7 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
+        build-args: GIT_REVISION=${{ github.sha }}
         push: true
         tags: fathymcloudprd.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_fc2f0235d1b046638c35a9a969e8a5dc }}/community-chat:${{ github.sha }}
         file: ./Dockerfile
