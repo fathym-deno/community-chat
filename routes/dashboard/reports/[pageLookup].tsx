@@ -35,7 +35,7 @@ export const handler: Handlers = {
           },
         },
         {
-          PageBlockLookup: 'test2',
+          PageBlockLookup: 'test3',
           Details: {
             ColumnSpan: 2,
             RowSpan: 1,
