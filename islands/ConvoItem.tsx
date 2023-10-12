@@ -12,10 +12,10 @@ export function ConvoItem(props: ConvoItemProps) {
     <LineItem
       actionPath={`/dashboard/${convoLookup}`}
       actionText={`${convoLookup}`}
-      confirmAction={() => {
-        fetch(`/api/conversations/${convoLookup}`, {
+      confirmAction={async () => {
+        await fetch(`/api/conversations/${convoLookup}`, {
           method: 'delete',
-        }).then();
+        });
       }}
       confirmIcon={<DeleteIcon class="w-6 h-6 text-red-500" />}
       confirmText={`Are you sure you want to delete this conversation: ${convoLookup}?`}

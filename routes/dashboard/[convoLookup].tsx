@@ -3,7 +3,7 @@ import { ChatHistory } from "../../islands/ChatHistory.tsx";
 import { ChatInput } from "../../islands/_islands.tsx";
 import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
 import { useEffect, useRef } from "preact/hooks";
-import { ConversationMessage } from "@fathym/synaptic";
+import { ConversationMessage, FunctionConfig } from "@fathym/synaptic";
 import { SendIcon } from "$fathym/atomic-icons";
 import { PageBlocks } from "../../src/services.ts";
 import { synapticPluginDef } from "../../fresh.config.ts";
@@ -21,16 +21,12 @@ export const handler: Handlers = {
         "Welcome to Harbor Research, providing AI powered industry knowledge.",
     });
 
-    const optionsResp = await synapticPluginDef.Handlers.PageBlockFunctions.GET!(req, ctx);
-
-    const options: FunctionDefinition[] = await optionsResp.json();
-
     return ctx.render({
       convoLookup: ctx.params.convoLookup,
       messages: messages,
       newUserMessage: ctx.params.newUserMessage,
+      functions: await PageBlocks.Functions(),
       useOpenChat: !!ctx.params.useOpenChat,
-      portrayalOptions: options,
     });
   },
   async POST(req, ctx) {
@@ -86,7 +82,7 @@ export default function Chat(props: PageProps) {
 
           <PortrayalForm
             convoLookup={props.data.convoLookup}
-            options={props.data.portrayalOptions}
+            functions={props.data.functions}
             regeneratePostSrc={`/api/pages/blocks/regenerate/${props.data.convoLookup}`}
             savePostSrc={`/dashboard/portrayals`}
           />

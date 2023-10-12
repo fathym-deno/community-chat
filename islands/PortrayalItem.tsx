@@ -13,10 +13,10 @@ export function PortrayalItem(props: PortrayalItemProps) {
     <LineItem
       actionPath={`/dashboard/portrayals/${portrayal.Lookup}`}
       actionText={`${portrayal.Name} (${portrayal.Lookup})`}
-      confirmAction={() => {
-        fetch(`/api/pages/blocks/${portrayal.Lookup}`, {
+      confirmAction={async () => {
+        await fetch(`/api/pages/blocks/${portrayal.Lookup}`, {
           method: 'delete',
-        }).then();
+        });
       }}
       confirmIcon={<DeleteIcon class="w-6 h-6 text-red-500" />}
       confirmText={`Are you sure you want to delete this portrayal: ${portrayal.Lookup}?`}

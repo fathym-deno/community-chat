@@ -13,10 +13,10 @@ export function PageItem(props: PageItemProps) {
     <LineItem
       actionPath={`/dashboard/reports/${page.Lookup}`}
       actionText={`${page.Name} (${page.Lookup})`}
-      confirmAction={() => {
-        fetch(`/api/pages/${page.Lookup}`, {
+      confirmAction={async () => {
+        await fetch(`/api/pages/${page.Lookup}`, {
           method: 'delete',
-        }).then();
+        });
       }}
       confirmIcon={<DeleteIcon class="w-6 h-6 text-red-500" />}
       confirmText={`Are you sure you want to delete this page: ${page.Lookup}?`}

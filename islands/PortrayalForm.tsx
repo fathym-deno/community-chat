@@ -2,13 +2,14 @@ import { JSX } from 'preact';
 import { FunctionDefinition } from 'npm:@azure/openai@next';
 import { useState } from 'preact/hooks';
 import { LoadingIcon } from '../build/iconset/icons/LoadingIcon.tsx';
-import { PortrayalView } from '../components/portrayals/PortrayalView.tsx';
-import { PageBlock } from '@fathym/synaptic';
+import { PageBlockView } from '../components/portrayals/PageBlockView.tsx';
+import { FunctionConfig, PageBlock } from '@fathym/synaptic';
+import { loadHarborFunctions } from "../src/functions.config.ts";
 
 interface PortrayalFormProps {
   convoLookup: string;
 
-  options: FunctionDefinition[];
+  functions: FunctionConfig[];
 
   regeneratePostSrc: string;
 
@@ -96,8 +97,12 @@ export function PortrayalForm(props: PortrayalFormProps) {
                   onChange={handleTypeChange}
                 >
                   <option>-- Choose --</option>
-                  {props.options.map((option) => {
-                    return <option value={option.name}>{option.name}</option>;
+                  {props.functions.map((option) => {
+                    return (
+                      <option value={option.Definition.name}>
+                        {option.Definition.name}
+                      </option>
+                    );
                   })}
                 </select>
 
@@ -169,7 +174,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
             </button>
           </form>
 
-          {portrayal.Details && <PortrayalView portrayal={portrayal} />}
+          {portrayal.Details && <PageBlockView pageBlock={portrayal} functions={props.functions} />}
         </>
       )}
 

@@ -11,6 +11,7 @@ import personalities from "./personalities.config.ts";
 import { existsSync } from "@fathym/common";
 import { dirname } from "$std/path/mod.ts";
 import { loadHarborFunctions } from "./functions.config.ts";
+import { loadLayouts } from "./layouts.config.ts";
 
 const endpoint = Deno.env.get("OPENAI_ENDPOINT") || "";
 const azureApiKey = Deno.env.get("OPENAI_API_KEY") || "test";
@@ -34,4 +35,4 @@ export const Personalities = new ConfigPersonalityProvider(personalities);
 
 export const PageBlocks = new PageBlockManager(kv, loadHarborFunctions());
 
-export const Pages = new PageManager(kv);
+export const Pages = new PageManager(kv, loadLayouts());
