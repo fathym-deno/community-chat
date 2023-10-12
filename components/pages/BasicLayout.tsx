@@ -41,7 +41,7 @@ export function BasicLayout(props: BasicLayoutProps) {
 
             return (
               <div class={classSet(undefined, rh ? `h-[${rh}px]` : undefined, `md:(col-span-${colSpan} row-span-${rowSpan})`)}>
-                <PageBlockView functions={functions} pageBlock={pageBlock!} />
+                {pageBlock ? <PageBlockView functions={functions} pageBlock={pageBlock} /> : 'Page block not found'}
               </div>
             );
           })}
