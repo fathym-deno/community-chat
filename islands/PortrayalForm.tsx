@@ -78,6 +78,15 @@ export function PortrayalForm(props: PortrayalFormProps) {
       });
   };
 
+  const funcsBank = loadHarborFunctions();
+
+  const functions = props.functions.map(func => {
+    return {
+      ...func,
+      Module: funcsBank.find(f => f.Definition.name === func.Definition.name)?.Module
+    }
+  })
+
   return (
     <>
       {!loading && (
@@ -174,7 +183,7 @@ export function PortrayalForm(props: PortrayalFormProps) {
             </button>
           </form>
 
-          {portrayal.Details && <PageBlockView pageBlock={portrayal} functions={props.functions} />}
+          {portrayal.Details && <PageBlockView pageBlock={portrayal} functions={functions} />}
         </>
       )}
 

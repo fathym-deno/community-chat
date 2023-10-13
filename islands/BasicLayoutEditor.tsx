@@ -3,6 +3,7 @@ import { Action, ActionStyleTypes, Input, classSet } from '@harbor/atomic';
 import { Page, PageBlock, PageLayoutSlot } from '@fathym/synaptic';
 import { PageBlockView } from '../components/portrayals/PageBlockView.tsx';
 import { useState } from 'preact/hooks';
+import { DeleteIcon } from '$fathym/atomic-icons';
 
 export type BasicLayoutEditorProps = JSX.HTMLAttributes<HTMLDivElement> & {
   pageBlocks: PageBlock[];
@@ -128,6 +129,19 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
         Details: { ColumnSpan: 1, RowSpan: 1 },
       } as PageLayoutSlot,
     ]);
+
+    setHasChanges(true);
+  };
+
+  const deleteSlot = (
+    e: JSX.TargetedEvent<HTMLButtonElement, Event>,
+    index: number
+  ) => {
+    const slotChanges = [...slots];
+
+    slotChanges.splice(index, 1);
+
+    setSlots(slotChanges);
 
     setHasChanges(true);
   };
@@ -312,24 +326,44 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
                 )}
               >
                 <div class="border border-gray-500 w-full h-[100%] p-2 md:p-4 overflow-auto">
-                  {pageBlock ? (
-                    <h1 class="m-auto">{pageBlock.Name}</h1>
-                  ) : (
-                    'Page block not set'
-                  )}
+                  <div class="flex flex-row justify-between">
+                    <h1 class="pb-4 text-left">
+                      {pageBlock ? pageBlock.Name : 'Page block not set'}
+                    </h1>
 
-                  <select
-                    name="pageBlock"
-                    class="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
-                    value={pageBlock?.Lookup || ''}
-                    onChange={(e) => onSlotPageBlockChange(e, i)}
-                  >
-                    <option value="">-- Select Page Block --</option>
-                    {props.pageBlocks &&
-                      props.pageBlocks.map((pb) => {
-                        return <option value={pb.Lookup}>{pb.Name}</option>;
-                      })}
-                  </select>
+                    <Action
+                      onClick={(
+                        e: JSX.TargetedEvent<HTMLButtonElement, Event>
+                      ) => deleteSlot(e, i)}
+                      actionStyle={ActionStyleTypes.None}
+                    >
+                      <DeleteIcon class="text-red-500 w-6 h-6" />
+                    </Action>
+                  </div>
+
+                  <div class="flex flex-col justify-evenly w-full">
+                    <div class="w-full [&>*]:w-full">
+                      <label
+                        htmlFor="pageBlock"
+                        class="block text-gray-500 font-bold mb-1 md:mb-0 pr-4"
+                      >
+                        Page Block
+                      </label>
+
+                      <select
+                        name="pageBlock"
+                        class="block w-full rounded-sm border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black mb-2"
+                        value={pageBlock?.Lookup || ''}
+                        onChange={(e) => onSlotPageBlockChange(e, i)}
+                      >
+                        <option value="">-- Select Page Block --</option>
+                        {props.pageBlocks &&
+                          props.pageBlocks.map((pb) => {
+                            return <option value={pb.Lookup}>{pb.Name}</option>;
+                          })}
+                      </select>
+                    </div>
+                  </div>
 
                   <div class="flex flex-col justify-evenly w-full">
                     <div class="w-full [&>*]:w-full">
