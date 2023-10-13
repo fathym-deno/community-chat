@@ -4,7 +4,7 @@ import { synapticPluginDef } from "../../../../fresh.config.ts";
 import { Action } from "@harbor/atomic";
 import { PageLayoutView } from "../../../../components/pages/PageLayoutView.tsx";
 import { Pages } from "../../../../src/services.ts";
-import { BasicLayoutEditor } from "../../../../islands/pages/BasicLayoutEditor.tsx";
+import { BasicLayoutEditor } from "../../../../islands/BasicLayoutEditor.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {

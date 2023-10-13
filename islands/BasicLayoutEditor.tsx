@@ -1,7 +1,7 @@
 import { JSX } from 'preact';
 import { Action, ActionStyleTypes, Input, classSet } from '@harbor/atomic';
 import { Page, PageBlock, PageLayoutSlot } from '@fathym/synaptic';
-import { PageBlockView } from '../../components/portrayals/PageBlockView.tsx';
+import { PageBlockView } from '../components/portrayals/PageBlockView.tsx';
 import { useState } from 'preact/hooks';
 
 export type BasicLayoutEditorProps = JSX.HTMLAttributes<HTMLDivElement> & {

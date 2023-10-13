@@ -17,19 +17,19 @@ import * as $11 from "./routes/dashboard/reports/index.tsx";
 import * as $12 from "./routes/dashboard/reports/new.tsx";
 import * as $13 from "./routes/dashboard/signout.tsx";
 import * as $14 from "./routes/index.tsx";
-import * as $$0 from "./islands/Breadcrumb.tsx";
-import * as $$1 from "./islands/ChatHistory.tsx";
-import * as $$2 from "./islands/ConvoItem.tsx";
-import * as $$3 from "./islands/DropDownButton.jsx";
-import * as $$4 from "./islands/FileUploader.tsx";
-import * as $$5 from "./islands/NavBar.tsx";
-import * as $$6 from "./islands/NavBarBranded.tsx";
-import * as $$7 from "./islands/PageItem.tsx";
-import * as $$8 from "./islands/PortrayalForm.tsx";
-import * as $$9 from "./islands/PortrayalItem.tsx";
-import * as $$10 from "./islands/_charts.ts";
-import * as $$11 from "./islands/_islands.tsx";
-import * as $$12 from "./islands/pages/BasicLayoutEditor.tsx";
+import * as $$0 from "./islands/BasicLayoutEditor.tsx";
+import * as $$1 from "./islands/Breadcrumb.tsx";
+import * as $$2 from "./islands/ChatHistory.tsx";
+import * as $$3 from "./islands/ConvoItem.tsx";
+import * as $$4 from "./islands/DropDownButton.jsx";
+import * as $$5 from "./islands/FileUploader.tsx";
+import * as $$6 from "./islands/NavBar.tsx";
+import * as $$7 from "./islands/NavBarBranded.tsx";
+import * as $$8 from "./islands/PageItem.tsx";
+import * as $$9 from "./islands/PortrayalForm.tsx";
+import * as $$10 from "./islands/PortrayalItem.tsx";
+import * as $$11 from "./islands/_charts.ts";
+import * as $$12 from "./islands/_islands.tsx";
 
 const manifest = {
   routes: {
@@ -50,19 +50,19 @@ const manifest = {
     "./routes/index.tsx": $14,
   },
   islands: {
-    "./islands/Breadcrumb.tsx": $$0,
-    "./islands/ChatHistory.tsx": $$1,
-    "./islands/ConvoItem.tsx": $$2,
-    "./islands/DropDownButton.jsx": $$3,
-    "./islands/FileUploader.tsx": $$4,
-    "./islands/NavBar.tsx": $$5,
-    "./islands/NavBarBranded.tsx": $$6,
-    "./islands/PageItem.tsx": $$7,
-    "./islands/PortrayalForm.tsx": $$8,
-    "./islands/PortrayalItem.tsx": $$9,
-    "./islands/_charts.ts": $$10,
-    "./islands/_islands.tsx": $$11,
-    "./islands/pages/BasicLayoutEditor.tsx": $$12,
+    "./islands/BasicLayoutEditor.tsx": $$0,
+    "./islands/Breadcrumb.tsx": $$1,
+    "./islands/ChatHistory.tsx": $$2,
+    "./islands/ConvoItem.tsx": $$3,
+    "./islands/DropDownButton.jsx": $$4,
+    "./islands/FileUploader.tsx": $$5,
+    "./islands/NavBar.tsx": $$6,
+    "./islands/NavBarBranded.tsx": $$7,
+    "./islands/PageItem.tsx": $$8,
+    "./islands/PortrayalForm.tsx": $$9,
+    "./islands/PortrayalItem.tsx": $$10,
+    "./islands/_charts.ts": $$11,
+    "./islands/_islands.tsx": $$12,
   },
   baseUrl: import.meta.url,
 };
