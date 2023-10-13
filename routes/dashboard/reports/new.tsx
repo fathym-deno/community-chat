@@ -1,9 +1,9 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { useEffect, useState } from "preact/hooks";
-import { Pages } from "../../../src/services.ts";
-import { Page } from "@fathym/synaptic";
-import { Action, Input } from "@harbor/atomic";
-import { synapticPluginDef } from "../../../fresh.config.ts";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { useEffect, useState } from 'preact/hooks';
+import { Pages } from '../../../src/services.ts';
+import { Page } from '@fathym/synaptic';
+import { Action, Input } from '@harbor/atomic';
+import { synapticPluginDef } from '../../../fresh.config.ts';
 
 export const handler: Handlers = {
   GET(_req, ctx) {
@@ -11,22 +11,25 @@ export const handler: Handlers = {
   },
   async POST(req, ctx) {
     const form = await req.formData();
-    const name = form.get("name")?.toString() || "";
-    const pageLookup = form.get("pageLookup")?.toString() || "";
+    const name = form.get('name')?.toString() || '';
+    const pageLookup = form.get('pageLookup')?.toString() || '';
 
-    const body = new Request("https://unused.com/", {
+    const body = new Request('https://unused.com/', {
       ...req,
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({
         Name: name,
         Lookup: pageLookup,
-      }),
+        Details: { columns: 3, rowHeight: undefined },
+        LayoutLookup: 'BasicLayout',
+        Slots: [],
+      } as Page),
     });
 
     await synapticPluginDef.Handlers.Pages.POST!(body, ctx);
 
     const headers = new Headers();
-    headers.set("location", `/dashboard/reports/${pageLookup}`);
+    headers.set('location', `/dashboard/reports/${pageLookup}`);
     return new Response(null, {
       status: 303, // See Other
       headers,
