@@ -37,11 +37,26 @@ export function BasicLayout(props: BasicLayoutProps) {
 
             const rh = rowHeight ? rowHeight * rowSpan : undefined;
 
-            const pageBlock = pageBlocks.find(pb => pb.Lookup == slot.PageBlockLookup);
+            const pageBlock = pageBlocks.find(
+              (pb) => pb.Lookup == slot.PageBlockLookup
+            );
 
             return (
-              <div class={classSet(undefined, rh ? `h-[${rh}px]` : undefined, `md:(col-span-${colSpan} row-span-${rowSpan})`)}>
-                {pageBlock ? <PageBlockView functions={functions} pageBlock={pageBlock} /> : 'Page block not found'}
+              <div
+                class={classSet(
+                  undefined,
+                  rh ? `h-[${rh}px]` : undefined,
+                  rh ? undefined : "overflow-auto",
+                  `md:(col-span-${colSpan} row-span-${rowSpan})`
+                )}
+              >
+                {pageBlock ? (
+                  <div class="w-full h-[100%] p-2 md:p-4 overflow-auto">
+                    <PageBlockView functions={functions} pageBlock={pageBlock} />
+                  </div>
+                ) : (
+                  'Page block not found'
+                )}
               </div>
             );
           })}

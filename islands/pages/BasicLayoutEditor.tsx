@@ -287,12 +287,12 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
               <div
                 class={classSet(
                   undefined,
-                  rh ? `min-h-[${rh}px]` : undefined,
+                  rh ? `h-[${rh}px]` : undefined,
                   `md:(col-span-${colSpan} row-span-${rowSpan})`,
                   'flex justify-center align-center'
                 )}
               >
-                <div class="border border-gray-500 w-full h-[100%] p-2 md:p-4">
+                <div class="border border-gray-500 w-full h-[100%] p-2 md:p-4 overflow-auto">
                   {pageBlock ? (
                     <h1 class="m-auto">{pageBlock.Name}</h1>
                   ) : (
