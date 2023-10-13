@@ -257,7 +257,7 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
 
           {hasChanges && (
             <Action
-              class="disabled:opacity-50 bg-green-300 hover:bg-green-700"
+              class="disabled:opacity-50 bg-green-500 hover:bg-green-700"
               onClick={saveCore}
               disabled={!hasChanges}
             >
