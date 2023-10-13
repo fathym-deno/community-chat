@@ -123,7 +123,10 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
   const addSlot = () => {
     setSlots([
       ...slots,
-      { PageBlockLookup: "", Details: { ColumnSpan: 1, RowSpan: 1 } } as PageLayoutSlot,
+      {
+        PageBlockLookup: '',
+        Details: { ColumnSpan: 1, RowSpan: 1 },
+      } as PageLayoutSlot,
     ]);
 
     setHasChanges(true);
@@ -147,7 +150,7 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
       body: JSON.stringify(page),
     })
       .then((response) => {
-        setHasChanges(true);
+        setHasChanges(false);
       })
       .catch((error) => { });
   };
@@ -252,11 +255,23 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
             Add Slot
           </Action>
 
-          <Action onClick={saveCore} disabled={!hasChanges}>
+          <Action
+            class="disabled:opacity-50"
+            onClick={saveCore}
+            disabled={!hasChanges}
+          >
             Save
           </Action>
 
-          <Action href={`../${lookup}`} disabled={hasChanges}>
+          <Action
+            class={classSet(undefined, hasChanges ? 'opacity-50' : undefined)}
+            href={`../${lookup}`}
+            onClick={(e: JSX.TargetedEvent<HTMLAnchorElement, Event>) => {
+              if (hasChanges) {
+                e.preventDefault();
+              }
+            }}
+          >
             Preview
           </Action>
         </div>
