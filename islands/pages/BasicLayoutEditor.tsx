@@ -255,25 +255,29 @@ export function BasicLayoutEditor(props: BasicLayoutEditorProps) {
             Add Slot
           </Action>
 
-          <Action
-            class="disabled:opacity-50"
-            onClick={saveCore}
-            disabled={!hasChanges}
-          >
-            Save
-          </Action>
+          {hasChanges && (
+            <Action
+              class="disabled:opacity-50 bg-green-300 hover:bg-green-700"
+              onClick={saveCore}
+              disabled={!hasChanges}
+            >
+              Save
+            </Action>
+          )}
 
-          <Action
-            class={classSet(undefined, hasChanges ? 'opacity-50' : undefined)}
-            href={`../${lookup}`}
-            onClick={(e: JSX.TargetedEvent<HTMLAnchorElement, Event>) => {
-              if (hasChanges) {
-                e.preventDefault();
-              }
-            }}
-          >
-            Preview
-          </Action>
+          {!hasChanges && (
+            <Action
+              class={classSet(undefined, hasChanges ? 'opacity-50' : undefined)}
+              href={`../${lookup}`}
+              onClick={(e: JSX.TargetedEvent<HTMLAnchorElement, Event>) => {
+                if (hasChanges) {
+                  e.preventDefault();
+                }
+              }}
+            >
+              Preview
+            </Action>
+          )}
         </div>
       </div>
 

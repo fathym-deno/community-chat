@@ -11,38 +11,6 @@ export const handler: Handlers = {
     const pageResp = await synapticPluginDef.Handlers.PageLookup.GET!(req, ctx);
 
     const page: Page = await pageResp.json();
-    // const page: Page = {
-    //   Details: {
-    //     columns: 3,
-    //     rowHeight: 150,
-    //   },
-    //   LayoutLookup: 'BasicLayout',
-    //   Lookup: 'test',
-    //   Name: 'Test',
-    //   Slots: [
-    //     {
-    //       PageBlockLookup: 'test',
-    //       Details: {
-    //         ColumnSpan: 1,
-    //         RowSpan: 2,
-    //       },
-    //     },
-    //     {
-    //       PageBlockLookup: 'test2',
-    //       Details: {
-    //         ColumnSpan: 2,
-    //         RowSpan: 1,
-    //       },
-    //     },
-    //     {
-    //       PageBlockLookup: 'test2',
-    //       Details: {
-    //         ColumnSpan: 2,
-    //         RowSpan: 1,
-    //       },
-    //     },
-    //   ],
-    // };
 
     const pageBlockResp = await synapticPluginDef.Handlers.PageBlocks.GET!(req, ctx);
 
