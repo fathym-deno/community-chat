@@ -1,7 +1,6 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { setCookie } from '$std/http/cookie.ts';
 import { SignIn } from '@harbor/atomic';
-import { SignaturedDeclaration } from "https://deno.land/x/ts_morph@17.0.1/ts_morph.js";
 
 export const handler: Handlers = {
   GET(_req, ctx) {
