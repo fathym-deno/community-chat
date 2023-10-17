@@ -1,29 +1,59 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { ChatHistory } from "../../islands/ChatHistory.tsx";
-import { ChatInput } from "../../islands/_islands.tsx";
-import { PortrayalForm } from "../../islands/PortrayalForm.tsx";
-import { useEffect, useRef } from "preact/hooks";
-import { ConversationMessage, FunctionConfig } from "@fathym/synaptic";
-import { SendIcon } from "$fathym/atomic-icons";
-import { PageBlocks } from "../../src/services.ts";
-import { synapticPluginDef } from "../../fresh.config.ts";
-import { FunctionDefinition } from "npm:@azure/openai@next";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { ChatHistory, ChatHistoryMessage } from '@harbor/atomic';
+import { ChatInput } from '../../islands/_islands.tsx';
+import { PortrayalForm } from '../../islands/PortrayalForm.tsx';
+import { useEffect, useRef } from 'preact/hooks';
+import { ConversationMessage } from '@fathym/synaptic';
+import { LovebotIcon, SendIcon, UserIcon } from '$fathym/atomic-icons';
+import { PageBlocks } from '../../src/services.ts';
+import { synapticPluginDef } from '../../fresh.config.ts';
+import { LiveChat } from '../../islands/LiveChat.tsx';
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    const resp = await synapticPluginDef.Handlers.ChatConvoLookup.GET!(req, ctx);
+    const resp = await synapticPluginDef.Handlers.ChatConvoLookup.GET!(
+      req,
+      ctx
+    );
 
     const messages: ConversationMessage[] = await resp.json();
 
     messages.unshift({
-      From: "assistant",
+      From: 'assistant',
       Content:
-        "Welcome to Harbor Research, providing AI powered industry knowledge.",
+        'Welcome to Harbor Research, providing AI powered industry knowledge.',
+    });
+
+    const userMessage: ConversationMessage | undefined = ctx.params
+      .newUserMessage
+      ? {
+        From: 'user',
+        Content: ctx.params.newUserMessage,
+      }
+      : undefined;
+
+    if (userMessage) {
+      messages.push(userMessage);
+    }
+
+    const chatMessages: ChatHistoryMessage[] = messages.map((msg) => {
+      return {
+        Content: msg.Content,
+        Timestamp: msg.Timestamp,
+        JustifyEnd: msg.From === 'user',
+        Color: msg.From === 'user' ? 'sky' : 'green',
+        Icon:
+          msg.From === 'user' ? (
+            <UserIcon class="w-6 h-6" />
+          ) : (
+            <LovebotIcon class="w-6 h-6" />
+          ),
+      } as ChatHistoryMessage;
     });
 
     return ctx.render({
       convoLookup: ctx.params.convoLookup,
-      messages: messages,
+      messages: chatMessages,
       newUserMessage: ctx.params.newUserMessage,
       functions: await PageBlocks.Functions(),
       useOpenChat: !!ctx.params.useOpenChat,
@@ -32,9 +62,9 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData();
 
-    ctx.params.newUserMessage = form.get("content")?.toString() || "";
+    ctx.params.newUserMessage = form.get('content')?.toString() || '';
 
-    ctx.params.useOpenChat = form.get("useOpenChat")?.toString() || "";
+    ctx.params.useOpenChat = form.get('useOpenChat')?.toString() || '';
 
     return handler.GET!(req, ctx);
   },
@@ -42,34 +72,22 @@ export const handler: Handlers = {
 
 export default function Chat(props: PageProps) {
   const chatPostSrc = `/dashboard/${props.data.convoLookup}`;
-  const chatInputRef = useRef<HTMLFormElement>(null);
-
-  function onMessageStreamed() {
-    chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
-    console.log("streamed");
-  }
-
-  useEffect(() => {
-    chatInputRef.current!.scrollIntoView({ behavior: "smooth" });
-    console.log(chatInputRef.current!);
-  }, []);
 
   return (
     <div class="flex flex-col md:flex-row">
       <div class="md:w-2/3 mx-4">
-        <ChatHistory
+        <ChatHistory messages={props.data.messages} />
+
+        <LiveChat
           convoLookup={props.data.convoLookup}
-          messages={props.data.messages}
           userMessage={props.data.newUserMessage}
           useOpenChat={props.data.useOpenChat}
-          messageStreamed={() => onMessageStreamed()}
         />
 
         <ChatInput
           // icon=">"
           // icon={<SendIcon class="w-6 h-6" />}
           src={chatPostSrc}
-          ref={chatInputRef}
           useOpenChat={props.data.useOpenChat}
         >
           <SendIcon class="w-6 h-6" />
