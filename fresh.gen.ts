@@ -22,8 +22,8 @@ import * as $$1 from "./islands/Breadcrumb.tsx";
 import * as $$2 from "./islands/ConvoItem.tsx";
 import * as $$3 from "./islands/DropDownButton.jsx";
 import * as $$4 from "./islands/FileUploader.tsx";
-import * as $$5 from "./islands/LiveChat.tsx";
-import * as $$6 from "./islands/NavBar.tsx";
+import * as $$5 from "./islands/Header.tsx";
+import * as $$6 from "./islands/LiveChat.tsx";
 import * as $$7 from "./islands/NavBarBranded.tsx";
 import * as $$8 from "./islands/PageItem.tsx";
 import * as $$9 from "./islands/PortrayalForm.tsx";
@@ -55,8 +55,8 @@ const manifest = {
     "./islands/ConvoItem.tsx": $$2,
     "./islands/DropDownButton.jsx": $$3,
     "./islands/FileUploader.tsx": $$4,
-    "./islands/LiveChat.tsx": $$5,
-    "./islands/NavBar.tsx": $$6,
+    "./islands/Header.tsx": $$5,
+    "./islands/LiveChat.tsx": $$6,
     "./islands/NavBarBranded.tsx": $$7,
     "./islands/PageItem.tsx": $$8,
     "./islands/PortrayalForm.tsx": $$9,
