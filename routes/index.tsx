@@ -1,6 +1,7 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { setCookie } from '$std/http/cookie.ts';
 import { SignIn } from '@harbor/atomic';
+import { Avatar } from 'flowbite-react';
 
 export const handler: Handlers = {
   GET(_req, ctx) {
@@ -34,7 +35,7 @@ export default function Home(props: PageProps) {
     <div class="container px-4">
       <div class="mx-auto max-w-screen-md">
         <h1 class="text-2xl font-bold mb-4">Sign In</h1>
-
+        <Avatar img="https://www.flowbite-react.com/images/people/profile-picture-5.jpg" />
         <SignIn
           signInOptions={{
             formProps: {

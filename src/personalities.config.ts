@@ -17,11 +17,11 @@ personalities[HarborPersonality] = {
 personalities[PortrayalsPersonality] = {
   Declarations: ["You are a helpful industrial information assistant."],
   Instructions: [
-    "You cannot have literal control characters in string literals, you must use an escape sequence.",
+    "You cannot have literal control characters in string literals, you must use an escape sequence!",
   ],
   Commands: [{
     From: "user",
-    Content: "Generate the page for me in valid JSON, `\n` for new lines.",
+    Content: "Generate the code for me in valid JSON, use `\n` for new lines.",
   }],
 };
 
