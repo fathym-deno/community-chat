@@ -1,10 +1,11 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { Action } from "@harbor/atomic";
-import { synapticPluginDef } from "../../fresh.config.ts";
-import { Conversation } from "@fathym/synaptic";
-import { LineItem } from "../../islands/_islands.tsx";
-import { DeleteIcon } from "$fathym/atomic-icons";
-import { ConvoItem } from "../../islands/ConvoItem.tsx";
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { Action } from '@harbor/atomic';
+import { synapticPluginDef } from '../../fresh.config.ts';
+import { Conversation } from '@fathym/synaptic';
+import { LineItem } from '../../islands/_islands.tsx';
+import { DeleteIcon } from '$fathym/atomic-icons';
+import { ConvoItem } from '../../islands/ConvoItem.tsx';
+import { Button } from 'flowbite-react';
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -28,14 +29,15 @@ export default function Conversations(props: PageProps) {
       <h1 class="text-2xl font-bold mb-4">Conversations</h1>
       <ul>
         {convoLookups.map((convoLookup) => (
-          <li key={convoLookup} class="mb-2">
+          <li key={convoLookup} class="mb-2 flex flex-row">
             <ConvoItem convoLookup={convoLookup} />
           </li>
         ))}
       </ul>
-      <Action href="/dashboard/new-conversation" class="inline-block">
+
+      <Button href="/dashboard/new-conversation" className="mt-4 inline-block">
         New Conversation
-      </Action>
+      </Button>
     </div>
   );
 }
