@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <Navbar fluid rounded>
-      <Navbar.Brand href="https://flowbite-react.com">
+      <Navbar.Brand href="/">
         <Logo />
       </Navbar.Brand>
 
@@ -36,6 +36,6 @@ export function Header() {
 
         <Navbar.Link href="/dashboard/reports">Reports</Navbar.Link>
       </Navbar.Collapse>
-    </Navbar>
+    </Navbar >
   );
 }
