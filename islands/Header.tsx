@@ -11,14 +11,6 @@ interface User {
 }
 
 export function Header() {
-  const user: User = {
-    name: 'Matthew Smith',
-    email: 'matthew.smith@fathym.com',
-  };
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
-
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="/">
